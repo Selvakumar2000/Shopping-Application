@@ -1,0 +1,80 @@
+.m-image{
+    margin-top: 90px;
+    margin-left: -50px;
+}
+
+.main-image{
+    width: 600px;
+    height: 450px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 15%;
+    border: 3px solid #11101d;
+}
+
+.auth-form{
+    margin-left: 50px;
+    margin-top: 90px;
+}
+
+.btn_login{
+    margin-left: 70px;
+    width: 140px;     
+}
+
+.btn-primary{
+    color: #fff;
+    background-color: rgb(13, 13, 42);
+}
+
+.btn-secondary{
+    cursor: not-allowed;  
+}
+
+.form-group{
+    margin-left: 70px;
+    width: 450px;
+}
+.password-input{
+    position: relative;
+}
+
+.eye-icon{
+    position: absolute;
+    margin-top: -25px; 
+    margin-left: 420px;
+}
+
+h1{
+    margin-left: 190px;
+    font-weight: 650;
+    color: #060724;
+}
+
+.user-options{
+    margin-left: 80px;
+}
+
+u:hover{
+    color: #060724;
+    cursor: pointer;
+    font-weight: 650;
+}
+
+h2{
+    margin-left: 180px;
+}
+
+h3{
+    color: rgb(11, 11, 56);
+    font-weight: 700;
+}
+
+.buttonGrp{
+    margin-left: 120px;
+}
+
+.radio{
+    color: #060724;
+    background-color: #060724;
+}

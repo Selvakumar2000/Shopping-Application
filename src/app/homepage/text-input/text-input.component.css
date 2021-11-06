@@ -1,0 +1,26 @@
+
+.placeholder{
+    position: absolute;
+    margin-top: -26px; 
+    margin-left: 390px;
+}
+
+.placeholder:hover{
+  cursor: pointer;
+}
+
+
+.input-placeholder {
+  position: relative;
+
+}
+
+.text-success:before {
+  content:" *";
+  color: green;
+}
+
+.error{
+  color: rgb(238, 69, 69);
+  font-size: 14px;
+}

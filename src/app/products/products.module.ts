@@ -3,15 +3,22 @@ import { CommonModule } from '@angular/common';
 
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsHomeComponent } from './products-home/products-home.component';
-
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ProductDisplayComponent } from './product-display/product-display.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
-    ProductsHomeComponent
+    ProductsHomeComponent,
+    ProductDisplayComponent
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    TooltipModule.forRoot(),
+    PaginationModule.forRoot(),
+    BsDropdownModule.forRoot()
   ]
 })
 export class ProductsModule { }

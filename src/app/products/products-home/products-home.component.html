@@ -5,7 +5,7 @@
                 <img src="./assets/profile.jpg" alt="profile" class="profile_img">
                 <div class="logo_name">Selvakumar</div>
             </div>
-            <i class="fas fa-bars" id="btn"></i>
+            <i class="fas fa-medal" id="btn" tooltip="Buyer" placement="bottom"></i>
         </div>
         <ul class="nav_list">
             <li>
@@ -53,7 +53,7 @@
                     <i class="fas fa-comments fa-lg"></i>
                     <span class="links_name">Feedback</span>
                 </a>               
-            </li>       
+            </li>    
         </ul>
         <div class="profile_content">
             <div class="profile">
@@ -64,11 +64,21 @@
                         <div class="job">Make It Ease</div>
                     </div>
                 </div>
-                <i class="fas fa-sign-out-alt" id="log_out"></i>
+                <i class="fas fa-sign-out-alt" id="log_out" (click)="logout()"
+                   tooltip="LogOut" placement="right">                   
+                </i>
             </div>
         </div>
     </div>
-    <div class="products_content">
-        <!-- <div class="text">Products Content</div> -->
+    <div class="product_lists">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" *ngFor="let product of products; index as i"
+                    (click)="getProducts(product)"
+                >
+                    {{product}} 
+                </div>
+            </div>
+        </div>
     </div>
 </div>

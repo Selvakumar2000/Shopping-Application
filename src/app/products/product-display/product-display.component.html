@@ -1,0 +1,98 @@
+<div class="product-display">
+    <div class="topbar">
+        <div tooltip="Filter" placement="left">
+            <button class="btn btn-danger filter" (click)="openFilterOptions()">
+                <i class="fas fa-filter"></i>
+            </button>
+        </div>
+        <div class="search">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search The Product">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown">
+            <img id="img" src="./assets/profile.jpg" alt="user">
+            <div class="dropdown-content">
+                <a routerLink='/products'>Dashboard</a>
+                <a (click)="logout()">LogOut</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row mt-1">
+            <div *ngFor="let product of products" class="col-md-3">
+                <div class="product-card">
+                    <div class="logo-cart">
+                        <img src="./assets/addidaslogo.jpg" alt="prod-logo" 
+                             *ngIf="product.productBrand == 'Addidas'">
+                        <img src="./assets/walkarologo.png" alt="prod-logo" 
+                             *ngIf="product.productBrand == 'Walkaro'">
+                        <img src="./assets/pumalogo.png" alt="prod-logo" 
+                             *ngIf="product.productBrand == 'Puma'">
+                        <img src="./assets/batalogo.png" alt="prod-logo" 
+                             *ngIf="product.productBrand == 'Bata'">
+
+                        <i class="fas fa-shopping-bag" tooltip="Buy" placement="left"></i>
+                    </div>
+                    <div class="main-images">
+                        <img src="{{product.photoUrl}}" alt="{{product.productName}}">
+                    </div>
+                    <div class="product-details">
+                        <div class="product_name">{{product.productName}}</div>
+                        <P>
+                            {{product.productDescription}}
+                        </P>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="discount-price">
+                        <div class="price">
+                            <span class="price_num">Rs. {{product.amountRs}}</span>
+                            <span class="price_letter">
+                                <h5><s>Rs. {{product.originalPrice}}</s></h5>
+                            </span>
+                        </div>
+                        <div class="discount-option">
+                            <span class="discount"><strong>Discount:</strong></span>
+                            <span class="discount-rate">                                    
+                                {{product.discount}}%
+                            </span>
+                        </div> 
+                    </div>
+                    <div class="button">
+                        <div class="button-layer">
+                        </div>
+                        <button>Add To Cart</button>
+                    </div>
+                </div>            
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12 d-flex justify-content-center" *ngIf="pagination">
+                <pagination 
+                        [boundaryLinks]="true" 
+                        [totalItems]="pagination.totalItems"
+                        [itemsPerPage]="pagination.itemsPerPage"
+                        [(ngModel)]="pagination.currentPage"
+                        (pageChanged)="pageChanged($event)"
+                        previousText="&lsaquo;" 
+                        nextText="&rsaquo;" 
+                        firstText="&laquo;" 
+                        lastText="&raquo;">
+                </pagination>
+            </div>
+        </div>
+    </div> 
+</div>
+

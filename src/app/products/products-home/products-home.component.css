@@ -3,6 +3,7 @@
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
+    background-image: linear-gradient( #43CBFF 10%, #9708CC 100%);
 }
 
 .sidebar.active{
@@ -46,13 +47,14 @@
     position: absolute;
     color: #fff;
     top: 6px;
-    font-size: 20px;
+    font-size: 30px;
     height: 50px;
     width: 50px;
     text-align: center;
     line-height: 50px;
     transform: translateX(-50%);
     left: 90%;
+    cursor: pointer;
 } 
 
 .sidebar ul{
@@ -67,7 +69,7 @@
     list-style-type: none;
     line-height: 50px;
     border-radius: 12px;
-    
+    cursor: pointer;
 }
 
 .sidebar ul li input{
@@ -105,7 +107,6 @@
     text-decoration: none;
     transition: all 0.4s ease;
     border-radius: 12px;
-    white-space: nowrap;
     margin-top: 10px;
 }
 
@@ -180,3 +181,33 @@
     background: #1d1b31;
     left: 88%;
 }
+
+.fa-sign-out-alt{
+    cursor: pointer;
+}
+ 
+.container{ 
+   margin-left: 300px;
+   margin-top: 150px;
+}
+
+.col-md-4{
+    background-color: rgb(158, 149, 149);
+    border-radius: 35px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;    
+    padding: 20px;
+    box-sizing: border-box;
+    border: 15px solid transparent;
+    background-clip:padding-box; 
+    text-align: center;
+} 
+
+
+
+
+
+
+
+    

@@ -1,174 +1,189 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 m-image">
-            <img src="./assets/bg4.jpg" alt="main-image" class="main-image">
-        </div>
-        <div class="col-md-6 auth-form">
-            <h1>
-                ShopMe
-                <i class="fas fa-shopping-cart"></i>
-            </h1>
-            <br>
-            <div *ngIf="formType === 'loginForm'">
-                <form #loginForm="ngForm" novalidate   
-                   autocomplete="off" (ngSubmit)="login()">
-                   <h3 class="text-center">Get Started</h3>
-                   <div class="form-group">
-                        <input required
-                            type="text" 
-                            class="form-control"
-                            name="username"
-                            #name="ngModel" 
-                            [(ngModel)]="model.username" 
-                            placeholder="UserName"      
-                        >
-                        <i class="fas fa-user fa-lg eye-icon"></i>
-                        <small class="text-danger" [class.d-none] = "name.valid || name.untouched">
-                            Username is required
-                        </small>
-                   </div>
-                   
-                   <div class="form-group">
-                        <input required
-                            [type]="hide ? 'password' : 'text'" 
-                            class="form-control password-input"
-                            name="password"
-                            #password="ngModel"
-                            [(ngModel)]="model.password"
-                            placeholder="Password"
-                            id="inputPassword" 
-                        >
-                        <i *ngIf="!hide" class="fas fa-eye fa-lg eye-icon" 
-                                         (click)="myFunction()"></i>
-                        <i *ngIf="hide" class="fas fa-eye-slash fa-lg eye-icon"
-                                        (click)="myFunction()"></i>
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 m-image">
+                <img src="./assets/bg4.jpg" alt="main-image" class="main-image">
+            </div>
+            <div class="col-md-6 auth-form">
+                <h1>
+                    ShopMe
+                    <i class="fas fa-shopping-cart"></i>
+                </h1>
+                <br>
+                <div *ngIf="formType === 'loginForm'">
+                    <form #loginForm="ngForm" novalidate   
+                       autocomplete="off" (ngSubmit)="login()">
+                       <h3 class="text-center">Get Started</h3>
+                       <div class="form-group">
+                            <input required
+                                type="text" 
+                                class="form-control"
+                                name="username"
+                                #name="ngModel" 
+                                [(ngModel)]="model.username" 
+                                placeholder="UserName"      
+                            >
+                            <i class="fas fa-user fa-lg eye-icon"></i>
+                            <small class="text-danger" [class.d-none] = "name.valid || name.untouched">
+                                Username is required
+                            </small>
+                       </div>
                        
-                        <small class="text-danger"
-                               [class.d-none] = "password.valid || password.untouched">
-                            Password is required
-                        </small>
-                    </div>
-                    <div class="text-center">
-                        <button class="btn btn-primary btn_login" type="submit"
-                                *ngIf="!loginForm.form.invalid">
-                            LogIn
-                        </button>
-                        <button class="btn btn-secondary disabled btn_login"
-                                *ngIf="loginForm.form.invalid"
-                                type="submit">
-                            LogIn
-                        </button>
-                    </div>
-                </form>
-            </div><br><br>
-            <div class="row user-options">
-                <a (click)="openSignInModel(staticModal)">
-                    <h5 class="text-muted ml-4"><u>Create New Account</u></h5>
-                </a>
-                <a (click)="loginTrouble()">
-                    <h5 class="text-muted ml-5"><u>Trouble Logging In?</u></h5>
-                </a>
+                       <div class="form-group">
+                            <input required
+                                [type]="hide ? 'password' : 'text'" 
+                                class="form-control password-input"
+                                name="password"
+                                #password="ngModel"
+                                [(ngModel)]="model.password"
+                                placeholder="Password"
+                                id="inputPassword" 
+                            >
+                            <i *ngIf="!hide" class="fas fa-eye fa-lg eye-icon" 
+                                             (click)="myFunction()"></i>
+                            <i *ngIf="hide" class="fas fa-eye-slash fa-lg eye-icon"
+                                            (click)="myFunction()"></i>
+                           
+                            <small class="text-danger"
+                                   [class.d-none] = "password.valid || password.untouched">
+                                Password is required
+                            </small>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary btn_login" type="submit"
+                                    *ngIf="!loginForm.form.invalid">
+                                LogIn
+                            </button>
+                            <button class="btn btn-secondary disabled btn_login"
+                                    *ngIf="loginForm.form.invalid"
+                                    type="submit">
+                                LogIn
+                            </button>
+                        </div>
+                    </form>
+                </div><br><br>
+                <div class="row user-options">
+                    <a (click)="openSignInModel(staticModal)">
+                        <h5 class="ml-4"><u>Create New Account</u></h5>
+                    </a>
+                    <a (click)="loginTrouble()">
+                        <h5 class="ml-5"><u>Trouble Logging In?</u></h5>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
+    
+    
+    <!--Modal for SignUp-->
+    <ng-template #staticModal>
+        <div>
+            <div class="modal-header">
+                <h2 class="modal-title text-center text-primary">SignUp</h2>
+                <button type="button" class="btn-close close pull-right"
+                        (click)="modalRef?.hide()">
+                  <span aria-hidden="true" class="visually-hidden">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">  
+                <div class="container">
+                    <form [formGroup]="registerForm" 
+                          (ngSubmit)="registerForm.valid && register()"
+                          autocomplete="off">
+                        <div class="form-group" style="margin-left: -5px;">
+                            <label class="control-label">
+                               Be a: 
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" value="Buyer" formControlName='userRole'
+                                       class="ml-1">&nbsp;
+                                Buyer
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" value="GoldBuyer" formControlName='userRole' 
+                                       class="ml-3">&nbsp;
+                                GoldBuyer
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" value="Supplier" formControlName='userRole'
+                                       class="ml-3">&nbsp;
+                                Supplier
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" value="GoldSupplier" formControlName='userRole'
+                                       class="ml-3">&nbsp;
+                                GoldSupplier
+                            </label>
+                        </div>
+                        <app-text-input 
+                            [formControl]='registerForm.controls["fullname"]' 
+                            [label]='"FullName"' [type]='"text"'>
+                        </app-text-input>
+                        <app-text-input 
+                            [formControl]='registerForm.controls["email"]' 
+                            [label]='"Email"' [type]='"email"'>
+                        </app-text-input>
+                        <app-text-input 
+                            [formControl]='registerForm.controls["phoneNumber"]' 
+                            [label]='"PhoneNumber"' [type]='"tel"'>
+                        </app-text-input>
+                        <app-date-input 
+                            [formControl]='registerForm.controls["dateOfBirth"]' 
+                            [label]='"Date Of Birth"'>
+                        </app-date-input>
+                        <div class="form-group" style="margin-left:10px;">
+                            <label class="control-label">Gender: </label>
+                            <label class="radio-inline">
+                                <input type="radio" value="male" formControlName='gender'  class="ml-3">&nbsp;Male
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" value="Female" formControlName='gender' class="ml-3">&nbsp;Female
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" value="Others" formControlName='gender' class="ml-3">&nbsp;Others
+                            </label>
+                        </div>
+                        <app-text-input 
+                            [formControl]='registerForm.controls["city"]' 
+                            [label]='"City"' [type]='"text"'>
+                        </app-text-input>
+                        <app-text-input 
+                            [formControl]='registerForm.controls["state"]' 
+                            [label]='"State"' [type]='"text"'>
+                        </app-text-input>
+                        <app-text-input 
+                            [formControl]='registerForm.controls["country"]' 
+                            [label]='"Country"' [type]='"text"'>
+                        </app-text-input>
+                        <app-text-input 
+                            [formControl]='registerForm.controls["username"]' 
+                            [label]='"UserName"' [type]='"text"'>
+                        </app-text-input>
+                        <app-text-input 
+                            [formControl]='registerForm.controls["password"]' 
+                            [label]='"Password"' [type]='"password"'>
+                        </app-text-input>
+                        <app-text-input 
+                            [formControl]='registerForm.controls["confirmPassword"]' 
+                            [label]='"Confirm Password"' [type]='"password"'>
+                        </app-text-input>
+                    
+                        <div class="form-group buttonGrp">
+                            <button [disabled]='!registerForm.valid' 
+                                    class="btn btn-success" type="submit"
+                            >
+                                Register
+                            </button>
+                              
+                            <button class="btn btn-info ml-3" type="button"
+                            (click)="modalRef?.hide()"
+                            >
+                                Cancel
+                            </button>    
+                        </div>
+                    </form>
+                </div> 
+            </div>
+        </div>
+    </ng-template>    
 </div>
-
-
-<!--Modal for SignUp-->
-<ng-template #staticModal>
-    <div>
-        <div class="modal-header">
-            <h2 class="modal-title text-center text-primary">SignUp</h2>
-            <button type="button" class="btn-close close pull-right"
-                    (click)="modalRef?.hide()">
-              <span aria-hidden="true" class="visually-hidden">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">  
-            <div class="container">
-                <form [formGroup]="registerForm" 
-                      (ngSubmit)="registerForm.valid && register()"
-                      autocomplete="off">
-                    <div class="form-group" style="margin-left: -5px;">
-                        <label class="control-label">
-                           Be a: 
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" value="Buyer" formControlName='userRole'
-                                   class="ml-1">&nbsp;
-                            Buyer
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" value="GoldBuyer" formControlName='userRole' 
-                                   class="ml-3">&nbsp;
-                            GoldBuyer
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" value="Supplier" formControlName='userRole'
-                                   class="ml-3">&nbsp;
-                            Supplier
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" value="GoldSupplier" formControlName='userRole'
-                                   class="ml-3">&nbsp;
-                            GoldSupplier
-                        </label>
-                    </div>
-                    <app-text-input 
-                        [formControl]='registerForm.controls["fullname"]' 
-                        [label]='"FullName"' [type]='"text"'>
-                    </app-text-input>
-                    <app-text-input 
-                        [formControl]='registerForm.controls["email"]' 
-                        [label]='"Email"' [type]='"email"'>
-                    </app-text-input>
-                    <app-text-input 
-                        [formControl]='registerForm.controls["phoneNumber"]' 
-                        [label]='"PhoneNumber"' [type]='"tel"'>
-                    </app-text-input>
-                    <app-date-input 
-                        [formControl]='registerForm.controls["dateOfBirth"]' 
-                        [label]='"Date Of Birth"'>
-                    </app-date-input>
-                    <app-text-input 
-                        [formControl]='registerForm.controls["city"]' 
-                        [label]='"City"' [type]='"text"'>
-                    </app-text-input>
-                    <app-text-input 
-                        [formControl]='registerForm.controls["state"]' 
-                        [label]='"State"' [type]='"text"'>
-                    </app-text-input>
-                    <app-text-input 
-                        [formControl]='registerForm.controls["country"]' 
-                        [label]='"Country"' [type]='"text"'>
-                    </app-text-input>
-                    <app-text-input 
-                        [formControl]='registerForm.controls["username"]' 
-                        [label]='"UserName"' [type]='"text"'>
-                    </app-text-input>
-                    <app-text-input 
-                        [formControl]='registerForm.controls["password"]' 
-                        [label]='"Password"' [type]='"password"'>
-                    </app-text-input>
-                    <app-text-input 
-                        [formControl]='registerForm.controls["confirmPassword"]' 
-                        [label]='"Confirm Password"' [type]='"password"'>
-                    </app-text-input>
-                
-                    <div class="form-group buttonGrp">
-                        <button [disabled]='!registerForm.valid' 
-                                class="btn btn-success" type="submit"
-                        >
-                            Register
-                        </button>  
-                        <button class="btn btn-info ml-3" type="button"
-                        (click)="modalRef?.hide()"
-                        >
-                            Cancel
-                        </button>    
-                    </div>
-                </form>
-            </div> 
-        </div>
-    </div>
-</ng-template>

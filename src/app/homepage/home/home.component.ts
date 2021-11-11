@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
         email: ['', Validators.required],
         phoneNumber: ['', Validators.required],
         dateOfBirth: ['', Validators.required],
+        gender:['male'],
         city: ['', Validators.required],
         state: ['', Validators.required],
         country: ['', Validators.required],
@@ -71,16 +72,17 @@ export class HomeComponent implements OnInit {
   register()
   {
     this.accountService.register(this.registerForm.value).subscribe(response => {
-      this.toastr.info('Registeration Successful');
+      this.modalRef?.hide()
       this.router.navigateByUrl('/products');
+      this.toastr.info('Registeration Successful');
     });
   }
 
   login()
   {
     this.accountService.login(this.model).subscribe(response => {
-      this.toastr.info('LogIn Successful');
       this.router.navigateByUrl('/products');
+      this.toastr.info('LogedIn Successfully');
     });
   }  
 

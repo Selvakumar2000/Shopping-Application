@@ -1,13 +1,14 @@
 <div class="product-display">
     <div class="topbar">
         <div tooltip="Filter" placement="left">
-            <button class="btn btn-danger filter" (click)="openFilterOptions()">
+            <button class="btn filter" (click)="openFilterOptions(staticModal)">
                 <i class="fas fa-filter"></i>
             </button>
         </div>
         <div class="search">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search The Product">
+                <input type="text" class="form-control" 
+                       placeholder="Search Your Favourite Product Brand ....">
                 <div class="input-group-append">
                     <button class="btn btn-secondary">
                         <i class="fas fa-search"></i>
@@ -79,7 +80,8 @@
             </div>
         </div>
         <div class="row mt-2">
-            <div class="col-md-12 d-flex justify-content-center" *ngIf="pagination">
+            <div class="col-md-12 d-flex justify-content-center" 
+                 *ngIf="pagination && products.length > 0">
                 <pagination 
                         [boundaryLinks]="true" 
                         [totalItems]="pagination.totalItems"
@@ -93,6 +95,83 @@
                 </pagination>
             </div>
         </div>
+        <div class="row" *ngIf="products.length == 0">
+            <div class="col-md-12 d-flex justify-content-center" 
+                style="color: #fff; font-weight: 600; font-size: 30px;
+                margin-top: 80px; ">
+                No Items Found 
+            </div>
+            <div class="col-md-12 d-flex justify-content-center" 
+                style="color: #fff; font-weight: 600; font-size: 30px;
+                margin-top: 100px; cursor: pointer; " (click)="reset()">
+                <h2>
+                    <u>Back</u>
+                </h2>
+            </div>    
+        </div>
     </div> 
 </div>
 
+<!--Modal for Filters-->
+<ng-template #staticModal>       
+    <div class="modal-content" >
+        <div class="modal-header">
+            <h2 class="modal-title">Filters</h2>
+            <button type="button" class="btn-close close pull-right"
+                    (click)="modalRef?.hide()">
+                <span aria-hidden="true" class="visually-hidden">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">  
+            <div class="container-fluid">
+                <form #form="ngForm" class="form-inline" id="filterForm" 
+                (ngSubmit)= "getProducts()" 
+                      autocomplete="off">
+                    <div class="form-group">
+                        <label><strong>Minimum Price :</strong></label>
+                        <input
+                            type = "text" 
+                            class="form-control ml-1"
+                            style="width: 80px;"  
+                            placeholder="Rs."
+                            name="minPrice"
+                            [(ngModel)] = "minPrice"
+                        >
+                    </div>
+                
+                    <div class="form-group ml-3">
+                        <label><strong>Maximum Price :</strong></label>
+                        <input
+                            type = "text" 
+                            class="form-control ml-1"
+                            style="width: 80px;"     
+                            placeholder="Rs."  
+                            name="maxPrice" 
+                            [(ngModel)] = "maxPrice"                
+                        >
+                    </div><br><br><br><br>
+                
+                    <div class="form-group">
+                        <label><strong>Gender :</strong></label>
+                        <select name="gender" class="form-control" [(ngModel)] = "gender">
+                            <option *ngFor="let gender of genderList"
+                                    [value]="gender.value">
+                                {{gender.display}}
+                            </option>
+                        </select>
+                    </div>
+                </form>
+            </div> 
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="submit" form="filterForm"
+                    (click)="modalRef?.hide()">
+                Apply
+            </button>
+            <button class="btn btn-info" type="submit"
+                    (click)="reset()">
+                Reset
+            </button>
+        </div>
+    </div> 
+</ng-template>    

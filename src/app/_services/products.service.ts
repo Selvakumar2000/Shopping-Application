@@ -17,15 +17,21 @@ export class ProductsService {
   
   constructor(private http: HttpClient) { }
 
-  getProducts(category: string, page: number, itemsPerPage: number)
+  getProducts(category: string,  gender: string, minPrice: number,
+              maxPrice: number, page: number, itemsPerPage: number)
   {
     let params = new HttpParams();
 
-    if(page !== null && itemsPerPage !== null && category !== null)
+    if(page !== null && itemsPerPage !== null && category !== null && minPrice !== null &&
+       maxPrice !== null && gender !== null)
     {
       params = params.append('category', category);
+      params = params.append('gender', gender);
+      params = params.append('minPrice', minPrice.toString());
+      params = params.append('maxPrice', maxPrice.toString());
       params = params.append('pageNumber', page.toString());
       params = params.append('pageSize', itemsPerPage.toString());
+      
     }
 
     return this.http.get<Products[]>(

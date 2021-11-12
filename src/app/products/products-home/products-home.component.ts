@@ -11,8 +11,8 @@ export class ProductsHomeComponent implements OnInit {
 
   constructor(private accountService: AccountService, private router: Router) { }
 
-  products: string[] = ['Dressess', 'Shoes', 'Watches', 
-                        'Mobile Phones', 'Mobile Accessories', 'Footwear',
+  products: string[] = ['Dresses', 'Shoes', 'Watches', 
+                        'Mobile Phones', 'Mobile Accessories', 'Footwears',
                         'Refrigerators', 'LED TVs', 'Washing Machines'];
 
   ngOnInit(): void {

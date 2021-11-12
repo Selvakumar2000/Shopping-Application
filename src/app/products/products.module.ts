@@ -7,6 +7,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ProductDisplayComponent } from './product-display/product-display.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     ProductsRoutingModule,
     TooltipModule.forRoot(),
     PaginationModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ModalModule.forRoot(),
+    FormsModule
   ]
 })
 export class ProductsModule { }

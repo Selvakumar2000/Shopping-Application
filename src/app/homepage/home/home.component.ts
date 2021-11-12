@@ -72,17 +72,17 @@ export class HomeComponent implements OnInit {
   register()
   {
     this.accountService.register(this.registerForm.value).subscribe(response => {
-      this.modalRef?.hide()
+      this.modalRef?.hide();
+      this.toastr.success('Registeration Successful');
       this.router.navigateByUrl('/products');
-      this.toastr.info('Registeration Successful');
     });
   }
 
   login()
   {
     this.accountService.login(this.model).subscribe(response => {
+      this.toastr.success('Logged in Successfully');
       this.router.navigateByUrl('/products');
-      this.toastr.info('LogedIn Successfully');
     });
   }  
 
@@ -94,7 +94,8 @@ export class HomeComponent implements OnInit {
   //filter modal
   config: ModalOptions = {
     backdrop: 'static',
-    keyboard: false
+    keyboard: false,
+    class: 'modal-dialog-centered'
   };
 
   modalRef?: BsModalRef;

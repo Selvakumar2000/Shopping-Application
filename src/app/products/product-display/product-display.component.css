@@ -8,12 +8,13 @@
 .product-display .topbar{
   display: flex;
   justify-content: space-between;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 /*Filter*/
 .filter{
-  margin-left: 5px;
+  margin-left: 25px;
+  margin-top: 10px;
   border-radius: 15px;
   background-color: #fff;
   border: 1px solid black;
@@ -22,6 +23,7 @@
 /*SearchBar*/
 .search {
   width: 50%;
+  margin-top: 10px;
 }
 
 /*dropdown*/
@@ -65,11 +67,12 @@
 
 #img
 {
-    height: 75px;
-    width: 80px;
+    height: 65px;
+    width: 65px;
     border: 2px solid #fff;
     border-radius: 55px;
     object-fit: cover;
+    margin-right: 25px;
 } 
  
   .product-card{

@@ -94,8 +94,7 @@ export class HomeComponent implements OnInit {
   //filter modal
   config: ModalOptions = {
     backdrop: 'static',
-    keyboard: false,
-    class: 'modal-dialog-centered'
+    keyboard: false
   };
 
   modalRef?: BsModalRef;

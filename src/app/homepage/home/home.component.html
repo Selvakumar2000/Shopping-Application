@@ -62,9 +62,10 @@
                             </button>
                         </div>
                     </form>
-                </div><br><br>
-                <div class="row user-options">
-                    <a (click)="openSignInModel(staticModal)">
+                </div><br><br> 
+                <!-- (click)="openSignInModel(staticModal)"  -->
+                <div class="row user-options"> 
+                    <a  (click)="lgModal.show()">
                         <h5 class="ml-4"><u>Create New Account</u></h5>
                     </a>
                     <a (click)="loginTrouble()">
@@ -77,7 +78,7 @@
     
     
     <!--Modal for SignUp-->
-    <ng-template #staticModal>
+    <!-- <ng-template #staticModal>
         <div>
             <div class="modal-header">
                 <h2 class="modal-title text-center text-primary">SignUp</h2>
@@ -186,5 +187,119 @@
                 </div> 
             </div>
         </div>
-    </ng-template>    
+    </ng-template>     -->
 </div>
+
+<!--Modal for SignUp-->
+<!-- <ng-template #staticModal> -->
+    <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1"
+    role="dialog" aria-labelledby="dialog-sizes-name1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="title">Registration</div>
+                    <button type="button" class="btn-close close pull-right"
+                            (click)="lgModal.hide()" style="cursor: pointer;">
+                      <span aria-hidden="true" class="visually-hidden">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container formcontainer">
+                        <form action="#">
+                            <div class="gender-details">
+                                <input type="radio" name="gender" id="dot-1">
+                                <input type="radio" name="gender" id="dot-2">
+                                <input type="radio" name="gender" id="dot-3">
+                                <span class="gender-title">Select Your Role</span>
+                                <div class="category">
+                                    <label for="dot-1">
+                                        <span class="dot one"></span>
+                                        <span class="gender">Buyer</span>
+                                    </label>
+                                    <label for="dot-2">
+                                        <span class="dot two"></span>
+                                        <span class="gender">Gold Buyer</span>
+                                    </label>
+                                    <label for="dot-3">
+                                        <span class="dot three"></span>
+                                        <span class="gender">Supplier</span>
+                                    </label>
+                                    <label for="dot-3">
+                                        <span class="dot three"></span>
+                                        <span class="gender">Gold Supplier</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="user-details">
+                                <div class="input-box">
+                                    <span class="details">Full Name</span>
+                                    <input type="text" placeholder="Enter your name" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Username</span>
+                                    <input type="text" placeholder="Enter your username" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Email</span>
+                                    <input type="text" placeholder="Enter your email" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Phone Number</span>
+                                    <input type="text" placeholder="Enter your phone number" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Date Of Birth</span>
+                                    <input type="text" placeholder="Enter your DOB" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">City</span>
+                                    <input type="text" placeholder="Enter your city" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">State</span>
+                                    <input type="text" placeholder="Enter your state" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Country</span>
+                                    <input type="text" placeholder="Enter your country" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Password</span>
+                                    <input type="text" placeholder="Enter your password" required>
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Confirm Password</span>
+                                    <input type="text" placeholder="Confirm your password" required>
+                                </div>
+                            </div>
+                            <div class="gender-details">
+                                <input type="radio" name="gender" id="dot-1">
+                                <input type="radio" name="gender" id="dot-2">
+                                <input type="radio" name="gender" id="dot-3">
+                                <span class="gender-title">Gender</span>
+                                <div class="category">
+                                    <label for="dot-1">
+                                        <span class="dot one"></span>
+                                        <span class="gender">Male</span>
+                                    </label>
+                                    <label for="dot-2">
+                                        <span class="dot two"></span>
+                                        <span class="gender">Female</span>
+                                    </label>
+                                    <label for="dot-3">
+                                        <span class="dot three"></span>
+                                        <span class="gender">Prefer not to say</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="button">
+                                <input type="submit" value="Register">
+                            </div> 
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- </ng-template>     -->
+

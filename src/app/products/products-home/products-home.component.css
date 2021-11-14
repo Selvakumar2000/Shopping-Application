@@ -3,7 +3,9 @@
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
-    background-image: linear-gradient( #fafafa 10%, #fdfdfd 100%);
+    /* background-image: linear-gradient( #fafafa 10%, #fdfdfd 100%); */
+    background-image: linear-gradient(135deg,  #ebe4e7, #f0f0f0, #f8f1f1, #e0dcdf,  #f8f6f7);
+
 }
 
 .sidebar.active{
@@ -11,7 +13,9 @@
     top: 0;
     left: 0;
     height: 100%;
-    background: #4939f1;
+    /* background: #4939f1; */
+    background-image: linear-gradient(135deg,  #4939f1, #564ad4, #685fd4, #6760af,  #4939f1);
+
     padding: 6px 14px;
     transition: all 0.5s ease;
     width: 300px;
@@ -192,7 +196,8 @@
 }
 
 .col-md-4{
-    background-image: linear-gradient(135deg, #db0a8b, #ec1499, #f1ab3a, #f1ab3a, #ec1499,  #db0a8b);
+    /* background-image: linear-gradient(135deg, #db0a8b, #ec1499, #f1ab3a, #f1ab3a, #ec1499,  #db0a8b);  */
+  background: rgb(66, 65, 65);
     border-radius: 35px;
     cursor: pointer;
     font-size: 20px;
@@ -202,6 +207,7 @@
     border: 15px solid transparent;
     background-clip:padding-box; 
     text-align: center;
+    color: #fff;
 } 
 
 

@@ -7,12 +7,12 @@
 .bs-datepicker-body table td[class*="select-"] span:after,
 .bs-datepicker-body table td.active-week span:hover 
 {
-  background-color:#2d7070 !important; 
+  background-color:#221b5a !important; 
 }
 
 .bs-datepicker-body table td.week span 
 {
-  color: #2d7070 !important; 
+  color: #3835f3 !important; 
 }
 
 *{

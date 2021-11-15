@@ -65,7 +65,7 @@
                     </form>
                 </div><br><br>
                 <div class="row user-options"> 
-                    <a (click)="lgModal.show()">
+                    <a (click)="showSignInModal(signInModal)">
                         <h5 class="ml-4"><u>Create New Account</u></h5>
                     </a>
                     <a (click)="loginTrouble()">
@@ -77,295 +77,305 @@
     </div>
 </div>
 
+<ng-template #signInModal>
+    <div class="modal-header">
+        <h2 style="margin-left: 2px;">
+            ShopMe
+        </h2>
+        <i class="fas fa-shopping-cart fa-2x"></i>
+        <div class="title" style="margin-left: 130px; margin-top: 10px;">
+            Registration
+        </div>
+        <button type="button" class="btn-close close pull-right"
+                (click)="modalRef.hide()" style="cursor: pointer;">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="container formcontainer">
+            <form [formGroup]="registerForm"
+                  (ngSubmit)="registerForm.valid && register()"
+                  autocomplete="off">
+                <div class="role-details">
+                    <span class="role-title required">Select Your Role</span><br>
+                    <label class="radio-inline">
+                        <input 
+                            type="radio" 
+                            value="buyer" 
+                            formControlName="userRole"
+                            class="radiobtn"
+                            style="margin-left: 130px; margin-top: 5px;">&nbsp;
+                        Buyer
+                    </label>
+                    <label class="radio-inline">
+                        <input 
+                            type="radio" 
+                            value="goldBuyer" 
+                            formControlName="userRole" 
+                            class="ml-5 radiobtn">&nbsp;
+                        GoldBuyer
+                    </label>
+                    <label class="radio-inline">
+                        <input 
+                            type="radio" 
+                            value="supplier" 
+                            formControlName="userRole"
+                            class="ml-5 radiobtn">&nbsp;
+                        Supplier
+                    </label>
+                    <label class="radio-inline">
+                        <input 
+                            type="radio" 
+                            value="goldSupplier" 
+                            formControlName="userRole"
+                            class="ml-5 radiobtn">&nbsp;
+                        GoldSupplier
+                    </label>
+                </div>
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details required">Full Name</span>
+                        <input
+                            type="text"
+                            placeholder="Enter your name"
+                            formControlName="fullname"
+                            class="form-control"
+                            >
+                        <div *ngIf="registerForm.get('fullname').touched && 
+                            registerForm.get('fullname').invalid">
+                            <small class="text-danger"
+                                   *ngIf="registerForm.get('fullname').errors['required']">
+                                *Fullname is required
+                            </small>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details required">Username</span>
+                        <input 
+                            type="text" 
+                            placeholder="Enter your username" 
+                            formControlName="username"
+                            class="form-control"
+                            >
+                        <div *ngIf="registerForm.get('username').touched && 
+                            registerForm.get('username').invalid">
+                            <small class="text-danger"
+                                   *ngIf="registerForm.get('username').errors['required']">
+                                *Username is required
+                            </small>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details required">Email</span>
+                        <input 
+                            type="text" 
+                            placeholder="Enter your email" 
+                            formControlName="email"
+                            class="form-control"
+                            >
+                        <div *ngIf="registerForm.get('email').touched && 
+                            registerForm.get('email').invalid">
+                            <small class="text-danger"
+                                   *ngIf="registerForm.get('email').errors['required']">
+                                *Fullname is required
+                            </small>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details required">Phone Number</span>
+                        <input 
+                            type="text" 
+                            placeholder="Enter your phone number" 
+                            formControlName="phoneNumber"
+                            class="form-control"
+                            >
+                        <div *ngIf="registerForm.get('phoneNumber').touched && 
+                            registerForm.get('phoneNumber').invalid">
+                            <small class="text-danger"
+                                   *ngIf="registerForm.get('phoneNumber').errors['required']">
+                                *PhoneNumber is required
+                            </small>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details required">Date Of Birth</span>
+                        <input 
+                            type="text" 
+                            placeholder="Enter your DOB" 
+                            formControlName="dateOfBirth"
+                            bsDatepicker
+                            [bsConfig]='bsConfig'
+                            class="form-control"
+                            >
+                        <div *ngIf="registerForm.get('dateOfBirth').touched && 
+                            registerForm.get('dateOfBirth').invalid">
+                            <small class="text-danger"
+                                   *ngIf="registerForm.get('dateOfBirth').errors['required']">
+                                *Date Of Birth is required
+                            </small>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details required">City</span>
+                        <input 
+                            type="text" 
+                            placeholder="Enter your city" 
+                            formControlName="city"
+                            class="form-control"
+                            >
+                        <div *ngIf="registerForm.get('city').touched && 
+                            registerForm.get('city').invalid">
+                            <small class="text-danger"
+                                   *ngIf="registerForm.get('city').errors['required']">
+                                *City is required
+                            </small>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details required">State</span>
+                        <input 
+                            type="text" 
+                            placeholder="Enter your state" 
+                            formControlName="state"
+                            class="form-control"
+                            >
+                        <div *ngIf="registerForm.get('state').touched && 
+                            registerForm.get('state').invalid">
+                            <small class="text-danger"
+                                   *ngIf="registerForm.get('state').errors['required']">
+                                *State is required
+                            </small>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details required">Country</span>
+                        <input 
+                            type="text" 
+                            placeholder="Enter your country" 
+                            formControlName="country"
+                            class="form-control"
+                            >
+                        <div *ngIf="registerForm.get('country').touched && 
+                            registerForm.get('country').invalid">
+                            <small class="text-danger"
+                                   *ngIf="registerForm.get('country').errors['required']">
+                                *Country is required
+                            </small>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details required">Password</span>
+                        <input  
+                            [type]="reghide ? 'password' : 'text'" 
+                            placeholder="Enter your password" 
+                            formControlName="password"
+                            class="form-control"
+                            autocomplete="off"
+                            >
+                        <i *ngIf="!reghide" class="fas fa-eye fa-lg r-eye-icon" 
+                            (click)="regEye()"></i>
+                        <i *ngIf="reghide" class="fas fa-eye-slash fa-lg r-eye-icon"
+                           (click)="regEye()"></i>
+                        <div *ngIf="registerForm.get('password').touched && 
+                            registerForm.get('password').invalid">
+                            <small class="text-danger"
+                                   *ngIf="registerForm.get('password').errors['required']">
+                                *Password is required
+                            </small>
+                        </div>
+                        <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid &&
+                                    registerForm.get('password').errors.maxlength">
+                            <small class="text-danger">*Password length must be atmost 12</small>
+                        </div>
+                        <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid && 
+                                    registerForm.get('password').errors.pattern">
+                            <small class="text-success">*Password length must be atleast 6</small><br>
+                            <small class="text-success">*Password must have atleast one digit </small><br>
+                            <small class="text-success">*Password must have atleast one uppercase letter</small><br>
+                            <small class="text-success">*Password must have atleast one lowercase letter</small><br>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details required">Confirm Password</span>
+                        <input 
+                            type="text" 
+                            placeholder="Confirm your password" 
+                            formControlName="confirmPassword"
+                            class="form-control"
+                            >
+                        <div *ngIf="registerForm.get('confirmPassword').untouched &&
+                                    registerForm.get('confirmPassword').errors.misMatching &&
+                                    !registerForm.get('confirmPassword').errors.matching">
+                            <small class="text-success">
+                                *must match with password
+                            </small>
+                        </div>
+                        <div *ngIf="registerForm.get('confirmPassword').touched && 
+                              registerForm.get('confirmPassword').invalid">
+                            <small class="text-danger"
+                                   *ngIf="registerForm.get('confirmPassword').errors['required']">
+                                *ConfirmPassword is required
+                            </small>
+                        </div>
+                        <div *ngIf="registerForm.get('confirmPassword').touched && 
+                              registerForm.get('confirmPassword').invalid && 
+                              registerForm.get('confirmPassword').errors.misMatching">
+                            <small class="text-danger"> *Password do not match</small>   
+                        </div>
+                    </div>
+                </div>
+                <div class="role-details">
+                    <span class="role-title required">Gender</span><br>
+                    <label class="radio-inline">
+                        <input 
+                            type="radio" 
+                            value="male" 
+                            formControlName="gender"
+                            class="radiobtn"
+                            style="margin-left: 130px;">&nbsp;
+                        Male
+                    </label>
+                    <label class="radio-inline">
+                        <input 
+                            type="radio" 
+                            value="female" 
+                            formControlName="gender" 
+                            class="ml-5 radiobtn">&nbsp;
+                        Female
+                    </label>
+                    <label class="radio-inline">
+                        <input 
+                            type="radio" 
+                            value="others" 
+                            formControlName="gender"
+                            class="ml-5 radiobtn">&nbsp;
+                        Prefer not to say
+                    </label>
+                </div>
+                <div class="button">
+                    <button *ngIf="!registerForm.valid" 
+                        class="btn" type="submit"
+                    >
+                        Register
+                    </button>
+                    <button *ngIf="registerForm.valid" 
+                        class="btnok" type="submit"
+                    >
+                        Register
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
 <!--Modal for SignUp-->
-    <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1"
+    <!-- <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" id="myModal"
          role="dialog" aria-labelledby="dialog-sizes-name1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h2 style="margin-left: 2px;">
-                        ShopMe
-                    </h2>
-                    <i class="fas fa-shopping-cart fa-2x"></i>
-                    <div class="title" style="margin-left: 130px; margin-top: 10px;">
-                        Registration
-                    </div>
-                    <button type="button" class="btn-close close pull-right"
-                            (click)="lgModal.hide()" style="cursor: pointer;">
-                        <span aria-hidden="true" class="visually-hidden">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container formcontainer">
-                        <form [formGroup]="registerForm"
-                              (ngSubmit)="registerForm.valid && register()"
-                              autocomplete="off">
-                            <div class="role-details">
-                                <span class="role-title required">Select Your Role</span><br>
-                                <label class="radio-inline">
-                                    <input 
-                                        type="radio" 
-                                        value="buyer" 
-                                        formControlName="userRole"
-                                        class="radiobtn"
-                                        style="margin-left: 130px; margin-top: 5px;">&nbsp;
-                                    Buyer
-                                </label>
-                                <label class="radio-inline">
-                                    <input 
-                                        type="radio" 
-                                        value="goldBuyer" 
-                                        formControlName="userRole" 
-                                        class="ml-5 radiobtn">&nbsp;
-                                    GoldBuyer
-                                </label>
-                                <label class="radio-inline">
-                                    <input 
-                                        type="radio" 
-                                        value="supplier" 
-                                        formControlName="userRole"
-                                        class="ml-5 radiobtn">&nbsp;
-                                    Supplier
-                                </label>
-                                <label class="radio-inline">
-                                    <input 
-                                        type="radio" 
-                                        value="goldSupplier" 
-                                        formControlName="userRole"
-                                        class="ml-5 radiobtn">&nbsp;
-                                    GoldSupplier
-                                </label>
-                            </div>
-                            <div class="user-details">
-                                <div class="input-box">
-                                    <span class="details required">Full Name</span>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter your name"
-                                        formControlName="fullname"
-                                        class="form-control"
-                                        >
-                                    <div *ngIf="registerForm.get('fullname').touched && 
-                                        registerForm.get('fullname').invalid">
-                                        <small class="text-danger"
-                                               *ngIf="registerForm.get('fullname').errors['required']">
-                                            *Fullname is required
-                                        </small>
-                                    </div>
-                                </div>
-                                <div class="input-box">
-                                    <span class="details required">Username</span>
-                                    <input 
-                                        type="text" 
-                                        placeholder="Enter your username" 
-                                        formControlName="username"
-                                        class="form-control"
-                                        >
-                                    <div *ngIf="registerForm.get('username').touched && 
-                                        registerForm.get('username').invalid">
-                                        <small class="text-danger"
-                                               *ngIf="registerForm.get('username').errors['required']">
-                                            *Username is required
-                                        </small>
-                                    </div>
-                                </div>
-                                <div class="input-box">
-                                    <span class="details required">Email</span>
-                                    <input 
-                                        type="text" 
-                                        placeholder="Enter your email" 
-                                        formControlName="email"
-                                        class="form-control"
-                                        >
-                                    <div *ngIf="registerForm.get('email').touched && 
-                                        registerForm.get('email').invalid">
-                                        <small class="text-danger"
-                                               *ngIf="registerForm.get('email').errors['required']">
-                                            *Fullname is required
-                                        </small>
-                                    </div>
-                                </div>
-                                <div class="input-box">
-                                    <span class="details required">Phone Number</span>
-                                    <input 
-                                        type="text" 
-                                        placeholder="Enter your phone number" 
-                                        formControlName="phoneNumber"
-                                        class="form-control"
-                                        >
-                                    <div *ngIf="registerForm.get('phoneNumber').touched && 
-                                        registerForm.get('phoneNumber').invalid">
-                                        <small class="text-danger"
-                                               *ngIf="registerForm.get('phoneNumber').errors['required']">
-                                            *PhoneNumber is required
-                                        </small>
-                                    </div>
-                                </div>
-                                <div class="input-box">
-                                    <span class="details required">Date Of Birth</span>
-                                    <input 
-                                        type="text" 
-                                        placeholder="Enter your DOB" 
-                                        formControlName="dateOfBirth"
-                                        bsDatepicker
-                                        [bsConfig]='bsConfig'
-                                        class="form-control"
-                                        >
-                                    <div *ngIf="registerForm.get('dateOfBirth').touched && 
-                                        registerForm.get('dateOfBirth').invalid">
-                                        <small class="text-danger"
-                                               *ngIf="registerForm.get('dateOfBirth').errors['required']">
-                                            *Date Of Birth is required
-                                        </small>
-                                    </div>
-                                </div>
-                                <div class="input-box">
-                                    <span class="details required">City</span>
-                                    <input 
-                                        type="text" 
-                                        placeholder="Enter your city" 
-                                        formControlName="city"
-                                        class="form-control"
-                                        >
-                                    <div *ngIf="registerForm.get('city').touched && 
-                                        registerForm.get('city').invalid">
-                                        <small class="text-danger"
-                                               *ngIf="registerForm.get('city').errors['required']">
-                                            *City is required
-                                        </small>
-                                    </div>
-                                </div>
-                                <div class="input-box">
-                                    <span class="details required">State</span>
-                                    <input 
-                                        type="text" 
-                                        placeholder="Enter your state" 
-                                        formControlName="state"
-                                        class="form-control"
-                                        >
-                                    <div *ngIf="registerForm.get('state').touched && 
-                                        registerForm.get('state').invalid">
-                                        <small class="text-danger"
-                                               *ngIf="registerForm.get('state').errors['required']">
-                                            *State is required
-                                        </small>
-                                    </div>
-                                </div>
-                                <div class="input-box">
-                                    <span class="details required">Country</span>
-                                    <input 
-                                        type="text" 
-                                        placeholder="Enter your country" 
-                                        formControlName="country"
-                                        class="form-control"
-                                        >
-                                    <div *ngIf="registerForm.get('country').touched && 
-                                        registerForm.get('country').invalid">
-                                        <small class="text-danger"
-                                               *ngIf="registerForm.get('country').errors['required']">
-                                            *Country is required
-                                        </small>
-                                    </div>
-                                </div>
-                                <div class="input-box">
-                                    <span class="details required">Password</span>
-                                    <input  
-                                        [type]="reghide ? 'password' : 'text'" 
-                                        placeholder="Enter your password" 
-                                        formControlName="password"
-                                        class="form-control"
-                                        autocomplete="off"
-                                        >
-                                    <i *ngIf="!reghide" class="fas fa-eye fa-lg r-eye-icon" 
-                                        (click)="regEye()"></i>
-                                    <i *ngIf="reghide" class="fas fa-eye-slash fa-lg r-eye-icon"
-                                       (click)="regEye()"></i>
-                                    <div *ngIf="registerForm.get('password').touched && 
-                                        registerForm.get('password').invalid">
-                                        <small class="text-danger"
-                                               *ngIf="registerForm.get('password').errors['required']">
-                                            *Password is required
-                                        </small>
-                                    </div>
-                                    <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid &&
-                                                registerForm.get('password').errors.maxlength">
-                                        <small class="text-danger">*Password length must be atmost 12</small>
-                                    </div>
-                                    <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid && 
-                                                registerForm.get('password').errors.pattern">
-                                        <small class="text-success">*Password length must be atleast 6</small><br>
-                                        <small class="text-success">*Password must have atleast one digit </small><br>
-                                        <small class="text-success">*Password must have atleast one uppercase letter</small><br>
-                                        <small class="text-success">*Password must have atleast one lowercase letter</small><br>
-                                    </div>
-                                </div>
-                                <div class="input-box">
-                                    <span class="details required">Confirm Password</span>
-                                    <input 
-                                        type="text" 
-                                        placeholder="Confirm your password" 
-                                        formControlName="confirmPassword"
-                                        class="form-control"
-                                        >
-                                    <div *ngIf="registerForm.get('confirmPassword').touched && 
-                                          registerForm.get('confirmPassword').invalid">
-                                        <small class="text-danger"
-                                               *ngIf="registerForm.get('confirmPassword').errors['required']">
-                                            *ConfirmPassword is required
-                                        </small>
-                                    </div>
-                                    <div *ngIf="registerForm.get('confirmPassword').touched && 
-                                          registerForm.get('confirmPassword').invalid && 
-                                          registerForm.get('confirmPassword').errors.misMatching">
-                                        <small class="text-danger"> *Password do not match</small>   
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="role-details">
-                                <span class="role-title required">Gender</span><br>
-                                <label class="radio-inline">
-                                    <input 
-                                        type="radio" 
-                                        value="male" 
-                                        formControlName="gender"
-                                        class="radiobtn"
-                                        style="margin-left: 130px;">&nbsp;
-                                    Male
-                                </label>
-                                <label class="radio-inline">
-                                    <input 
-                                        type="radio" 
-                                        value="female" 
-                                        formControlName="gender" 
-                                        class="ml-5 radiobtn">&nbsp;
-                                    Female
-                                </label>
-                                <label class="radio-inline">
-                                    <input 
-                                        type="radio" 
-                                        value="others" 
-                                        formControlName="gender"
-                                        class="ml-5 radiobtn">&nbsp;
-                                    Prefer not to say
-                                </label>
-                            </div>
-                            <div class="button">
-                                <button *ngIf="!registerForm.valid" 
-                                    class="btn" type="submit"
-                                >
-                                    Register
-                                </button>
-                                <button *ngIf="registerForm.valid" 
-                                    class="btnok" type="submit"
-                                >
-                                    Register
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                
             </div>
         <div>
-    </div>
-
+    </div> -->
 

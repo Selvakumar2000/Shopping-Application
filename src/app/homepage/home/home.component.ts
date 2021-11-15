@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
   model: Login = new Login();
   registerForm: FormGroup;
   bsConfig: Partial<BsDatepickerConfig>;
-  @ViewChild('lgModal') lgModal: any;
 
   constructor(public modalService: BsModalService, public fb: FormBuilder,
               private accountService: AccountService, private toastr: ToastrService,
@@ -35,11 +34,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.initializeForm();    
   }
-
-  // config: ModalOptions = {
-  //   backdrop: 'static',
-  //   keyboard: false
-  // };
 
   myFunction()
   {
@@ -78,22 +72,20 @@ export class HomeComponent implements OnInit {
     })
   }
 
-
   //check password and confirmpassword fields are match
   matchValues(matchTo:string):ValidatorFn
   { //all form control are derived from abstract control
     return (control:AbstractControl) =>
     {
       return control?.value == control?.parent?.controls[matchTo].value ? 
-                            null : {misMatching:true};
+                            {matching: true} : {misMatching: true};
     }
   }
-
 
   register()
   {
     this.accountService.register(this.registerForm.value).subscribe(response => {
-      this.lgModal.hide();
+      this.modalRef.hide();
       this.toastr.success('Registeration Successful');
       this.router.navigateByUrl('/products');
     });
@@ -110,6 +102,19 @@ export class HomeComponent implements OnInit {
   loginTrouble()
   {
 
+  }
+
+  //filter modal
+  config: ModalOptions = {
+    backdrop: 'static',
+    keyboard: false,
+    class: 'modal-lg' 
+  };
+
+  modalRef: BsModalRef;
+  showSignInModal(signInModal: TemplateRef<any>)
+  {
+    this.modalRef = this.modalService.show(signInModal, this.config);
   }
 
 }

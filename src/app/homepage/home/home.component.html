@@ -10,8 +10,8 @@
                     <i class="fas fa-shopping-cart"></i>
                 </h1>
                 <br>
-                <div *ngIf="formType === 'loginForm'">
-                    <form #loginForm="ngForm" novalidate   
+                <div>
+                    <form #loginForm="ngForm"  
                        autocomplete="off" (ngSubmit)="login()">
                        <h3 class="text-center">Get Started</h3>
                        <div class="form-group">
@@ -24,8 +24,9 @@
                                 placeholder="UserName"      
                             >
                             <i class="fas fa-user fa-lg eye-icon"></i>
-                            <small class="text-danger" [class.d-none] = "name.valid || name.untouched">
-                                Username is required
+                            <small  [class.d-none] = "name.valid || name.untouched"
+                            style="font-weight: 900; color: rgb(101, 245, 4);">
+                                *Username is required
                             </small>
                        </div>
                        
@@ -45,9 +46,9 @@
                             <i *ngIf="hide" class="fas fa-eye-slash fa-lg eye-icon"
                                             (click)="myFunction()"></i>
                            
-                            <small class="text-danger"
-                                   [class.d-none] = "password.valid || password.untouched">
-                                Password is required
+                            <small [class.d-none] = "password.valid || password.untouched"
+                            style="font-weight: 900; color: rgb(101, 245, 4);">
+                                *Password is required
                             </small>
                         </div>
                         <div class="text-center">
@@ -62,10 +63,9 @@
                             </button>
                         </div>
                     </form>
-                </div><br><br> 
-                <!-- (click)="openSignInModel(staticModal)"  -->
+                </div><br><br>
                 <div class="row user-options"> 
-                    <a  (click)="lgModal.show()">
+                    <a (click)="lgModal.show()">
                         <h5 class="ml-4"><u>Create New Account</u></h5>
                     </a>
                     <a (click)="loginTrouble()">
@@ -75,231 +75,297 @@
             </div>
         </div>
     </div>
-    
-    
-    <!--Modal for SignUp-->
-    <!-- <ng-template #staticModal>
-        <div>
-            <div class="modal-header">
-                <h2 class="modal-title text-center text-primary">SignUp</h2>
-                <button type="button" class="btn-close close pull-right"
-                        (click)="modalRef?.hide()">
-                  <span aria-hidden="true" class="visually-hidden">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">  
-                <div class="container">
-                    <form [formGroup]="registerForm" 
-                          (ngSubmit)="registerForm.valid && register()"
-                          autocomplete="off">
-                        <div class="form-group" style="margin-left: -5px;">
-                            <label class="control-label">
-                               Be a: 
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" value="Buyer" formControlName='userRole'
-                                       class="ml-1">&nbsp;
-                                Buyer
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" value="GoldBuyer" formControlName='userRole' 
-                                       class="ml-3">&nbsp;
-                                GoldBuyer
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" value="Supplier" formControlName='userRole'
-                                       class="ml-3">&nbsp;
-                                Supplier
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" value="GoldSupplier" formControlName='userRole'
-                                       class="ml-3">&nbsp;
-                                GoldSupplier
-                            </label>
-                        </div>
-                        <app-text-input 
-                            [formControl]='registerForm.controls["fullname"]' 
-                            [label]='"FullName"' [type]='"text"'>
-                        </app-text-input>
-                        <app-text-input 
-                            [formControl]='registerForm.controls["email"]' 
-                            [label]='"Email"' [type]='"email"'>
-                        </app-text-input>
-                        <app-text-input 
-                            [formControl]='registerForm.controls["phoneNumber"]' 
-                            [label]='"PhoneNumber"' [type]='"tel"'>
-                        </app-text-input>
-                        <app-date-input 
-                            [formControl]='registerForm.controls["dateOfBirth"]' 
-                            [label]='"Date Of Birth"'>
-                        </app-date-input>
-                        <div class="form-group" style="margin-left:10px;">
-                            <label class="control-label">Gender: </label>
-                            <label class="radio-inline">
-                                <input type="radio" value="male" formControlName='gender'  class="ml-3">&nbsp;Male
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" value="Female" formControlName='gender' class="ml-3">&nbsp;Female
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" value="Others" formControlName='gender' class="ml-3">&nbsp;Others
-                            </label>
-                        </div>
-                        <app-text-input 
-                            [formControl]='registerForm.controls["city"]' 
-                            [label]='"City"' [type]='"text"'>
-                        </app-text-input>
-                        <app-text-input 
-                            [formControl]='registerForm.controls["state"]' 
-                            [label]='"State"' [type]='"text"'>
-                        </app-text-input>
-                        <app-text-input 
-                            [formControl]='registerForm.controls["country"]' 
-                            [label]='"Country"' [type]='"text"'>
-                        </app-text-input>
-                        <app-text-input 
-                            [formControl]='registerForm.controls["username"]' 
-                            [label]='"UserName"' [type]='"text"'>
-                        </app-text-input>
-                        <app-text-input 
-                            [formControl]='registerForm.controls["password"]' 
-                            [label]='"Password"' [type]='"password"'>
-                        </app-text-input>
-                        <app-text-input 
-                            [formControl]='registerForm.controls["confirmPassword"]' 
-                            [label]='"Confirm Password"' [type]='"password"'>
-                        </app-text-input>
-                    
-                        <div class="form-group buttonGrp">
-                            <button [disabled]='!registerForm.valid' 
-                                    class="btn btn-success" type="submit"
-                            >
-                                Register
-                            </button>
-                              
-                            <button class="btn btn-info ml-3" type="button"
-                            (click)="modalRef?.hide()"
-                            >
-                                Cancel
-                            </button>    
-                        </div>
-                    </form>
-                </div> 
-            </div>
-        </div>
-    </ng-template>     -->
 </div>
 
 <!--Modal for SignUp-->
-<!-- <ng-template #staticModal> -->
     <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1"
-    role="dialog" aria-labelledby="dialog-sizes-name1">
+         role="dialog" aria-labelledby="dialog-sizes-name1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="title">Registration</div>
+                    <h2 style="margin-left: 2px;">
+                        ShopMe
+                    </h2>
+                    <i class="fas fa-shopping-cart fa-2x"></i>
+                    <div class="title" style="margin-left: 130px; margin-top: 10px;">
+                        Registration
+                    </div>
                     <button type="button" class="btn-close close pull-right"
                             (click)="lgModal.hide()" style="cursor: pointer;">
-                      <span aria-hidden="true" class="visually-hidden">&times;</span>
+                        <span aria-hidden="true" class="visually-hidden">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="container formcontainer">
-                        <form action="#">
-                            <div class="gender-details">
-                                <input type="radio" name="gender" id="dot-1">
-                                <input type="radio" name="gender" id="dot-2">
-                                <input type="radio" name="gender" id="dot-3">
-                                <span class="gender-title">Select Your Role</span>
-                                <div class="category">
-                                    <label for="dot-1">
-                                        <span class="dot one"></span>
-                                        <span class="gender">Buyer</span>
-                                    </label>
-                                    <label for="dot-2">
-                                        <span class="dot two"></span>
-                                        <span class="gender">Gold Buyer</span>
-                                    </label>
-                                    <label for="dot-3">
-                                        <span class="dot three"></span>
-                                        <span class="gender">Supplier</span>
-                                    </label>
-                                    <label for="dot-3">
-                                        <span class="dot three"></span>
-                                        <span class="gender">Gold Supplier</span>
-                                    </label>
-                                </div>
+                        <form [formGroup]="registerForm"
+                              (ngSubmit)="registerForm.valid && register()"
+                              autocomplete="off">
+                            <div class="role-details">
+                                <span class="role-title required">Select Your Role</span><br>
+                                <label class="radio-inline">
+                                    <input 
+                                        type="radio" 
+                                        value="buyer" 
+                                        formControlName="userRole"
+                                        class="radiobtn"
+                                        style="margin-left: 130px; margin-top: 5px;">&nbsp;
+                                    Buyer
+                                </label>
+                                <label class="radio-inline">
+                                    <input 
+                                        type="radio" 
+                                        value="goldBuyer" 
+                                        formControlName="userRole" 
+                                        class="ml-5 radiobtn">&nbsp;
+                                    GoldBuyer
+                                </label>
+                                <label class="radio-inline">
+                                    <input 
+                                        type="radio" 
+                                        value="supplier" 
+                                        formControlName="userRole"
+                                        class="ml-5 radiobtn">&nbsp;
+                                    Supplier
+                                </label>
+                                <label class="radio-inline">
+                                    <input 
+                                        type="radio" 
+                                        value="goldSupplier" 
+                                        formControlName="userRole"
+                                        class="ml-5 radiobtn">&nbsp;
+                                    GoldSupplier
+                                </label>
                             </div>
                             <div class="user-details">
                                 <div class="input-box">
-                                    <span class="details">Full Name</span>
-                                    <input type="text" placeholder="Enter your name" required>
+                                    <span class="details required">Full Name</span>
+                                    <input
+                                        type="text"
+                                        placeholder="Enter your name"
+                                        formControlName="fullname"
+                                        class="form-control"
+                                        >
+                                    <div *ngIf="registerForm.get('fullname').touched && 
+                                        registerForm.get('fullname').invalid">
+                                        <small class="text-danger"
+                                               *ngIf="registerForm.get('fullname').errors['required']">
+                                            *Fullname is required
+                                        </small>
+                                    </div>
                                 </div>
                                 <div class="input-box">
-                                    <span class="details">Username</span>
-                                    <input type="text" placeholder="Enter your username" required>
+                                    <span class="details required">Username</span>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Enter your username" 
+                                        formControlName="username"
+                                        class="form-control"
+                                        >
+                                    <div *ngIf="registerForm.get('username').touched && 
+                                        registerForm.get('username').invalid">
+                                        <small class="text-danger"
+                                               *ngIf="registerForm.get('username').errors['required']">
+                                            *Username is required
+                                        </small>
+                                    </div>
                                 </div>
                                 <div class="input-box">
-                                    <span class="details">Email</span>
-                                    <input type="text" placeholder="Enter your email" required>
+                                    <span class="details required">Email</span>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Enter your email" 
+                                        formControlName="email"
+                                        class="form-control"
+                                        >
+                                    <div *ngIf="registerForm.get('email').touched && 
+                                        registerForm.get('email').invalid">
+                                        <small class="text-danger"
+                                               *ngIf="registerForm.get('email').errors['required']">
+                                            *Fullname is required
+                                        </small>
+                                    </div>
                                 </div>
                                 <div class="input-box">
-                                    <span class="details">Phone Number</span>
-                                    <input type="text" placeholder="Enter your phone number" required>
+                                    <span class="details required">Phone Number</span>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Enter your phone number" 
+                                        formControlName="phoneNumber"
+                                        class="form-control"
+                                        >
+                                    <div *ngIf="registerForm.get('phoneNumber').touched && 
+                                        registerForm.get('phoneNumber').invalid">
+                                        <small class="text-danger"
+                                               *ngIf="registerForm.get('phoneNumber').errors['required']">
+                                            *PhoneNumber is required
+                                        </small>
+                                    </div>
                                 </div>
                                 <div class="input-box">
-                                    <span class="details">Date Of Birth</span>
-                                    <input type="text" placeholder="Enter your DOB" required>
+                                    <span class="details required">Date Of Birth</span>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Enter your DOB" 
+                                        formControlName="dateOfBirth"
+                                        bsDatepicker
+                                        [bsConfig]='bsConfig'
+                                        class="form-control"
+                                        >
+                                    <div *ngIf="registerForm.get('dateOfBirth').touched && 
+                                        registerForm.get('dateOfBirth').invalid">
+                                        <small class="text-danger"
+                                               *ngIf="registerForm.get('dateOfBirth').errors['required']">
+                                            *Date Of Birth is required
+                                        </small>
+                                    </div>
                                 </div>
                                 <div class="input-box">
-                                    <span class="details">City</span>
-                                    <input type="text" placeholder="Enter your city" required>
+                                    <span class="details required">City</span>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Enter your city" 
+                                        formControlName="city"
+                                        class="form-control"
+                                        >
+                                    <div *ngIf="registerForm.get('city').touched && 
+                                        registerForm.get('city').invalid">
+                                        <small class="text-danger"
+                                               *ngIf="registerForm.get('city').errors['required']">
+                                            *City is required
+                                        </small>
+                                    </div>
                                 </div>
                                 <div class="input-box">
-                                    <span class="details">State</span>
-                                    <input type="text" placeholder="Enter your state" required>
+                                    <span class="details required">State</span>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Enter your state" 
+                                        formControlName="state"
+                                        class="form-control"
+                                        >
+                                    <div *ngIf="registerForm.get('state').touched && 
+                                        registerForm.get('state').invalid">
+                                        <small class="text-danger"
+                                               *ngIf="registerForm.get('state').errors['required']">
+                                            *State is required
+                                        </small>
+                                    </div>
                                 </div>
                                 <div class="input-box">
-                                    <span class="details">Country</span>
-                                    <input type="text" placeholder="Enter your country" required>
+                                    <span class="details required">Country</span>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Enter your country" 
+                                        formControlName="country"
+                                        class="form-control"
+                                        >
+                                    <div *ngIf="registerForm.get('country').touched && 
+                                        registerForm.get('country').invalid">
+                                        <small class="text-danger"
+                                               *ngIf="registerForm.get('country').errors['required']">
+                                            *Country is required
+                                        </small>
+                                    </div>
                                 </div>
                                 <div class="input-box">
-                                    <span class="details">Password</span>
-                                    <input type="text" placeholder="Enter your password" required>
+                                    <span class="details required">Password</span>
+                                    <input  
+                                        [type]="reghide ? 'password' : 'text'" 
+                                        placeholder="Enter your password" 
+                                        formControlName="password"
+                                        class="form-control"
+                                        autocomplete="off"
+                                        >
+                                    <i *ngIf="!reghide" class="fas fa-eye fa-lg r-eye-icon" 
+                                        (click)="regEye()"></i>
+                                    <i *ngIf="reghide" class="fas fa-eye-slash fa-lg r-eye-icon"
+                                       (click)="regEye()"></i>
+                                    <div *ngIf="registerForm.get('password').touched && 
+                                        registerForm.get('password').invalid">
+                                        <small class="text-danger"
+                                               *ngIf="registerForm.get('password').errors['required']">
+                                            *Password is required
+                                        </small>
+                                    </div>
+                                    <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid &&
+                                                registerForm.get('password').errors.maxlength">
+                                        <small class="text-danger">*Password length must be atmost 12</small>
+                                    </div>
+                                    <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid && 
+                                                registerForm.get('password').errors.pattern">
+                                        <small class="text-success">*Password length must be atleast 6</small><br>
+                                        <small class="text-success">*Password must have atleast one digit </small><br>
+                                        <small class="text-success">*Password must have atleast one uppercase letter</small><br>
+                                        <small class="text-success">*Password must have atleast one lowercase letter</small><br>
+                                    </div>
                                 </div>
                                 <div class="input-box">
-                                    <span class="details">Confirm Password</span>
-                                    <input type="text" placeholder="Confirm your password" required>
+                                    <span class="details required">Confirm Password</span>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Confirm your password" 
+                                        formControlName="confirmPassword"
+                                        class="form-control"
+                                        >
+                                    <div *ngIf="registerForm.get('confirmPassword').touched && 
+                                          registerForm.get('confirmPassword').invalid">
+                                        <small class="text-danger"
+                                               *ngIf="registerForm.get('confirmPassword').errors['required']">
+                                            *ConfirmPassword is required
+                                        </small>
+                                    </div>
+                                    <div *ngIf="registerForm.get('confirmPassword').touched && 
+                                          registerForm.get('confirmPassword').invalid && 
+                                          registerForm.get('confirmPassword').errors.misMatching">
+                                        <small class="text-danger"> *Password do not match</small>   
+                                    </div>
                                 </div>
                             </div>
-                            <div class="gender-details">
-                                <input type="radio" name="gender" id="dot-1">
-                                <input type="radio" name="gender" id="dot-2">
-                                <input type="radio" name="gender" id="dot-3">
-                                <span class="gender-title">Gender</span>
-                                <div class="category">
-                                    <label for="dot-1">
-                                        <span class="dot one"></span>
-                                        <span class="gender">Male</span>
-                                    </label>
-                                    <label for="dot-2">
-                                        <span class="dot two"></span>
-                                        <span class="gender">Female</span>
-                                    </label>
-                                    <label for="dot-3">
-                                        <span class="dot three"></span>
-                                        <span class="gender">Prefer not to say</span>
-                                    </label>
-                                </div>
+                            <div class="role-details">
+                                <span class="role-title required">Gender</span><br>
+                                <label class="radio-inline">
+                                    <input 
+                                        type="radio" 
+                                        value="male" 
+                                        formControlName="gender"
+                                        class="radiobtn"
+                                        style="margin-left: 130px;">&nbsp;
+                                    Male
+                                </label>
+                                <label class="radio-inline">
+                                    <input 
+                                        type="radio" 
+                                        value="female" 
+                                        formControlName="gender" 
+                                        class="ml-5 radiobtn">&nbsp;
+                                    Female
+                                </label>
+                                <label class="radio-inline">
+                                    <input 
+                                        type="radio" 
+                                        value="others" 
+                                        formControlName="gender"
+                                        class="ml-5 radiobtn">&nbsp;
+                                    Prefer not to say
+                                </label>
                             </div>
                             <div class="button">
-                                <input type="submit" value="Register">
-                            </div> 
+                                <button *ngIf="!registerForm.valid" 
+                                    class="btn" type="submit"
+                                >
+                                    Register
+                                </button>
+                                <button *ngIf="registerForm.valid" 
+                                    class="btnok" type="submit"
+                                >
+                                    Register
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
+        <div>
     </div>
-<!-- </ng-template>     -->
+
 

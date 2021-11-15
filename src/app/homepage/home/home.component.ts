@@ -1,6 +1,7 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { Login } from 'src/app/_models/login';
@@ -13,22 +14,41 @@ import { AccountService } from 'src/app/_services/account.service';
 })
 export class HomeComponent implements OnInit {
 
-  formType: string = 'loginForm';
   hide: boolean = true; //password show/hidden icon
+  reghide: boolean = true;
   model: Login = new Login();
   registerForm: FormGroup;
-  
+  bsConfig: Partial<BsDatepickerConfig>;
+  @ViewChild('lgModal') lgModal: any;
+
   constructor(public modalService: BsModalService, public fb: FormBuilder,
               private accountService: AccountService, private toastr: ToastrService,
-              private router: Router) { }
+              private router: Router) {
+
+      this.bsConfig =
+      {
+        containerClass: 'theme-default',
+        dateInputFormat: 'DD MMMM YYYY'    
+      }
+  }
 
   ngOnInit(): void {
-    this.initializeForm();
+    this.initializeForm();    
   }
+
+  // config: ModalOptions = {
+  //   backdrop: 'static',
+  //   keyboard: false
+  // };
 
   myFunction()
   {
     this.hide = !this.hide;
+  }
+
+  regEye()
+  {
+    this.reghide = !this.reghide;
   }
   
   initializeForm()
@@ -58,6 +78,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
+
   //check password and confirmpassword fields are match
   matchValues(matchTo:string):ValidatorFn
   { //all form control are derived from abstract control
@@ -72,7 +93,7 @@ export class HomeComponent implements OnInit {
   register()
   {
     this.accountService.register(this.registerForm.value).subscribe(response => {
-      this.modalRef?.hide();
+      this.lgModal.hide();
       this.toastr.success('Registeration Successful');
       this.router.navigateByUrl('/products');
     });
@@ -89,18 +110,6 @@ export class HomeComponent implements OnInit {
   loginTrouble()
   {
 
-  }
-
-  //filter modal
-  config: ModalOptions = {
-    backdrop: 'static',
-    keyboard: false
-  };
-
-  modalRef?: BsModalRef;
-  openSignInModel(staticModal: TemplateRef<any>)
-  {
-    this.modalRef = this.modalService.show(staticModal,this.config);
   }
 
 }

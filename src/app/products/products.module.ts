@@ -9,11 +9,13 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule } from '@angular/forms';
+import { ProductUploadComponent } from './product-upload/product-upload.component';
 
 @NgModule({
   declarations: [
     ProductsHomeComponent,
-    ProductDisplayComponent
+    ProductDisplayComponent,
+    ProductUploadComponent
   ],
   imports: [
     CommonModule,

@@ -49,22 +49,22 @@ export class HomeComponent implements OnInit {
   {
     this.registerForm = this.fb.group(
     {
-        userRole: ['buyer'],
+        userRole: ['Buyer', Validators.required],
         fullname: ['', Validators.required],
         email: ['', Validators.required],
         phoneNumber: ['', Validators.required],
         dateOfBirth: ['', Validators.required],
-        gender:['male'],
+        gender:['Male', Validators.required],
         city: ['', Validators.required],
         state: ['', Validators.required],
         country: ['', Validators.required],
         username: ['', Validators.required],
-        password: ['',[Validators.required,
-                      Validators.minLength(6),
-                      Validators.maxLength(12),
-                      Validators.pattern(/(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{6,13}/),
+        password:['', [ Validators.required,
+                        Validators.minLength(6),
+                        Validators.maxLength(12),
+                        Validators.pattern(/(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{6,13}/),
                       ]
-                  ],
+                 ],
         confirmPassword: ['',[Validators.required, this.matchValues('password')]]
     })
     this.registerForm.controls.password.valueChanges.subscribe(() => {
@@ -78,12 +78,13 @@ export class HomeComponent implements OnInit {
     return (control:AbstractControl) =>
     {
       return control?.value == control?.parent?.controls[matchTo].value ? 
-                            {matching: true} : {misMatching: true};
+                            null : {misMatching: true};
     }
   }
 
   register()
   {
+    console.log(this.registerForm.value);
     this.accountService.register(this.registerForm.value).subscribe(response => {
       this.modalRef.hide();
       this.toastr.success('Registeration Successful');

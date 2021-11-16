@@ -1,8 +1,10 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
+import { take } from 'rxjs/operators';
 import { Pagination } from 'src/app/_models/pagination';
 import { Products } from 'src/app/_models/products';
+import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { ProductsService } from 'src/app/_services/products.service';
 
@@ -13,6 +15,7 @@ import { ProductsService } from 'src/app/_services/products.service';
 })
 export class ProductDisplayComponent implements OnInit {
 
+  userRole: string;
   category: string;
   products: Products[] = [];
   pagination: Pagination;
@@ -24,7 +27,13 @@ export class ProductDisplayComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private productService: ProductsService,
               private accountService: AccountService, private router: Router,
-              public modalService: BsModalService) { }
+              public modalService: BsModalService) { 
+                
+      this.accountService.currentUser$.pipe(take(1)).subscribe((response: User) => {
+        this.userRole = response.userRole;
+      })    
+      
+  }
 
   ngOnInit(): void {
 

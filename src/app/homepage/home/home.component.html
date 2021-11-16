@@ -52,13 +52,12 @@
                             </small>
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-primary btn_login" type="submit"
-                                    *ngIf="!loginForm.form.invalid">
-                                LogIn
-                            </button>
-                            <button class="btn btn-secondary disabled btn_login"
-                                    *ngIf="loginForm.form.invalid"
-                                    type="submit">
+                            <button class="btn_login" 
+                                    [class.logindisable]="loginForm.form.invalid"
+                                    [class.loginbtn]="loginForm.form.valid" 
+                                    [disabled]="loginForm.form.invalid"
+                                    type="submit"
+                            >
                                 LogIn
                             </button>
                         </div>
@@ -101,7 +100,7 @@
                     <label class="radio-inline">
                         <input 
                             type="radio" 
-                            value="buyer" 
+                            value="Buyer" 
                             formControlName="userRole"
                             class="radiobtn"
                             style="margin-left: 130px; margin-top: 5px;">&nbsp;
@@ -110,7 +109,7 @@
                     <label class="radio-inline">
                         <input 
                             type="radio" 
-                            value="goldBuyer" 
+                            value="GoldBuyer" 
                             formControlName="userRole" 
                             class="ml-5 radiobtn">&nbsp;
                         GoldBuyer
@@ -118,7 +117,7 @@
                     <label class="radio-inline">
                         <input 
                             type="radio" 
-                            value="supplier" 
+                            value="Supplier" 
                             formControlName="userRole"
                             class="ml-5 radiobtn">&nbsp;
                         Supplier
@@ -126,7 +125,7 @@
                     <label class="radio-inline">
                         <input 
                             type="radio" 
-                            value="goldSupplier" 
+                            value="GoldSupplier" 
                             formControlName="userRole"
                             class="ml-5 radiobtn">&nbsp;
                         GoldSupplier
@@ -149,7 +148,7 @@
                             </small>
                         </div>
                     </div>
-                    <div class="input-box">
+                     <div class="input-box">
                         <span class="details required">Username</span>
                         <input 
                             type="text" 
@@ -164,7 +163,7 @@
                                 *Username is required
                             </small>
                         </div>
-                    </div>
+                    </div> 
                     <div class="input-box">
                         <span class="details required">Email</span>
                         <input 
@@ -180,7 +179,7 @@
                                 *Fullname is required
                             </small>
                         </div>
-                    </div>
+                    </div> 
                     <div class="input-box">
                         <span class="details required">Phone Number</span>
                         <input 
@@ -196,7 +195,7 @@
                                 *PhoneNumber is required
                             </small>
                         </div>
-                    </div>
+                    </div> 
                     <div class="input-box">
                         <span class="details required">Date Of Birth</span>
                         <input 
@@ -214,7 +213,7 @@
                                 *Date Of Birth is required
                             </small>
                         </div>
-                    </div>
+                    </div> 
                     <div class="input-box">
                         <span class="details required">City</span>
                         <input 
@@ -262,7 +261,7 @@
                                 *Country is required
                             </small>
                         </div>
-                    </div>
+                    </div> 
                     <div class="input-box">
                         <span class="details required">Password</span>
                         <input  
@@ -276,25 +275,25 @@
                             (click)="regEye()"></i>
                         <i *ngIf="reghide" class="fas fa-eye-slash fa-lg r-eye-icon"
                            (click)="regEye()"></i>
-                        <div *ngIf="registerForm.get('password').touched && 
-                            registerForm.get('password').invalid">
-                            <small class="text-danger"
-                                   *ngIf="registerForm.get('password').errors['required']">
-                                *Password is required
-                            </small>
-                        </div>
-                        <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid &&
-                                    registerForm.get('password').errors.maxlength">
-                            <small class="text-danger">*Password length must be atmost 12</small>
-                        </div>
-                        <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid && 
-                                    registerForm.get('password').errors.pattern">
-                            <small class="text-success">*Password length must be atleast 6</small><br>
-                            <small class="text-success">*Password must have atleast one digit </small><br>
-                            <small class="text-success">*Password must have atleast one uppercase letter</small><br>
-                            <small class="text-success">*Password must have atleast one lowercase letter</small><br>
-                        </div>
-                    </div>
+                           <div *ngIf="registerForm.get('password').touched && 
+                           registerForm.get('password').invalid">
+                           <small class="text-danger"
+                                  *ngIf="registerForm.get('password').errors['required']">
+                               *Password is required
+                           </small>
+                       </div>
+                       <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid &&
+                                   registerForm.get('password').errors.maxlength">
+                           <small class="text-danger">*Password length must be atmost 12</small>
+                       </div>
+                       <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid && 
+                                   registerForm.get('password').errors.pattern">
+                           <small class="text-success">*Password length must be atleast 6</small><br>
+                           <small class="text-success">*Password must have atleast one digit </small><br>
+                           <small class="text-success">*Password must have atleast one uppercase letter</small><br>
+                           <small class="text-success">*Password must have atleast one lowercase letter</small><br>
+                       </div>
+                    </div> 
                     <div class="input-box">
                         <span class="details required">Confirm Password</span>
                         <input 
@@ -302,14 +301,7 @@
                             placeholder="Confirm your password" 
                             formControlName="confirmPassword"
                             class="form-control"
-                            >
-                        <div *ngIf="registerForm.get('confirmPassword').untouched &&
-                                    registerForm.get('confirmPassword').errors.misMatching &&
-                                    !registerForm.get('confirmPassword').errors.matching">
-                            <small class="text-success">
-                                *must match with password
-                            </small>
-                        </div>
+                        >
                         <div *ngIf="registerForm.get('confirmPassword').touched && 
                               registerForm.get('confirmPassword').invalid">
                             <small class="text-danger"
@@ -329,7 +321,7 @@
                     <label class="radio-inline">
                         <input 
                             type="radio" 
-                            value="male" 
+                            value="Male" 
                             formControlName="gender"
                             class="radiobtn"
                             style="margin-left: 130px;">&nbsp;
@@ -338,7 +330,7 @@
                     <label class="radio-inline">
                         <input 
                             type="radio" 
-                            value="female" 
+                            value="Female" 
                             formControlName="gender" 
                             class="ml-5 radiobtn">&nbsp;
                         Female
@@ -346,21 +338,16 @@
                     <label class="radio-inline">
                         <input 
                             type="radio" 
-                            value="others" 
+                            value="Others" 
                             formControlName="gender"
                             class="ml-5 radiobtn">&nbsp;
                         Prefer not to say
                     </label>
-                </div>
+                </div> 
                 <div class="button">
-                    <button *ngIf="!registerForm.valid" 
-                        class="btn" type="submit"
-                    >
-                        Register
-                    </button>
-                    <button *ngIf="registerForm.valid" 
-                        class="btnok" type="submit"
-                    >
+                    <button [class.btndisable]="registerForm.invalid"
+                            [class.btnok]="registerForm.valid"
+                            [disabled]="registerForm.invalid">
                         Register
                     </button>
                 </div>
@@ -368,14 +355,3 @@
         </div>
     </div>
 </ng-template>
-
-<!--Modal for SignUp-->
-    <!-- <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" id="myModal"
-         role="dialog" aria-labelledby="dialog-sizes-name1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                
-            </div>
-        <div>
-    </div> -->
-

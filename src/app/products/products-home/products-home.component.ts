@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
+import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 
 @Component({
@@ -9,7 +11,13 @@ import { AccountService } from 'src/app/_services/account.service';
 })
 export class ProductsHomeComponent implements OnInit {
 
-  constructor(private accountService: AccountService, private router: Router) { }
+  user: User;
+
+  constructor(private accountService: AccountService, private router: Router) { 
+    this.accountService.currentUser$.pipe(take(1)).subscribe(response => {
+      this.user = response;
+    })
+  }
 
   products: string[] = ['Dresses', 'Shoes', 'Watches', 
                         'Mobile Phones', 'Mobile Accessories', 'Footwears',
@@ -24,9 +32,18 @@ export class ProductsHomeComponent implements OnInit {
     this.router.navigateByUrl('/'); 
   }
 
-  getProducts(product: string)
+  gotoProducts(product: string)
   {
-    this.router.navigate(['/products', product]);
+    if(this.user.userRole == 'Buyer' || this.user.userRole == 'GoldBuyer')
+    {
+      this.router.navigate(['/products/display', product]);
+    }
+
+    if(this.user.userRole == 'Supplier' || this.user.userRole == 'GoldSupplier')
+    {
+      this.router.navigate(['/products/upload', product]);
+    }
+    
   }
 
 }

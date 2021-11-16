@@ -3,9 +3,10 @@
         <div class="logo_content">
             <div class="logo">
                 <img src="./assets/profile.jpg" alt="profile" class="profile_img">
-                <div class="logo_name">Selvakumar</div>
+                <div class="logo_name">{{user.username | titlecase}}</div>
             </div>
-            <i class="fas fa-medal" id="btn" tooltip="Buyer" placement="bottom"></i>
+            <i class="fas fa-medal" id="btn" tooltip={{user.userRole}} 
+               placement="left"></i>
         </div>
         <ul class="nav_list">
             <li>
@@ -74,7 +75,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 box" *ngFor="let product of products; index as i"
-                    (click)="getProducts(product)"
+                    (click)="gotoProducts(product)"
                 >
                     {{product}} 
                 </div>

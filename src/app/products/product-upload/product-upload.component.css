@@ -159,7 +159,7 @@ input[type="file"]
   display: none;
 }
 
-.upload{
+.fileUpload  .upload{
     border: 2px solid rgb(133, 130, 130);
     border-radius: 5px;
     padding: 2px;

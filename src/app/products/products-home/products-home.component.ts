@@ -26,6 +26,13 @@ export class ProductsHomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  hasvalue: boolean = true;
+  sidebarStatus()
+  {
+    console.log('true');
+    this.hasvalue = !this.hasvalue;
+  }
+
   logout()
   {
     this.accountService.logout();

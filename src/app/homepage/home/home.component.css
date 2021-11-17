@@ -208,3 +208,8 @@ form .button .btndisable:hover{
     content:" *";
     color: red;
 }
+
+.main-cart{
+    margin-top: 1px;
+    margin-left: -2px;
+}

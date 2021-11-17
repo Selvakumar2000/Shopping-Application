@@ -1,14 +1,14 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { PaginatedResult } from '../_models/pagination';
 import { Products } from '../_models/products';
-import { ProductUpload } from '../_models/productUpload';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProductsService {
 
   baseURL = environment.apiUrl;
@@ -58,7 +58,8 @@ export class ProductsService {
     formData.append('productDetails', JSON.stringify(productDetails));
     formData.append('file', image);
     
-    return this.http.post(this.baseURL + 'products/add-product', formData);
+    return this.http.post(this.baseURL + 'products/add-product', formData,
+    {responseType: 'text'});
   }
 
 }

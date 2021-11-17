@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FileItem, FileUploader } from 'ng2-file-upload';
-import { take } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+import { map, take } from 'rxjs/operators';
 import { Login } from 'src/app/_models/login';
 import { Products } from 'src/app/_models/products';
 import { ProductUpload } from 'src/app/_models/productUpload';
@@ -26,7 +27,8 @@ export class ProductUploadComponent implements OnInit {
   canUpload: boolean = true;
 
   constructor(private accountService: AccountService, private router: Router,
-              private route: ActivatedRoute, private productService: ProductsService) {
+              private route: ActivatedRoute, private productService: ProductsService,
+              private toastr: ToastrService) {
 
     this.accountService.currentUser$.pipe(take(1)).subscribe(response => {
       this.user = response;
@@ -52,9 +54,9 @@ export class ProductUploadComponent implements OnInit {
   processDetails(imageInput: any) 
   {
     this.file = imageInput.files[0];
-    this.productService.uploadDetails(this.productDetails, this.file)
-                         .subscribe(response => {
+    this.productService.uploadDetails(this.productDetails, this.file).subscribe(response => {
         console.log(response);
+        this.toastr.success('Product Added Successfully');
         this.canUpload = true;
     });
   }

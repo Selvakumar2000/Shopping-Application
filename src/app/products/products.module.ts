@@ -24,7 +24,7 @@ import { ProductUploadComponent } from './product-upload/product-upload.componen
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
-    FormsModule
+    FormsModule,
   ]
 })
 export class ProductsModule { }

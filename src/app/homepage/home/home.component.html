@@ -19,12 +19,12 @@
                                 type="text" 
                                 class="form-control"
                                 name="username"
-                                #name="ngModel" 
+                                #username="ngModel" 
                                 [(ngModel)]="model.username" 
                                 placeholder="UserName"      
                             >
                             <i class="fas fa-user fa-lg eye-icon"></i>
-                            <small  [class.d-none] = "name.valid || name.untouched"
+                            <small  [class.d-none] = "username.valid || username.untouched"
                             style="font-weight: 900; color: rgb(101, 245, 4);">
                                 *Username is required
                             </small>
@@ -344,6 +344,7 @@
                         Prefer not to say
                     </label>
                 </div> 
+                <small class="text-danger">* All fields are mandatory</small>
                 <div class="button">
                     <button [class.btndisable]="registerForm.invalid"
                             [class.btnok]="registerForm.valid"

@@ -1,1 +1,185 @@
-<p>product-upload works!</p>
+<!--Photo Upload-->
+<div class="product-upload">
+    <div class="topbar">
+        <div class="appname">
+            <h1>
+                ShopMe
+                <i class="fas fa-shopping-cart"></i>
+            </h1>   
+        </div>
+        <div class="heading">
+            <h3>Supplier Portal For Uploading Goods</h3>
+        </div>
+        <div class="dropdown">
+            <img id="img" src="./assets/profile.jpg" alt="user">
+            <div class="dropdown-content">
+                <a routerLink='/products'>Dashboard</a>
+                <a (click)="logout()">LogOut</a>
+            </div>
+        </div>
+    </div>
+    <div class="description-image">
+        <div class="product-description">
+            <div class="title">
+                <i class="fas fa-tags"></i>
+                Categories >> {{category}}
+            </div>
+            <form autocomplete="off" id="detailsForm"
+                  #detailsForm="ngForm" (ngSubmit)="processDetails(imageInput)"
+            >
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details required">Product Name</span>
+                        <input type="text" 
+                               name="productName"
+                               #name="ngModel"
+                               [(ngModel)]="productDetails.productName"
+                               placeholder="Ex. Addidas Caze Blue"
+                               class="form-control"
+                               required
+                        >
+                        <small class="text-danger"
+                               [class.d-none] = "name.valid || name.untouched"
+                        >
+                            *ProductName is required
+                        </small>
+                    </div>
+                    <div class="input-box">
+                        <span class="details required">ProductBrand</span>
+                        <input type="text"  
+                               name="productBrand"
+                               #brand="ngModel"
+                               [(ngModel)]="productDetails.productBrand"
+                               placeholder="Ex. Addidas"
+                               class="form-control"
+                               required
+                        >
+                        <small class="text-danger"
+                               [class.d-none] = "brand.valid || brand.untouched"
+                        >
+                            *ProductBrand is required
+                        </small>
+                    </div>
+                    <div class="input-box">
+                        <span class="details required">ProductDescription</span>
+                        <input type="text" 
+                               name="productDescription"
+                               #description="ngModel"
+                               [(ngModel)]="productDetails.productDescription"
+                               placeholder="Ex. Bring power to your steps.."
+                               class="form-control"
+                               required
+                        >
+                        <small class="text-danger"
+                               [class.d-none] = "description.valid || description.untouched"
+                        >
+                            *ProductDescription is required
+                        </small>
+                    </div>
+                    <div class="input-box">
+                        <span class="details required">AmountRs</span>
+                        <input type="text" 
+                               name="amountRs"
+                               #amount="ngModel"
+                               [(ngModel)]="productDetails.amountRs"
+                               placeholder="Ex. 2999"
+                               class="form-control"
+                               required
+                        >
+                        <small class="text-danger"
+                               [class.d-none] = "amount.valid || amount.untouched"
+                        >
+                            *ProductAmount is required
+                        </small>
+                    </div>
+                    <div class="input-box">
+                        <span class="details required">Discount Rate</span>
+                        <input type="text" 
+                               name="discount"
+                               #discount="ngModel"
+                               [(ngModel)]="productDetails.discount"
+                               placeholder="Ex. 15"
+                               class="form-control"
+                               required
+                        >
+                        <small class="text-danger"
+                               [class.d-none] = "discount.valid || discount.untouched"
+                        >
+                            *Discount Rate is required
+                        </small>
+
+                    </div>
+                    <div class="input-box">
+                        <span class="details required">Category</span>
+                        <input type="text" 
+                               value={{category}}
+                               class="form-control" 
+                               readonly>
+                    </div>
+                    <small class="text-danger">* All fields are mandatory</small>
+                </div>
+                
+            </form>
+        </div>
+        <div class="product-image">
+            <h3 class="required">Add Product Image</h3>
+            <div class="image-drop">
+                <div class="drophere">
+                    <div
+                         class="card bg-faded p-3 text-center mb-3 my-drop-zone">
+                         <i class="fa fa-upload fa-3x"></i>
+                        Drop Your Product Image Here
+                    </div>
+                </div> 
+            </div>
+            <div class="fromdevice">
+                <h6>File From Device</h6> 
+                <div class="fileUpload">
+                    <label class="upload">
+                        <input #imageInput type="file" accept="image/*"
+                               (change)="getImgDetails(imageInput)"
+                               [disabled]="!canUpload"
+                        >
+                            Choose File
+                    </label>
+                </div>
+            </div>  
+        </div>
+    </div>  
+    <div class="upload-details">
+        <div class="details">
+            <div>
+                <h3>Uploaded Details</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="50%">File Name</th>
+                            <th>File Size</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>{{fileName}}</strong></td>
+                            <td *ngIf="fileSize">
+                                {{fileSize/1024/1024 | number:'.2'}} MB
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="upload">
+            <button type="submit" class="btn btn-success" form="detailsForm"
+                    [disabled]="detailsForm.form.invalid"
+            >
+                <span class="fa fa-upload"></span> Upload Details
+            </button>
+            <button type="button" class="btn btn-danger ml-2"
+                    >
+                <span class="fa fa-trash"></span> Reset Details
+            </button>
+        </div>
+    </div>
+</div>
+
+

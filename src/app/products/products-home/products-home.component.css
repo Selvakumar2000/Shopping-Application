@@ -15,7 +15,6 @@
     height: 100%;
     /* background: #4939f1; */
     background-image: linear-gradient(135deg,  #4939f1, #564ad4, #685fd4, #6760af,  #4939f1);
-
     padding: 6px 14px;
     transition: all 0.5s ease;
     width: 300px;

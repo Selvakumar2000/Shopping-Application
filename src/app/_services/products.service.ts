@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { PaginatedResult } from '../_models/pagination';
 import { Products } from '../_models/products';
+import { ProductUpload } from '../_models/productUpload';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class ProductsService {
   
   constructor(private http: HttpClient) { }
 
+  //get products
   getProducts(category: string,  gender: string, minPrice: number,
               maxPrice: number, page: number, itemsPerPage: number)
   {
@@ -46,6 +48,17 @@ export class ProductsService {
         }
         return this.paginatedResult;
       }));
+  }
+
+  //upload product
+  public uploadDetails(productDetails: any, image: File)
+  {
+    const formData = new FormData();
+
+    formData.append('productDetails', JSON.stringify(productDetails));
+    formData.append('file', image);
+    
+    return this.http.post(this.baseURL + 'products/add-product', formData);
   }
 
 }

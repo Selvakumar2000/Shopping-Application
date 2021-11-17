@@ -1,12 +1,8 @@
-<div class="products_main">
+<!-- <div class="products_main">
     <div style="margin-top: 20px; margin-left: 20px;">
-        <!-- <button class="btn btn-primary" (click)="sidebarStatus()">
-            Show
-        </button> -->
         <div class="logo">
             <img src="./assets/profile.jpg" alt="profile" 
             class="show-dashboard" (click)="sidebarStatus()">
-            
         </div>
     </div>
     <div *ngIf="hasvalue">
@@ -19,9 +15,6 @@
                         {{user.username | titlecase}}
                     </div>
                 </div>
-                <!-- <i class="fas fa-medal" id="btn" tooltip={{user.userRole}} 
-                   placement="left">
-                </i> -->
                 <i class="fas fa-bars" id="btn" (click)="sidebarStatus()"
                   >
                 </i>
@@ -117,4 +110,106 @@
             </div>
         </div>
     </ng-container>
+</div> -->
+<div class="products-main">
+    <div class="sidebar" [class.active]="hasvalue">
+        <div class="logo_content">
+            <div class="logo">
+                <img src={{imgUrl}} alt="profile" class="profile_img" *ngIf="hasvalue">
+                <div class="logo_name">{{user.username | titlecase}}</div>
+            </div>
+            <i class="fas fa-bars" id="btn" (click)="showPanel()"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search...">
+                <!-- <span class="tooltip">Search</span> -->
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-th-large fa-lg"></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+                <span class="tooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-user fa-lg"></i>
+                    <span class="links_name">User</span>
+                </a>
+                <span class="tooltip">User</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-shopping-cart fa-lg"></i>
+                    <span class="links_name" *ngIf="user.userRole == 'Buyer'">
+                        Orders
+                    </span>
+                    <span class="links_name" *ngIf="user.userRole == 'Supplier'">
+                        Products Uploaded
+                    </span>
+                </a>
+                <span class="tooltip" *ngIf="user.userRole == 'Buyer'">Orders</span>
+                <span class="tooltip" *ngIf="user.userRole == 'Supplier'">
+                    Products Uploaded
+                </span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-heart fa-lg" *ngIf="user.userRole == 'Buyer'">
+                    </i>
+                    <span class="links_name" *ngIf="user.userRole == 'Buyer'">
+                        Cart
+                    </span>
+                    <i class="fas fa-hand-holding-usd fa-lg" *ngIf="user.userRole == 'Supplier'">
+                    </i>
+                    <span class="links_name" *ngIf="user.userRole == 'Supplier'">
+                        Transactions
+                    </span>        
+                </a>
+                <span class="tooltip" *ngIf="user.userRole == 'Buyer'">Cart</span>
+                <span class="tooltip" *ngIf="user.userRole == 'Supplier'">
+                    Transactions
+                </span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-gifts fa-lg"></i>
+                    <span class="links_name">Gifts & Vouchers</span>
+                </a>
+                <span class="tooltip">Gifts & Vouchers</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-hands-helping"></i>
+                    <span class="links_name">Help</span>
+                </a>
+                <span class="tooltip">Help</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-comments fa-lg"></i>
+                    <span class="links_name">Feedback</span>
+                </a>
+                <span class="tooltip">Feedback</span>
+            </li>
+        </ul>
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <i class="fa fa-shopping-cart fa-3x"></i>
+                    <div class="name_job">
+                        <div class="name">ShopMe</div>
+                        <div class="job">Make It Ease</div>
+                    </div>
+                </div>
+                <i class="fa fa-sign-out-alt" id="log_out" (click)="logout()"></i>
+            </div>
+        </div>
+    </div>
+    <div class="home_content">
+        <div class="text">Home Content</div>
+    </div>
 </div>
+

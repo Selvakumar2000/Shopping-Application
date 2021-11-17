@@ -26,11 +26,11 @@ export class ProductsHomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  hasvalue: boolean = true;
-  sidebarStatus()
+  hasvalue: boolean =false;
+  imgUrl: string = "./assets/profile.jpg";
+  showPanel()
   {
-    console.log('true');
-    this.hasvalue = !this.hasvalue;
+    this.hasvalue = !this.hasvalue 
   }
 
   logout()

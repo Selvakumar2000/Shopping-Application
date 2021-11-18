@@ -1,6 +1,7 @@
 .product-upload .topbar{
     display: flex;
     justify-content: space-between;
+    padding: 10px;
     background-image: linear-gradient(135deg,  #4939f1, #3226bd, #4840a7, #372abe,  #4939f1);
 }
 
@@ -75,7 +76,6 @@
   } 
 
   /*Product Details*/
-
   .product-upload .description-image{
     display: flex; 
    }
@@ -126,7 +126,7 @@ form .user-details .input-box{
 
 .description-image .product-image{
     margin-top: 100px;
-    margin-left: 20px;
+    margin-left: 90px;
 }
 
 .product-image .image-drop{
@@ -150,8 +150,8 @@ form .user-details .input-box{
 }
 
 .product-upload .upload{
-    margin-top: 90px;
-    margin-left: 210px;
+    margin-top: 150px;
+    margin-left: 450px;
 }
 
 input[type="file"]
@@ -159,17 +159,24 @@ input[type="file"]
   display: none;
 }
 
-.fileUpload  .upload{
-    border: 2px solid rgb(133, 130, 130);
-    border-radius: 5px;
-    padding: 2px;
-    background: rgb(190, 184, 184);
-    margin: 0;
-    cursor: pointer;
+.cursor-allowed{
+  border: 1px solid rgb(24, 21, 21);
+  border-radius: 5px;
+  padding: 4px;
+  background: rgb(41, 44, 175);
+  margin: 0;
+  cursor: pointer;
+  color: #fff;
 }
 
-.fileUpload .upload{
+.cursor-notallowed{
+  border: 1px solid rgb(24, 21, 21);
+  border-radius: 5px;
+  padding: 4px;
+  background: rgb(174, 174, 182);
   margin: 0;
+  cursor: not-allowed;
+
 }
 
 .required:after {

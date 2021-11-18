@@ -16,6 +16,7 @@ export class ProductsHomeComponent implements OnInit {
   constructor(private accountService: AccountService, private router: Router) { 
     this.accountService.currentUser$.pipe(take(1)).subscribe(response => {
       this.user = response;
+      this.userRole = this.user.userRole;
     })
   }
 
@@ -29,10 +30,32 @@ export class ProductsHomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  userRole: string;
+  dashboard: string = "Dashboard";
+  paneluser: string = "User";
+  orders: string = "Orders";
+  productsUp: string = "Products Uploaded";
+  cart: string = "Cart";
+  transactions: string = "Transactions";
+  gifts: string = "Gifts & Vouchers";
+  help: string = "Help";
+  feedback: string = "Feedback";
+  position: string = "left"
   hasvalue: boolean =false;
   showPanel()
   {
     this.hasvalue = !this.hasvalue 
+    this.dashboard = "";
+    this.userRole = "";
+    this.paneluser = "";
+    this.orders = "";
+    this.productsUp = "";
+    this.cart = "";
+    this.transactions = "";
+    this.gifts = "";
+    this.help = "";
+    this.feedback = "";
+    this.position = "top";
   }
 
   logout()

@@ -96,26 +96,37 @@
     width: 100%;
     left: 0;
     top: 0;
-    border-radius: 12px;
+    border-radius: 20px;
     outline: none;
     border: none;
     background: #f2f1f5;
     padding-left: 50px;
-    font-size: 18px;
-    color: rgb(7, 6, 6);
+    font-size: 25px;
+    font-weight: 500;
+    color: rgb(7, 6, 6); 
 }
 
-.sidebar ul li .fa-search{
+.sidebar.active ul li input{
+    margin-left: 30px;
+    width: 200px;
+    padding-left: 70px;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.sidebar ul li .fa-medal{
     position: absolute;
     z-index: 99;
     color: rgb(8, 8, 8);
-    font-size: 22px;
+    font-size: 25px;
     transition: all 0.5s ease;
 }
 
-.sidebar ul li .fa-search:hover{
-    background: #fff;
-    color: #1d1b31;
+.sidebar.active ul li .fa-medal{
+    padding-left: 40px;
+}
+
+.sidebar ul li .fa-medal:hover{
     cursor: pointer;
 }
 
@@ -133,6 +144,7 @@
 .sidebar ul li a:hover{
     color: #11101d;
     background: #fff;
+    cursor: pointer;
 }
 
 .sidebar ul li i{
@@ -231,8 +243,8 @@
     left: 88%;
 }
 
-.sidebar.active .profile #log_out{
-    background: none;
+.sidebar.active .profile #log_out:hover{
+    background: rgb(68, 66, 66);
 }
 
 .home_content{

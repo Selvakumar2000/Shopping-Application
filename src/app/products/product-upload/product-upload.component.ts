@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FileItem, FileUploader } from 'ng2-file-upload';
 import { ToastrService } from 'ngx-toastr';
@@ -23,8 +24,10 @@ export class ProductUploadComponent implements OnInit {
   productDetails: ProductUpload = new ProductUpload();
   file: File;
   fileName: string;
-  fileSize: number;
+  fileSize: number = 0;
   canUpload: boolean = true;
+  imageFile: any;
+  @ViewChild('detailsForm') detailsForm: NgForm;
 
   constructor(private accountService: AccountService, private router: Router,
               private route: ActivatedRoute, private productService: ProductsService,
@@ -40,6 +43,11 @@ export class ProductUploadComponent implements OnInit {
 
    }
 
+   cursorClass = {
+    "cursor-allowed" : this.canUpload,
+    "cursor-notallowed" : !this.canUpload
+   }
+
   ngOnInit(): void {
     this.productDetails.category = this.category;
   }
@@ -48,7 +56,7 @@ export class ProductUploadComponent implements OnInit {
   {
     this.fileName = imageInput.files[0].name;
     this.fileSize = imageInput.files[0].size;
-    this.canUpload = false;
+    this.canUpload = !this.canUpload;
   }
 
   processDetails(imageInput: any) 
@@ -58,6 +66,7 @@ export class ProductUploadComponent implements OnInit {
         console.log(response);
         this.toastr.success('Product Added Successfully');
         this.canUpload = true;
+        this.fileSize = 0;
     });
   }
 
@@ -65,6 +74,14 @@ export class ProductUploadComponent implements OnInit {
   {
     this.accountService.logout();
     this.router.navigateByUrl('/');
+  }
+
+  resetForm()
+  {
+    this.detailsForm.reset();
+    this.canUpload = !this.canUpload;
+    this.fileSize = 0;
+    this.fileName = "";
   }
 
 }

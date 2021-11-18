@@ -11,83 +11,86 @@
         </div>
         <ul class="nav_list">
             <li>
-                <i class="fas fa-medal fa-lg" [tooltip]="userRole" placement="right"></i>
+                <i class="fas fa-medal fa-lg" [tooltip]="userRole" placement="right"
+                   [style.color]="user.userRole == 'Buyer' ? 'black' : user.userRole == 'GoldBuyer' ?
+                   'rgb(202, 199, 26)' : user.userRole == 'Supplier' ? 'black' : 'rgb(202, 199, 26)' "   
+                >
+                </i>
                 <input type="text" placeholder={{user.userRole}} readonly>
             </li>
             <li>
-                <a>
+                <a (click)="showDashboard()">
                     <i class="fas fa-th-large fa-lg" [tooltip]="dashboard"
                        placement="right"
                     >
                     </i>
                     <span class="links_name">Dashboard</span>
                 </a>
-                
             </li>
             <li>
-                <a>
+                <a (click)="showUserPanel()">
                     <i class="fas fa-user fa-lg" [tooltip]="paneluser" placement="right"></i>
                     <span class="links_name">User</span>
-                </a>
-                
+                </a>  
             </li>
             <li>
-                <a>
+                <a (click)="showOrdersProducts()">
                     <i class="fas fa-shopping-cart fa-lg" [tooltip]="orders" placement="right"
-                       *ngIf="user.userRole == 'Buyer'"
+                       *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'"
                     ></i>
-                    <span class="links_name" *ngIf="user.userRole == 'Buyer'">
+                    <span class="links_name" 
+                          *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'">
                         Orders
                     </span>
                     <i class="fas fa-shopping-cart fa-lg" [tooltip]="productsUp" 
-                       placement="right" *ngIf="user.userRole == 'Supplier'"></i>
-                    <span class="links_name" *ngIf="user.userRole == 'Supplier'">
+                       placement="right" 
+                       *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'"></i>
+                    <span class="links_name"
+                          *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'">
                         Products Uploaded
                     </span>
                 </a>
-                
             </li>
             <li>
-                <a>
-                    <i class="fas fa-heart fa-lg" *ngIf="user.userRole == 'Buyer'"
+                <a (click)="showCartsTransactions()">
+                    <i class="fas fa-heart fa-lg" *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'"
                        [tooltip]="cart" placement="right">
                     </i>
-                    <span class="links_name" *ngIf="user.userRole == 'Buyer'">
+                    <span class="links_name"
+                          *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'">
                         Cart
                     </span>
-                    <i class="fas fa-hand-holding-usd fa-lg" *ngIf="user.userRole == 'Supplier'"
+                    <i class="fas fa-hand-holding-usd fa-lg"  
+                       *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'"
                        [tooltip]="transactions" placement="right">
                     </i>
-                    <span class="links_name" *ngIf="user.userRole == 'Supplier'">
+                    <span class="links_name"
+                          *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'">
                         Transactions
                     </span>        
                 </a>
-               
             </li>
             <li>
-                <a>
+                <a (click)="showGifts()">
                     <i class="fas fa-gifts fa-lg" [tooltip]="gifts" placement="right">
 
                     </i>
                     <span class="links_name">Gifts & Vouchers</span>
                 </a>
-                
             </li>
             <li>
-                <a>
+                <a (click)="showHelp()">
                     <i class="fas fa-hands-helping" [tooltip]="help" placement="right" ></i>
                     <span class="links_name">Help</span>
                 </a>
-                
             </li>
             <li>
-                <a>
+                <a (click)="showFeedback()">
                     <i class="fas fa-comments fa-lg" [tooltip]="feedback" placement="right" >
 
                     </i>
                     <span class="links_name">Feedback</span>
                 </a>
-               
             </li>
         </ul>
         <div class="profile_content">
@@ -101,51 +104,28 @@
                 </div>
                 <i class="fa fa-sign-out-alt" id="log_out" (click)="logout()"
                    tooltip="Logout" [placement]="position">
-
                 </i>
             </div>
         </div>
     </div>
     <div class="home_content">
-        <div class="text">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 box" *ngFor="let product of products;index as i;"
-                        (click)="gotoProducts(product)" 
-                    >
-                        <img src= "./assets/dress.png" alt="profile" class="product_img"
-                             *ngIf="i==0"     
-                        >
-                        <img src= "./assets/shoe.png" alt="profile" class="product_img"
-                             *ngIf="i==1"     
-                        >
-                        <img src= "./assets/watch.png" alt="profile" class="product_img"
-                             *ngIf="i==2"     
-                        >
-                        <img src= "./assets/mobile.png" alt="profile" class="product_img"
-                             *ngIf="i==3"     
-                        >
-                        <img src= "./assets/mbaccs.png" alt="profile" class="product_img"
-                             *ngIf="i==4"     
-                        >
-                        <img src= "./assets/cheppal.png" alt="profile" class="product_img"
-                             *ngIf="i==5"     
-                        >
-                        <img src= "./assets/fridge.png" alt="profile" class="product_img"
-                             *ngIf="i==6"     
-                        >
-                        <img src= "./assets/tv.png" alt="profile" class="product_img"
-                             *ngIf="i==7"     
-                        >
-                        <img src= "./assets/wmachine.png" alt="profile" class="product_img"
-                             *ngIf="i==8"     
-                        >
-                        <br>
-                        {{product}} 
-                    </div>
-                </div>
-            </div>
+        <app-dashboard *ngIf="dashboardPanel"> </app-dashboard>
+        <app-user-management *ngIf="userPanel"></app-user-management>
+        <div *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'">
+            <app-orders *ngIf="ordersPanel"></app-orders>
         </div>
+        <div *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'">
+            <app-products-uploaded *ngIf="uploads"></app-products-uploaded>
+        </div>
+        <div *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'">
+            <app-cart-items *ngIf="carts"></app-cart-items>
+        </div>
+        <div *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'">
+            <app-transactions *ngIf="transaction"></app-transactions>
+        </div>
+        <app-gifts *ngIf="giftsPanel"></app-gifts>
+        <app-help *ngIf="helps"></app-help>
+        <app-feedback *ngIf="feedbacks"></app-feedback>
     </div>
 </div>
 

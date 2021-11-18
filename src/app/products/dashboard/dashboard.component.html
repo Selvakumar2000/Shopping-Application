@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 box" *ngFor="let product of products;index as i;"
+            (click)="gotoProducts(product)" 
+        >
+            <img src= "./assets/dress.png" alt="profile" class="product_img"
+                 *ngIf="i==0"     
+            >
+            <img src= "./assets/shoe.png" alt="profile" class="product_img"
+                 *ngIf="i==1"     
+            >
+            <img src= "./assets/watch.png" alt="profile" class="product_img"
+                 *ngIf="i==2"     
+            >
+            <img src= "./assets/mobile.png" alt="profile" class="product_img"
+                 *ngIf="i==3"     
+            >
+            <img src= "./assets/mbaccs.png" alt="profile" class="product_img"
+                 *ngIf="i==4"     
+            >
+            <img src= "./assets/cheppal.png" alt="profile" class="product_img"
+                 *ngIf="i==5"     
+            >
+            <img src= "./assets/fridge.png" alt="profile" class="product_img"
+                 *ngIf="i==6"     
+            >
+            <img src= "./assets/tv.png" alt="profile" class="product_img"
+                 *ngIf="i==7"     
+            >
+            <img src= "./assets/wmachine.png" alt="profile" class="product_img"
+                 *ngIf="i==8"     
+            >
+            <br>
+            {{product}} 
+        </div>
+    </div>
+</div>

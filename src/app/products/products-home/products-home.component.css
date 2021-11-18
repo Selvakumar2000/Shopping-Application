@@ -109,15 +109,16 @@
 .sidebar.active ul li input{
     margin-left: 30px;
     width: 200px;
-    padding-left: 70px;
+    padding-left: 45px;
     font-size: 25px;
-    font-weight: 500;
+    font-weight: 600;
+    color: rgb(7, 6, 6); 
 }
 
 .sidebar ul li .fa-medal{
     position: absolute;
     z-index: 99;
-    color: rgb(8, 8, 8);
+    /* color: rgb(202, 199, 26); */
     font-size: 25px;
     transition: all 0.5s ease;
 }
@@ -266,28 +267,3 @@
     width: calc(100% - 300px);
     left: 300px;
 }
-
-.container{ 
-    width: max-content;
- }
- 
- .col-md-4{
-     /* background: rgb(155, 133, 133); */
-     background: rgb(151, 116, 116);
-     border-radius: 55px;
-     cursor: pointer;
-     font-size: 20px;
-     font-weight: 600;    
-     padding: 20px;
-     box-sizing: border-box;
-     border: 15px solid transparent;
-     background-clip:padding-box; 
-     text-align: center;
-     color: #fff;
- } 
-
- .product_img{
-     height: 160px;
-     width: 160px;
-     border-radius: 10%;
- }

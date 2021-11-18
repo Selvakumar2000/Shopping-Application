@@ -1,0 +1,23 @@
+.container{ 
+    width: max-content;
+ }
+ 
+ .col-md-4{
+     background: rgb(151, 116, 116);
+     border-radius: 55px;
+     cursor: pointer;
+     font-size: 20px;
+     font-weight: 600;    
+     padding: 20px;
+     box-sizing: border-box;
+     border: 15px solid transparent;
+     background-clip:padding-box; 
+     text-align: center;
+     color: #fff;
+ } 
+
+ .product_img{
+     height: 160px;
+     width: 160px;
+     border-radius: 10%;
+ }

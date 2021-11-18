@@ -115,84 +115,89 @@
     <div class="sidebar" [class.active]="hasvalue">
         <div class="logo_content">
             <div class="logo">
-                <img src={{imgUrl}} alt="profile" class="profile_img" *ngIf="hasvalue">
+                <img src="./assets/profile.jpg" alt="profile" class="profile_img" *ngIf="hasvalue">
                 <div class="logo_name">{{user.username | titlecase}}</div>
             </div>
-            <i class="fas fa-bars" id="btn" (click)="showPanel()"></i>
+            <i class="fas fa-bars" id="btn" (click)="showPanel()"
+               tooltip="Menu" placement="bottom">
+            </i>
         </div>
         <ul class="nav_list">
             <li>
-                <i class="fas fa-search"></i>
+                <i class="fas fa-search" tooltip="Search" placement="right"></i>
                 <input type="text" placeholder="Search...">
-                <!-- <span class="tooltip">Search</span> -->
             </li>
             <li>
-                <a href="#">
-                    <i class="fas fa-th-large fa-lg"></i>
+                <a>
+                    <i class="fas fa-th-large fa-lg" tooltip="Dashboard" placement="right"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
-                <span class="tooltip">Dashboard</span>
+                
             </li>
             <li>
-                <a href="#">
-                    <i class="fas fa-user fa-lg"></i>
+                <a>
+                    <i class="fas fa-user fa-lg" tooltip="User" placement="right"></i>
                     <span class="links_name">User</span>
                 </a>
-                <span class="tooltip">User</span>
+                
             </li>
             <li>
-                <a href="#">
-                    <i class="fas fa-shopping-cart fa-lg"></i>
+                <a>
+                    <i class="fas fa-shopping-cart fa-lg" tooltip="Orders" placement="right"
+                       *ngIf="user.userRole == 'Buyer'"
+                    ></i>
                     <span class="links_name" *ngIf="user.userRole == 'Buyer'">
                         Orders
                     </span>
+                    <i class="fas fa-shopping-cart fa-lg" tooltip="Products Uploaded" 
+                       placement="right" *ngIf="user.userRole == 'Supplier'"></i>
                     <span class="links_name" *ngIf="user.userRole == 'Supplier'">
                         Products Uploaded
                     </span>
                 </a>
-                <span class="tooltip" *ngIf="user.userRole == 'Buyer'">Orders</span>
-                <span class="tooltip" *ngIf="user.userRole == 'Supplier'">
-                    Products Uploaded
-                </span>
+                
             </li>
             <li>
-                <a href="#">
-                    <i class="fas fa-heart fa-lg" *ngIf="user.userRole == 'Buyer'">
+                <a>
+                    <i class="fas fa-heart fa-lg" *ngIf="user.userRole == 'Buyer'"
+                       tooltip="Cart" placement="right">
                     </i>
                     <span class="links_name" *ngIf="user.userRole == 'Buyer'">
                         Cart
                     </span>
-                    <i class="fas fa-hand-holding-usd fa-lg" *ngIf="user.userRole == 'Supplier'">
+                    <i class="fas fa-hand-holding-usd fa-lg" *ngIf="user.userRole == 'Supplier'"
+                       tooltip="Transactions" placement="right">
                     </i>
                     <span class="links_name" *ngIf="user.userRole == 'Supplier'">
                         Transactions
                     </span>        
                 </a>
-                <span class="tooltip" *ngIf="user.userRole == 'Buyer'">Cart</span>
-                <span class="tooltip" *ngIf="user.userRole == 'Supplier'">
-                    Transactions
-                </span>
+               
             </li>
             <li>
-                <a href="#">
-                    <i class="fas fa-gifts fa-lg"></i>
+                <a>
+                    <i class="fas fa-gifts fa-lg" tooltip="Gifts & Vouchers" placement="right">
+
+                    </i>
                     <span class="links_name">Gifts & Vouchers</span>
                 </a>
-                <span class="tooltip">Gifts & Vouchers</span>
+                
             </li>
             <li>
-                <a href="#">
-                    <i class="fas fa-hands-helping"></i>
+                <a>
+                    <i class="fas fa-hands-helping" tooltip="Help" placement="right" ></i>
                     <span class="links_name">Help</span>
                 </a>
-                <span class="tooltip">Help</span>
+                
             </li>
             <li>
-                <a href="#">
-                    <i class="fas fa-comments fa-lg"></i>
+                <a>
+                    <i class="fas fa-comments fa-lg" tooltip="Feedback" placement="right" >
+
+                    </i>
                     <span class="links_name">Feedback</span>
                 </a>
-                <span class="tooltip">Feedback</span>
+               
             </li>
         </ul>
         <div class="profile_content">
@@ -204,12 +209,53 @@
                         <div class="job">Make It Ease</div>
                     </div>
                 </div>
-                <i class="fa fa-sign-out-alt" id="log_out" (click)="logout()"></i>
+                <i class="fa fa-sign-out-alt" id="log_out" (click)="logout()"
+                   tooltip="Logout" placement="right">
+
+                </i>
             </div>
         </div>
     </div>
     <div class="home_content">
-        <div class="text">Home Content</div>
+        <div class="text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 box" *ngFor="let product of products;index as i;"
+                        (click)="gotoProducts(product)" 
+                    >
+                        <img src= "./assets/dress.png" alt="profile" class="product_img"
+                             *ngIf="i==0"     
+                        >
+                        <img src= "./assets/shoe.png" alt="profile" class="product_img"
+                             *ngIf="i==1"     
+                        >
+                        <img src= "./assets/watch.png" alt="profile" class="product_img"
+                             *ngIf="i==2"     
+                        >
+                        <img src= "./assets/mobile.png" alt="profile" class="product_img"
+                             *ngIf="i==3"     
+                        >
+                        <img src= "./assets/mbaccs.png" alt="profile" class="product_img"
+                             *ngIf="i==4"     
+                        >
+                        <img src= "./assets/cheppal.png" alt="profile" class="product_img"
+                             *ngIf="i==5"     
+                        >
+                        <img src= "./assets/fridge.png" alt="profile" class="product_img"
+                             *ngIf="i==6"     
+                        >
+                        <img src= "./assets/tv.png" alt="profile" class="product_img"
+                             *ngIf="i==7"     
+                        >
+                        <img src= "./assets/wmachine.png" alt="profile" class="product_img"
+                             *ngIf="i==8"     
+                        >
+                        <br>
+                        {{product}} 
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

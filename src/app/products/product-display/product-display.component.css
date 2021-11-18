@@ -8,7 +8,9 @@
 .product-display .topbar{
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
+  background-image: linear-gradient(135deg,  #4939f1, #3226bd, #4840a7, #372abe,  #4939f1);
+  box-sizing: border-box;
+  padding: 15px;
 }
 
 /*Filter*/

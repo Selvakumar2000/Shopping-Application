@@ -21,13 +21,15 @@ export class ProductsHomeComponent implements OnInit {
 
   products: string[] = ['Dresses', 'Shoes', 'Watches', 
                         'Mobile Phones', 'Mobile Accessories', 'Footwears',
-                        'Refrigerators', 'LED TVs', 'Washing Machines'];
-
+                        'Refrigerators', 'LED TVs', 'Washing Machines'
+                       ];
+  
+  
+  
   ngOnInit(): void {
   }
 
   hasvalue: boolean =false;
-  imgUrl: string = "./assets/profile.jpg";
   showPanel()
   {
     this.hasvalue = !this.hasvalue 

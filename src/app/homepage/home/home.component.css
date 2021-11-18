@@ -1,11 +1,10 @@
 .main{
     height: 100vh;
-    /* background-image: linear-gradient(135deg, #43CBFF 10%, #9708CC 100%); */
     background-image: linear-gradient(135deg,  #4939f1, #372cb6, #5e57a3, #7d76ce,  #766ce0);
 }
 
 .m-image{
-    margin-top: 90px;
+    margin-top: 140px;
     margin-left: -50px;
 }
 
@@ -18,9 +17,10 @@
     border: 3px solid #11101d;
 }
 
+
 .auth-form{
     margin-left: 50px;
-    margin-top: 90px;
+    margin-top: 170px;
 }
 
 .btn_login{

@@ -1,4 +1,5 @@
 export interface Products{
+    productId: number;
     productName: string;
     productBrand: string;
     productDescription: string;
@@ -6,4 +7,5 @@ export interface Products{
     originalPrice: number;
     discount: number;
     photoUrl: string;
+    category: string;
 }

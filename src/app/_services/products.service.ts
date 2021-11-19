@@ -12,8 +12,6 @@ import { Products } from '../_models/products';
 export class ProductsService {
 
   baseURL = environment.apiUrl;
-
-  products: Products[] = [];
   paginatedResult: PaginatedResult<Products[]> = new PaginatedResult<Products[]>();
   
   constructor(private http: HttpClient) { }

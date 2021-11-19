@@ -5,4 +5,6 @@ export class ProductUpload{
     amountRs: number;
     discount: number;
     category: string;
+    quantity: number;
+    gender: string;
 }

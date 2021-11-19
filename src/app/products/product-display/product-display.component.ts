@@ -1,11 +1,13 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { Pagination } from 'src/app/_models/pagination';
 import { Products } from 'src/app/_models/products';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
+import { OrderManagementService } from 'src/app/_services/order-management.service';
 import { ProductsService } from 'src/app/_services/products.service';
 
 @Component({
@@ -27,7 +29,8 @@ export class ProductDisplayComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private productService: ProductsService,
               private accountService: AccountService, private router: Router,
-              public modalService: BsModalService) { 
+              public modalService: BsModalService, private orderManagement: OrderManagementService,
+              private toastr: ToastrService) { 
                 
       this.accountService.currentUser$.pipe(take(1)).subscribe((response: User) => {
         this.userRole = response.userRole;
@@ -96,5 +99,25 @@ export class ProductDisplayComponent implements OnInit {
 
     this.modalRef.hide();
     this.getProducts();
+  }
+
+  addtoCart(product: Products)
+  {
+    this.orderManagement.addToCart(product).subscribe(response => {
+      if(response)
+      {
+        let responseStr = JSON.stringify(response);
+        let result = responseStr.split(" ")[0];
+        
+        if(result == '"Product')
+        {
+          this.toastr.success(response);
+        }
+        if(result == '"This')
+        {
+          this.toastr.warning(response);
+        }
+      } 
+    });
   }
 }

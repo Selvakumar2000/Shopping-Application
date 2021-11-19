@@ -2,7 +2,7 @@
     height: 100vh;
     /* background-image: linear-gradient( #43CBFF 10%, #9708CC 100%); */
     background-image: linear-gradient(135deg,  #8a8788, #dfd8cf, #a39c9c, #c7c2c5,  #9c969a);
-    overflow: hidden;
+    overflow: auto;
   }
   
 .product-display .topbar{

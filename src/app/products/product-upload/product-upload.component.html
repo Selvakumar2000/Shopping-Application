@@ -94,21 +94,45 @@
                             </small>
                         </div>
                         <div class="input-box">
-                            <span class="details required">Discount Rate</span>
+                            <span class="details">Discount Rate</span>
                             <input type="text" 
                                    name="discount"
-                                   #discount="ngModel"
                                    [(ngModel)]="productDetails.discount"
                                    placeholder="Ex. 15"
+                                   class="form-control"
+                            >
+                        </div>
+                        <div class="input-box">
+                            <span class="details required">Quantity</span>
+                            <input type="text" 
+                                   name="quantity"
+                                   #quantity="ngModel"
+                                   [(ngModel)]="productDetails.quantity"
+                                   placeholder="Ex. 1"
                                    class="form-control"
                                    required
                             >
                             <small class="text-danger"
-                                   [class.d-none] = "discount.valid || discount.untouched"
+                                   [class.d-none] = "quantity.valid || quantity.untouched"
                             >
-                                *Discount Rate is required
+                                *Quantity is required
                             </small>
-    
+                        </div>
+                        <div class="input-box">
+                            <span class="details required">Gender</span>
+                            <input type="text" 
+                                   name="gender"
+                                   #gender="ngModel"
+                                   [(ngModel)]="productDetails.gender"
+                                   placeholder="Ex. Male"
+                                   class="form-control"
+                                   required
+                            >
+                            <small class="text-danger"
+                                   [class.d-none] = "gender.valid || gender.untouched"
+                            >
+                                *Gender is required
+                            </small>
                         </div>
                         <div class="input-box">
                             <span class="details required">Category</span>
@@ -122,7 +146,7 @@
                 </form>
             </div>
             <div class="product-image">
-                <h3 class="required">Add Product Image</h3>
+                <h3 class="required">Add Product Image</h3><br>
                 <div class="image-drop">
                     <div class="drophere">
                         <div
@@ -131,7 +155,7 @@
                             Drop Your Product Image Here
                         </div>
                     </div> 
-                </div>
+                </div><br><br>
                 <div class="fromdevice">
                     <h6>File From Device</h6> 
                     <div class="fileUpload">

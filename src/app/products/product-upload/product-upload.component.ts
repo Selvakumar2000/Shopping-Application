@@ -50,6 +50,7 @@ export class ProductUploadComponent implements OnInit {
 
   ngOnInit(): void {
     this.productDetails.category = this.category;
+    this.productDetails.discount = 0;
   }
 
   getImgDetails(imageInput: any)
@@ -63,10 +64,8 @@ export class ProductUploadComponent implements OnInit {
   {
     this.file = imageInput.files[0];
     this.productService.uploadDetails(this.productDetails, this.file).subscribe(response => {
-        console.log(response);
         this.toastr.success('Product Added Successfully');
-        this.canUpload = true;
-        this.fileSize = 0;
+        this.resetForm();
     });
   }
 

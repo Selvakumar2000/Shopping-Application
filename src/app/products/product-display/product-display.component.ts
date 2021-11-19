@@ -22,7 +22,7 @@ export class ProductDisplayComponent implements OnInit {
   products: Products[] = [];
   pagination: Pagination;
   pageNumber: number = 1;
-  pageSize: number = 4;
+  pageSize: number = 12;
   gender: string = 'male';
   minPrice: number =  1;
   maxPrice: number = 100000;
@@ -92,7 +92,7 @@ export class ProductDisplayComponent implements OnInit {
   reset()
   {
     this.pageNumber = 1;
-    this.pageSize = 4;
+    this.pageSize = 12;
     this.gender = 'male';
     this.minPrice =  1;
     this.maxPrice = 100000;

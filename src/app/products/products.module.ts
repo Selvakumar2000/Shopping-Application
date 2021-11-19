@@ -19,6 +19,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { GiftsComponent } from './gifts/gifts.component';
 import { HelpComponent } from './help/help.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { DisplayGoodsComponent } from './display-goods/display-goods.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     TransactionsComponent,
     GiftsComponent,
     HelpComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    DisplayGoodsComponent
   ],
   imports: [
     CommonModule,

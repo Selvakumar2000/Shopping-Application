@@ -99,7 +99,7 @@
     border-radius: 20px;
     outline: none;
     border: none;
-    background: #f2f1f5;
+    background: #93b38b;
     padding-left: 50px;
     font-size: 25px;
     font-weight: 500;
@@ -109,22 +109,21 @@
 .sidebar.active ul li input{
     margin-left: 30px;
     width: 200px;
-    padding-left: 45px;
+    padding-left: 48px;
     font-size: 25px;
-    font-weight: 600;
+    font-weight: 700;
     color: rgb(7, 6, 6); 
 }
 
 .sidebar ul li .fa-medal{
     position: absolute;
     z-index: 99;
-    /* color: rgb(202, 199, 26); */
     font-size: 25px;
     transition: all 0.5s ease;
 }
 
 .sidebar.active ul li .fa-medal{
-    padding-left: 40px;
+    padding-left: 53px;
 }
 
 .sidebar ul li .fa-medal:hover{
@@ -147,6 +146,24 @@
     background: #fff;
     cursor: pointer;
 }
+
+.sidebar ul li .link-active{
+    background: #fff;
+    cursor: pointer;
+}
+
+.sidebar ul li a .icon-active{
+    color: #11101d;
+}
+
+/* .sidebar.active ul li .link-active{
+    background: #fff;
+    cursor: pointer;
+}
+
+.sidebar.active ul li a .icon-active{
+    color: #11101d;
+} */
 
 .sidebar ul li i{
     height: 50px;

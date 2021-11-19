@@ -13,37 +13,41 @@
             <li>
                 <i class="fas fa-medal fa-lg" [tooltip]="userRole" placement="right"
                    [style.color]="user.userRole == 'Buyer' ? 'black' : user.userRole == 'GoldBuyer' ?
-                   'rgb(202, 199, 26)' : user.userRole == 'Supplier' ? 'black' : 'rgb(202, 199, 26)' "   
+                   'rgb(255, 255, 7)' : user.userRole == 'Supplier' ? 'black' : 'rgb(255, 255, 7)' "   
                 >
                 </i>
                 <input type="text" placeholder={{user.userRole}} readonly>
             </li>
             <li>
-                <a (click)="showDashboard()">
+                <a (click)="showDashboard()" [class.link-active]=" dashboardPanel && !hasvalue">
                     <i class="fas fa-th-large fa-lg" [tooltip]="dashboard"
-                       placement="right"
+                       placement="right" [class.icon-active]="dashboardPanel && !hasvalue"
                     >
                     </i>
                     <span class="links_name">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a (click)="showUserPanel()">
-                    <i class="fas fa-user fa-lg" [tooltip]="paneluser" placement="right"></i>
+                <a (click)="showUserPanel()" [class.link-active]="userPanel && !hasvalue">
+                    <i class="fas fa-user fa-lg" [tooltip]="paneluser" placement="right"
+                       [class.icon-active]="userPanel && !hasvalue"
+                    >
+                    </i>
                     <span class="links_name">User</span>
                 </a>  
             </li>
             <li>
-                <a (click)="showOrdersProducts()">
+                <a (click)="showOrdersProducts()" [class.link-active]="ordersPanel && uploads && !hasvalue">
                     <i class="fas fa-shopping-cart fa-lg" [tooltip]="orders" placement="right"
                        *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'"
+                       [class.icon-active]="ordersPanel && !hasvalue"
                     ></i>
                     <span class="links_name" 
                           *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'">
                         Orders
                     </span>
                     <i class="fas fa-shopping-cart fa-lg" [tooltip]="productsUp" 
-                       placement="right" 
+                       placement="right" [class.icon-active]="uploads && !hasvalue"
                        *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'"></i>
                     <span class="links_name"
                           *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'">
@@ -52,9 +56,9 @@
                 </a>
             </li>
             <li>
-                <a (click)="showCartsTransactions()">
+                <a (click)="showCartsTransactions()" [class.link-active]="carts&&  transaction && !hasvalue">
                     <i class="fas fa-heart fa-lg" *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'"
-                       [tooltip]="cart" placement="right">
+                       [tooltip]="cart" placement="right" [class.icon-active]="carts && !hasvalue">
                     </i>
                     <span class="links_name"
                           *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'">
@@ -62,7 +66,7 @@
                     </span>
                     <i class="fas fa-hand-holding-usd fa-lg"  
                        *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'"
-                       [tooltip]="transactions" placement="right">
+                       [tooltip]="transactions" placement="right" [class.icon-active]=" transaction && !hasvalue">
                     </i>
                     <span class="links_name"
                           *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'">
@@ -71,23 +75,28 @@
                 </a>
             </li>
             <li>
-                <a (click)="showGifts()">
-                    <i class="fas fa-gifts fa-lg" [tooltip]="gifts" placement="right">
+                <a (click)="showGifts()" [class.link-active]="giftsPanel && !hasvalue">
+                    <i class="fas fa-gifts fa-lg" [tooltip]="gifts" placement="right"
+                       [class.icon-active]="giftsPanel && !hasvalue"
+                    >
 
                     </i>
                     <span class="links_name">Gifts & Vouchers</span>
                 </a>
             </li>
             <li>
-                <a (click)="showHelp()">
-                    <i class="fas fa-hands-helping" [tooltip]="help" placement="right" ></i>
+                <a (click)="showHelp()" [class.link-active]="helps && !hasvalue">
+                    <i class="fas fa-hands-helping" [tooltip]="help" placement="right" 
+                       [class.icon-active]="helps && !hasvalue"
+                    ></i>
                     <span class="links_name">Help</span>
                 </a>
             </li>
             <li>
-                <a (click)="showFeedback()">
-                    <i class="fas fa-comments fa-lg" [tooltip]="feedback" placement="right" >
-
+                <a (click)="showFeedback()" [class.link-active]="feedbacks && !hasvalue">
+                    <i class="fas fa-comments fa-lg" [tooltip]="feedback" placement="right"
+                       [class.icon-active]="feedbacks && !hasvalue"
+                    >   
                     </i>
                     <span class="links_name">Feedback</span>
                 </a>

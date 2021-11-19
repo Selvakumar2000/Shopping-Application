@@ -49,7 +49,7 @@ export class ProductsService {
   }
 
   //upload product
-  public uploadDetails(productDetails: any, image: File)
+  uploadDetails(productDetails: any, image: File)
   {
     const formData = new FormData();
 
@@ -58,6 +58,12 @@ export class ProductsService {
     
     return this.http.post(this.baseURL + 'products/add-product', formData,
     {responseType: 'text'});
+  }
+
+  //Get Uploaded ProductDetails
+  getUploadedProducts()
+  {
+    return this.http.get<Products[]>(this.baseURL + 'products/get-products');
   }
 
 }

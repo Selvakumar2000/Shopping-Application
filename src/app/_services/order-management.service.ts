@@ -17,4 +17,10 @@ export class OrderManagementService {
   {
     return this.http.post(this.baseURL + 'ordermanagement/addto-cart', product, {responseType: 'text'});
   }
+
+  //Get Cart Products
+  getCartProducts()
+  {
+    return this.http.get<Products[]>(this.baseURL + 'ordermanagement/get-products');
+  }
 }

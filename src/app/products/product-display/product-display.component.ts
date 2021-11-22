@@ -120,4 +120,9 @@ export class ProductDisplayComponent implements OnInit {
       } 
     });
   }
+
+  buyProduct(product: Products)
+  {
+
+  }
 }

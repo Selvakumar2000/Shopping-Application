@@ -6,10 +6,12 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import{BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     CommonModule,

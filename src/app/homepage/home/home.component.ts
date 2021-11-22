@@ -1,10 +1,11 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, NgForm, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { Login } from 'src/app/_models/login';
+import { ResetModel } from 'src/app/_models/resetModal';
 import { AccountService } from 'src/app/_services/account.service';
 
 @Component({
@@ -17,8 +18,10 @@ export class HomeComponent implements OnInit {
   hide: boolean = true; //password show/hidden icon
   reghide: boolean = true;
   model: Login = new Login();
+  resetModel: ResetModel = new ResetModel();
   registerForm: FormGroup;
   bsConfig: Partial<BsDatepickerConfig>;
+  @ViewChild('resetPasswordForm') resetPasswordForm: NgForm;
 
   constructor(public modalService: BsModalService, public fb: FormBuilder,
               private accountService: AccountService, private toastr: ToastrService,
@@ -29,6 +32,8 @@ export class HomeComponent implements OnInit {
         containerClass: 'theme-default',
         dateInputFormat: 'DD MMMM YYYY'    
       }
+
+      this.resetModel.clientUrl = 'https://localhost:4200/resetpassword'
   }
 
   ngOnInit(): void {
@@ -84,7 +89,6 @@ export class HomeComponent implements OnInit {
 
   register()
   {
-    console.log(this.registerForm.value);
     this.accountService.register(this.registerForm.value).subscribe(response => {
       this.modalRef.hide();
       this.toastr.success('Registeration Successful');
@@ -102,15 +106,29 @@ export class HomeComponent implements OnInit {
 
   loginTrouble()
   {
-
+    this.accountService.loginTrouble(this.resetModel).subscribe(response => {
+      this.toastr.warning(response);
+      this.resetPasswordForm.reset();
+      this.modalRef.hide();
+    });
   }
 
-  //filter modal
   config: ModalOptions = {
     backdrop: 'static',
     keyboard: false,
     class: 'modal-lg' 
   };
+
+  config1: ModalOptions = {
+    backdrop: 'static',
+    keyboard: false,
+    class: 'modal-lg'
+  };
+
+  passwordResetModal(passwordReset: TemplateRef<any>)
+  {
+    this.modalRef = this.modalService.show(passwordReset, this.config1);
+  }
 
   modalRef: BsModalRef;
   showSignInModal(signInModal: TemplateRef<any>)

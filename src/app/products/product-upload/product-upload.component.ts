@@ -1,16 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FileItem, FileUploader } from 'ng2-file-upload';
 import { ToastrService } from 'ngx-toastr';
 import { map, take } from 'rxjs/operators';
-import { Login } from 'src/app/_models/login';
-import { Products } from 'src/app/_models/products';
 import { ProductUpload } from 'src/app/_models/productUpload';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { ProductsService } from 'src/app/_services/products.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-upload',

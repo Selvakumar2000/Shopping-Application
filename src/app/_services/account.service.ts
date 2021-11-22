@@ -44,6 +44,16 @@ export class AccountService {
     );
   }
 
+  loginTrouble(model: any)
+  {
+    return this.http.post(this.baseURL + 'account/resetpasswordlink', model, {responseType: 'text'});
+  }
+
+  resetPassword(model: any)
+  {
+    return this.http.post(this.baseURL + 'account/resetpassword', model, {responseType: 'text'});
+  }
+
   setCurrentUser(user:User)
   {
     localStorage.setItem('user',JSON.stringify(user));

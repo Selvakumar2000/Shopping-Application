@@ -67,7 +67,7 @@
                     <a (click)="showSignInModal(signInModal)">
                         <h5 class="ml-4"><u>Create New Account</u></h5>
                     </a>
-                    <a (click)="loginTrouble()">
+                    <a (click)="passwordResetModal(passwordReset)">
                         <h5 class="ml-5"><u>Trouble Logging In?</u></h5>
                     </a>
                 </div>
@@ -75,6 +75,66 @@
         </div>
     </div>
 </div>
+
+<ng-template #passwordReset>
+    <div class="modal-header">
+        <h2 style="margin-left: 2px; font-weight: 700;">
+            ShopMe
+        </h2>
+        <i class="fas fa-shopping-cart fa-2x main-cart"></i>
+        <div class="title" style="margin-left: 130px; margin-top: 10px;">
+            Reset Password
+        </div>
+        <button type="button" class="btn-close close pull-right"
+                (click)="modalRef.hide()" style="cursor: pointer;">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="container formcontainer">
+            <form #resetPasswordForm="ngForm"  
+                  autocomplete="off" (ngSubmit)="loginTrouble()">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details required">Username</span>
+                        <input type="text" 
+                               class="form-control"
+                               name="username"
+                               #username="ngModel" 
+                               [(ngModel)]="resetModel.username" 
+                               placeholder="Enter your userName"
+                               required
+                        >
+                        <small class="text-danger" [class.d-none] = "username.valid || username.untouched">
+                            *Username is required
+                        </small>
+                    </div>
+                    <div class="input-box">
+                        <span class="details required">Email</span>
+                        <input type="email"
+                               class="form-control"
+                               name="email"
+                               #email="ngModel"
+                               [(ngModel)]="resetModel.email"
+                               placeholder="Enter your email"
+                               required
+                        >
+                        <small class="text-danger" [class.d-none] = "email.valid || email.untouched">
+                            *Email is required
+                       </small>
+                    </div>
+                </div>
+                <div class="button">
+                    <button [class.btndisable]="resetPasswordForm.form.invalid"
+                            [class.btnok]="resetPasswordForm.form.valid"
+                            [disabled]="resetPasswordForm.form.invalid">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div> 
+</ng-template>
 
 <ng-template #signInModal>
     <div class="modal-header">
@@ -148,7 +208,7 @@
                             </small>
                         </div>
                     </div>
-                     <div class="input-box">
+                    <div class="input-box">
                         <span class="details required">Username</span>
                         <input 
                             type="text" 
@@ -270,12 +330,12 @@
                             formControlName="password"
                             class="form-control"
                             autocomplete="off"
-                            >
+                        >
                         <i *ngIf="!reghide" class="fas fa-eye fa-lg r-eye-icon" 
                             (click)="regEye()"></i>
                         <i *ngIf="reghide" class="fas fa-eye-slash fa-lg r-eye-icon"
                            (click)="regEye()"></i>
-                           <div *ngIf="registerForm.get('password').touched && 
+                        <div *ngIf="registerForm.get('password').touched && 
                            registerForm.get('password').invalid">
                            <small class="text-danger"
                                   *ngIf="registerForm.get('password').errors['required']">

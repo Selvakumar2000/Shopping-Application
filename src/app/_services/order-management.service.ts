@@ -15,12 +15,12 @@ export class OrderManagementService {
   //Add to cart
   addToCart(product: Products)
   {
-    return this.http.post(this.baseURL + 'ordermanagement/addto-cart', product, {responseType: 'text'});
+    return this.http.post(this.baseURL + 'ordermanagement/addtocart', product, {responseType: 'text'});
   }
 
   //Get Cart Products
   getCartProducts()
   {
-    return this.http.get<Products[]>(this.baseURL + 'ordermanagement/get-products');
+    return this.http.get<Products[]>(this.baseURL + 'ordermanagement/cartproducts');
   }
 }

@@ -17,13 +17,14 @@ import { ProductsService } from 'src/app/_services/products.service';
 })
 export class ProductDisplayComponent implements OnInit {
 
+  user: User;
   userRole: string;
   category: string;
   products: Products[] = [];
   pagination: Pagination;
   pageNumber: number = 1;
   pageSize: number = 12;
-  gender: string = 'male';
+  gender: string;
   minPrice: number =  1;
   maxPrice: number = 100000;
 
@@ -33,7 +34,9 @@ export class ProductDisplayComponent implements OnInit {
               private toastr: ToastrService) { 
                 
       this.accountService.currentUser$.pipe(take(1)).subscribe((response: User) => {
-        this.userRole = response.userRole;
+        this.user = response;
+        this.userRole = this.user.userRole;
+        this.gender = this.user.gender;
       })    
       
   }
@@ -72,9 +75,9 @@ export class ProductDisplayComponent implements OnInit {
 
   //filter modal
   genderList = [
-    { value: 'male', display: 'Men' },
-    { value: 'female', display: 'Women' },
-    { value: 'kids', display: 'Kids' },
+    { value: 'Male', display: 'Men' },
+    { value: 'Female', display: 'Women' },
+    { value: 'Kids', display: 'Kids' },
   ];
 
   config: ModalOptions = {
@@ -93,8 +96,8 @@ export class ProductDisplayComponent implements OnInit {
   {
     this.pageNumber = 1;
     this.pageSize = 12;
-    this.gender = 'male';
     this.minPrice =  1;
+    this.gender = this.user.gender;
     this.maxPrice = 100000;
 
     this.modalRef.hide();

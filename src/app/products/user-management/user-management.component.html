@@ -1,1 +1,126 @@
-<p>user-management works!</p>
+<div class="userprofile">
+    <div class="profile">
+        <div class="image">
+            <img src="{{userDetails.photoUrl || './assets/user.png'}}" alt="user-image">
+            <div class="fileUpload">
+                <label class="camera">
+                    <input #imageInput type="file" accept="image/*"
+                           (change)="processFile(imageInput)">
+                    <i class="fas fa-camera"></i>
+                </label>
+            </div>
+        </div>
+        <div class="details" *ngIf="fileName && fileSize">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="50%">File Name</th>
+                        <th>File Size</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>{{fileName}}</strong></td>
+                        <td *ngIf="fileSize">
+                            {{fileSize/1024/1024 | number:'1.2-3'}} MB
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container formcontainer">
+        <form #userdetailsForm="ngForm" (ngSubmit)="updateDetails(imageInput)" autocomplete="off">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Full Name</span>
+                    <input
+                        type="text"
+                        placeholder="Enter your name"
+                        class="form-control"
+                        name="fullname"
+                        [(ngModel)]="userDetails.fullname"                    
+                    >
+                </div>
+                <div class="input-box">
+                    <span class="details">Username</span>
+                    <input 
+                        type="text" 
+                        placeholder="Enter your username" 
+                        class="form-control"
+                        name="username"
+                        [(ngModel)]="userDetails.userName"                    
+                    >
+                </div> 
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    <input 
+                        type="email" 
+                        placeholder="Enter your email" 
+                        class="form-control"
+                        name="email"
+                        [(ngModel)]="userDetails.email"                    
+                    >
+                </div> 
+                <div class="input-box">
+                    <span class="details">Phone Number</span>
+                    <input 
+                        type="tel" 
+                        placeholder="Enter your phone number" 
+                        class="form-control"
+                        name="phoneNumber"
+                        [(ngModel)]="userDetails.phoneNumber"                    
+                    >
+                </div> 
+                <div class="input-box">
+                    <span class="details">City</span>
+                    <input 
+                        type="text" 
+                        placeholder="Enter your city"
+                        class="form-control"
+                        name="city"
+                        [(ngModel)]="userDetails.city"
+                    >
+                </div>
+                <div class="input-box">
+                    <span class="details">State</span>
+                    <input 
+                        type="text" 
+                        placeholder="Enter your state" 
+                        class="form-control"
+                        name="state"
+                        [(ngModel)]="userDetails.state"
+                    >
+                </div>
+                <div class="input-box">
+                    <span class="details">Country</span>
+                    <input 
+                        type="text" 
+                        placeholder="Enter your country"
+                        class="form-control"
+                        name="country"
+                        [(ngModel)]="userDetails.country"
+                    >
+                </div>  
+                <div class="input-box">
+                    <span class="details">Role</span>
+                    <select name="role" [(ngModel)]="userDetails.userRole">
+                        <option disabled>Update Your Role</option>
+                        <option *ngFor="let role of userRoles" [value]="role.value">
+                            {{role.display}}
+                        </option>
+                    </select>
+                </div>  
+            </div>
+            <div class="button">
+                <button [class.btndisable]="userdetailsForm.form.pristine && !file"
+                        [class.btnok]="!userdetailsForm.form.pristine || file"
+                        [disabled]="userdetailsForm.form.pristine && !file"
+                        type="submit">
+                    Update
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+

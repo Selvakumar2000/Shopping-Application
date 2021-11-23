@@ -2,8 +2,9 @@
     position: relative;
     min-height: 100vh;
     width: 100%;
-    overflow: auto;
-    background-image: linear-gradient(135deg,  #e9dde2, #e4dcdc, #d4c5c5, #dfd7dc,  #cec0c4);
+    overflow-x: hidden;
+    /* background-image: linear-gradient(135deg,  #e9dde2, #e4dcdc, #d4c5c5, #dfd7dc,  #cec0c4); */
+    background-color: #fff;
 }
 
 .sidebar{

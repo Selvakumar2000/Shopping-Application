@@ -1,0 +1,133 @@
+.userprofile .profile{
+    display: flex;
+}
+
+.userprofile .profile .details{
+    width: 450px;
+    margin-top: 90px;
+    margin-left: 90px;
+}
+
+.profile .image img{
+    height: 250px;
+    width: 250px;
+    border: 5px solid rgb(56, 45, 104);
+    border-radius: 25px;
+    margin-top: 10px;
+    margin-left: 550px;
+    position: absolute;
+}
+
+input[type="file"]
+{
+  display: none;
+}
+
+.camera{
+    position: relative;
+    margin-top: 230px;
+    margin-left: 770px;
+    cursor: pointer;
+}
+
+.fa-camera{
+    color: black;
+    font-size: 25px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.fa-camera:hover{
+    color: rgb(35, 35, 173);
+}
+
+.formcontainer{
+    width: max-content;
+    margin-left:250px;
+} 
+.formcontainer form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+form .user-details .input-box{
+    width: 50%;
+    margin-bottom: 15px;
+}
+
+.user-details .input-box .details{
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.user-details .input-box input{
+    height: 50px;
+    width: 350px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid rgb(114, 111, 111);
+    padding-left: 15px;
+    font-size: 18px;
+    border-bottom-width: 5px;
+    transition: all 0.3s ease;
+    color: rgb(112, 110, 110);
+}
+
+.user-details .input-box select{
+    height: 50px;
+    width: 350px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid rgb(114, 111, 111);
+    padding-left: 15px;
+    font-size: 18px;
+    border-bottom-width: 5px;
+    transition: all 0.3s ease;
+    color: rgb(112, 110, 110);
+    cursor: pointer;
+}
+
+.user-details .input-box select option{
+    color: black;
+} 
+
+form .button .btnok{
+    margin-left: 340px;
+    width: 220px;
+    height: 50px;
+    font-size: 19px;
+    font-weight: 700;
+    border-radius: 10px; 
+    letter-spacing: 1px;
+    color: #fff;
+    border: none;
+    background-color: rgb(67, 67, 202);
+}
+
+form .button .btnok:hover{
+    background-color: rgb(22, 22, 158);
+    cursor: pointer;
+}
+
+form .button .btndisable{
+    margin-left: 340px;
+    width: 220px;
+    height: 50px;
+    font-size: 19px;
+    font-weight: 700;
+    border-radius: 10px; 
+    letter-spacing: 1px;
+    color: #fff;
+    border: none;
+    outline-color: none;
+    background-color: rgb(63, 63, 104);
+}
+
+form .button .btndisable:hover{
+   cursor: not-allowed;
+
+}

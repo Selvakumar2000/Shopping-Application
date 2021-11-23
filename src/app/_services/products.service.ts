@@ -22,23 +22,16 @@ export class ProductsService {
   {
     let params = new HttpParams();
 
-    if(page !== null && itemsPerPage !== null && category !== null && minPrice !== null &&
-       maxPrice !== null && gender !== null)
-    {
-      params = params.append('category', category);
-      params = params.append('gender', gender);
-      params = params.append('minPrice', minPrice.toString());
-      params = params.append('maxPrice', maxPrice.toString());
-      params = params.append('pageNumber', page.toString());
-      params = params.append('pageSize', itemsPerPage.toString());
-      
-    }
+    params = params.append('category', category);
+    params = params.append('gender', gender);
+    params = params.append('minPrice', minPrice.toString());
+    params = params.append('maxPrice', maxPrice.toString());
+    params = params.append('pageNumber', page.toString());
+    params = params.append('pageSize', itemsPerPage.toString());
 
     return this.http.get<Products[]>(
                      this.baseURL + 'products', {observe:'response',params}
-                                    )
-    .pipe(map(response => {
-
+                                    ).pipe(map(response => {
         this.paginatedResult.result = response.body;
         if(response.headers.get('Pagination') !== null)
         {
@@ -56,14 +49,14 @@ export class ProductsService {
     formData.append('productDetails', JSON.stringify(productDetails));
     formData.append('file', image);
     
-    return this.http.post(this.baseURL + 'products/add-product', formData,
+    return this.http.post(this.baseURL + 'products/upload-product', formData,
     {responseType: 'text'});
   }
 
   //Get Uploaded ProductDetails
   getUploadedProducts()
   {
-    return this.http.get<Products[]>(this.baseURL + 'products/get-products');
+    return this.http.get<Products[]>(this.baseURL + 'products/uploadedproducts');
   }
 
 }

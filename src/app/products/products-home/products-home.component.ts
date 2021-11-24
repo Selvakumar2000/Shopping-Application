@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AfterContentChecked, Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { User } from 'src/app/_models/user';
@@ -11,14 +11,15 @@ import { AccountService } from 'src/app/_services/account.service';
 })
 export class ProductsHomeComponent implements OnInit{
 
-  user: User;
+  user: any;
   userRole: string;
+  userphotoUrl: string;
 
   constructor(private accountService: AccountService, private router: Router) { 
     this.accountService.currentUser$.pipe(take(1)).subscribe(response => {
       this.user = response;
       this.userRole = this.user.userRole;
-    })
+    });    
   }
 
   ngOnInit(): void {

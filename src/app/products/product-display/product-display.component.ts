@@ -17,10 +17,10 @@ import { ProductsService } from 'src/app/_services/products.service';
 })
 export class ProductDisplayComponent implements OnInit {
 
-  user: User;
+  user: any;
   userRole: string;
   category: string;
-  products: Products[] = [];
+  products: any;
   pagination: Pagination;
   pageNumber: number = 1;
   pageSize: number = 12;

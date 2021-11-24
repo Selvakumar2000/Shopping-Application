@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { UpdateDetails } from 'src/app/_models/updateDetails';
+import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { UserService } from 'src/app/_services/user.service';
 
@@ -14,6 +15,7 @@ import { UserService } from 'src/app/_services/user.service';
 export class UserManagementComponent implements OnInit {
 
   @ViewChild('userdetailsForm') userdetailsForm: NgForm;
+  user: any;
   userRole: string;
   userDetails: UpdateDetails = new UpdateDetails();
   userRoles: any;
@@ -30,6 +32,7 @@ export class UserManagementComponent implements OnInit {
   constructor(private accountService: AccountService, private usersService: UserService,
               private toastr: ToastrService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(response => {
+      this.user = response;
       this.userRole = response.userRole;
     })
    }
@@ -64,6 +67,8 @@ export class UserManagementComponent implements OnInit {
       this.fileSize = 0;
       this.fileName = null;
       this.getUserDetails();
+      this.user.photoUrl = this.userDetails.photoUrl;
+      this.accountService.setCurrentUser(this.user)
     })
   }
 

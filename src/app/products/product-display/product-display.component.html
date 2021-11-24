@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="dropdown">
-                <img id="img" src="./assets/profile.jpg" alt="user">
+                <img id="img" src="{{user.photoUrl || './assets/user.png'}}" alt="user">
                 <div class="dropdown-content">
                     <a routerLink='/products'>Dashboard</a>
                     <a (click)="logout()">LogOut</a>
@@ -182,4 +182,3 @@
         </div>
     </div> 
 </ng-template>
-

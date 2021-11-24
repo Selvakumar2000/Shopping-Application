@@ -2,7 +2,8 @@
     <div class="sidebar" [class.active]="hasvalue">
         <div class="logo_content">
             <div class="logo">
-                <img src="./assets/profile.jpg" alt="profile" class="profile_img" *ngIf="hasvalue">
+                <img src="{{user.photoUrl || './assets/user.png'}}" alt="profile"
+                     class="profile_img" *ngIf="hasvalue">
                 <div class="logo_name">{{user.username | titlecase}}</div>
             </div>
             <i class="fas fa-bars" id="btn" (click)="showPanel()"
@@ -118,6 +119,7 @@
         </div>
     </div>
     <div class="home_content">
+        <!-- <h2>{{user | json}}</h2> -->
         <app-dashboard *ngIf="dashboardPanel"> </app-dashboard>
         <app-user-management *ngIf="userPanel"></app-user-management>
         <div *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'">
@@ -137,4 +139,3 @@
         <app-feedback *ngIf="feedbacks"></app-feedback>
     </div>
 </div>
-

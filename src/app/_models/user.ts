@@ -6,4 +6,8 @@ export class User{
     phoneNumber: string;
     gender: string;
     userRole: string;
+    photoUrl: string;
+    city: string;
+    state: string;
+    country: string;
 }

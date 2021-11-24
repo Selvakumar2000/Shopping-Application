@@ -16,7 +16,7 @@ import { ProductsService } from 'src/app/_services/products.service';
 export class ProductUploadComponent implements OnInit {
 
   category: string;
-  user: User;
+  user: any;
   productDetails: ProductUpload = new ProductUpload();
   file: File;
   fileName: string;
@@ -80,4 +80,3 @@ export class ProductUploadComponent implements OnInit {
   }
 
 }
-

@@ -13,15 +13,15 @@ export class AccountService {
 
   baseURL = environment.apiUrl;
   
-  private currentUserSource=new ReplaySubject<User>(1);
-  currentUser$=this.currentUserSource.asObservable();
+  currentUserSource = new ReplaySubject<any>(1);
+  currentUser$ = this.currentUserSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
-  register(model:any)
+  register(model: any)
   {
     return this.http.post(this.baseURL + 'account/Register', model).pipe(
-      map((user:User)=>   
+      map((user: any)=>   
       {
         if(user)
         {
@@ -31,12 +31,12 @@ export class AccountService {
     );
   }
 
-  login(model:any)
+  login(model: any)
   {
     return this.http.post(this.baseURL + 'account/Login', model).pipe(
-      map((response: User)=>   
+      map((response: any)=>   
       {
-        const user=response;
+        const user = response;
         if(user)
         {
           this.setCurrentUser(user);
@@ -55,15 +55,10 @@ export class AccountService {
     return this.http.post(this.baseURL + 'account/resetpassword', model, {responseType: 'text'});
   }
 
-  setCurrentUser(user:User)
+  setCurrentUser(user: any)
   {
     localStorage.setItem('user',JSON.stringify(user));
     this.currentUserSource.next(user);
-  }
-
-  getDecodedToken(token)
-  {
-    return JSON.parse(atob(token.split('.')[1])); //access the payload
   }
 
   logout()
@@ -71,7 +66,4 @@ export class AccountService {
     localStorage.removeItem('user');
     this.currentUserSource.next(null);
   }
-
- 
-
 }

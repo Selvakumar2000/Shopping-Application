@@ -18,10 +18,9 @@ import { ProductsService } from 'src/app/_services/products.service';
 export class ProductDisplayComponent implements OnInit {
 
   user: any;
-  userRole: string;
   category: string;
   products: any;
-  pagination: Pagination;
+  pagination: any;
   pageNumber: number = 1;
   pageSize: number = 12;
   gender: string;
@@ -33,9 +32,8 @@ export class ProductDisplayComponent implements OnInit {
               public modalService: BsModalService, private orderManagement: OrderManagementService,
               private toastr: ToastrService) { 
                 
-      this.accountService.currentUser$.pipe(take(1)).subscribe((response: User) => {
+      this.accountService.currentUser$.pipe(take(1)).subscribe(response => {
         this.user = response;
-        this.userRole = this.user.userRole;
         this.gender = this.user.gender;
       })    
       
@@ -56,8 +54,12 @@ export class ProductDisplayComponent implements OnInit {
     this.productService.getProducts(this.category, this.gender, this.minPrice, 
                                     this.maxPrice, this.pageNumber, this.pageSize )
                        .subscribe(response => { 
-      this.products = response.result;
-      this.pagination = response.pagination;
+      this.products = response.body;
+
+      if(response.headers.get('Pagination') !== null)
+      {
+        this.pagination = JSON.parse(response.headers.get('Pagination'));
+      }
     });
   }
 

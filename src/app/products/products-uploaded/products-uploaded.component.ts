@@ -9,7 +9,7 @@ import { ProductsService } from 'src/app/_services/products.service';
 })
 export class ProductsUploadedComponent implements OnInit {
 
-  products: Products[] = [];
+  products: any;
   
   constructor(private productsService: ProductsService) { }
 
@@ -18,7 +18,7 @@ export class ProductsUploadedComponent implements OnInit {
   }
 
   getUploadedProducts()
-  {
+  { 
     this.productsService.getUploadedProducts().subscribe(response => {
       this.products = response;
     });

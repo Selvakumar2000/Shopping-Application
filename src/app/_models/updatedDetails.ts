@@ -1,4 +1,4 @@
-export class UpdateDetails{
+export class UpdatedDetails{
     fullname: string;
     userName: string;
     email: string;

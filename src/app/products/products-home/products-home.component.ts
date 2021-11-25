@@ -35,12 +35,10 @@ export class ProductsHomeComponent implements OnInit{
   gifts: string = "Gifts & Vouchers";
   help: string = "Help";
   feedback: string = "Feedback";
-  position: string = "left"
   hasvalue: boolean =false;
 
   showPanel()
   {
-    console.log('show');
     this.hasvalue = !this.hasvalue 
 
     if(this.hasvalue)
@@ -55,7 +53,6 @@ export class ProductsHomeComponent implements OnInit{
       this.gifts = "";
       this.help = "";
       this.feedback = "";
-      this.position = "top";
     }
     else
     {

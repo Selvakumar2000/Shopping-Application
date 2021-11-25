@@ -7,12 +7,12 @@
                 <div class="logo_name">{{user.username | titlecase}}</div>
             </div>
             <i class="fas fa-bars" id="btn" (click)="showPanel()"
-               tooltip="Menu" placement="bottom">
+               title="Menu">
             </i>
         </div>
         <ul class="nav_list">
             <li>
-                <i class="fas fa-medal fa-lg" [tooltip]="userRole" placement="right"
+                <i class="fas fa-medal fa-lg" [title]="userRole" 
                    [style.color]="user.userRole == 'Buyer' ? 'black' : user.userRole == 'GoldBuyer' ?
                    'rgb(255, 255, 7)' : user.userRole == 'Supplier' ? 'black' : 'rgb(255, 255, 7)' "   
                 >
@@ -21,8 +21,8 @@
             </li>
             <li>
                 <a (click)="showDashboard()" [class.link-active]=" dashboardPanel && !hasvalue">
-                    <i class="fas fa-th-large fa-lg" [tooltip]="dashboard"
-                       placement="right" [class.icon-active]="dashboardPanel && !hasvalue"
+                    <i class="fas fa-th-large fa-lg" [title]="dashboard"
+                       [class.icon-active]="dashboardPanel && !hasvalue"
                     >
                     </i>
                     <span class="links_name">Dashboard</span>
@@ -30,7 +30,7 @@
             </li>
             <li>
                 <a (click)="showUserPanel()" [class.link-active]="userPanel && !hasvalue">
-                    <i class="fas fa-user fa-lg" [tooltip]="paneluser" placement="right"
+                    <i class="fas fa-user fa-lg" [title]="paneluser" 
                        [class.icon-active]="userPanel && !hasvalue"
                     >
                     </i>
@@ -39,7 +39,7 @@
             </li>
             <li>
                 <a (click)="showOrdersProducts()" [class.link-active]="ordersPanel && uploads && !hasvalue">
-                    <i class="fas fa-shopping-cart fa-lg" [tooltip]="orders" placement="right"
+                    <i class="fas fa-shopping-cart fa-lg" [title]="orders" 
                        *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'"
                        [class.icon-active]="ordersPanel && !hasvalue"
                     ></i>
@@ -47,8 +47,8 @@
                           *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'">
                         Orders
                     </span>
-                    <i class="fas fa-shopping-cart fa-lg" [tooltip]="productsUp" 
-                       placement="right" [class.icon-active]="uploads && !hasvalue"
+                    <i class="fas fa-shopping-cart fa-lg" [title]="productsUp" 
+                       [class.icon-active]="uploads && !hasvalue"
                        *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'"></i>
                     <span class="links_name"
                           *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'">
@@ -59,7 +59,7 @@
             <li>
                 <a (click)="showCartsTransactions()" [class.link-active]="carts&&  transaction && !hasvalue">
                     <i class="fas fa-heart fa-lg" *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'"
-                       [tooltip]="cart" placement="right" [class.icon-active]="carts && !hasvalue">
+                       [title]="cart" [class.icon-active]="carts && !hasvalue">
                     </i>
                     <span class="links_name"
                           *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'">
@@ -67,7 +67,7 @@
                     </span>
                     <i class="fas fa-hand-holding-usd fa-lg"  
                        *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'"
-                       [tooltip]="transactions" placement="right" [class.icon-active]=" transaction && !hasvalue">
+                       [title]="transactions" [class.icon-active]=" transaction && !hasvalue">
                     </i>
                     <span class="links_name"
                           *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'">
@@ -77,7 +77,7 @@
             </li>
             <li>
                 <a (click)="showGifts()" [class.link-active]="giftsPanel && !hasvalue">
-                    <i class="fas fa-gifts fa-lg" [tooltip]="gifts" placement="right"
+                    <i class="fas fa-gifts fa-lg" [title]="gifts"
                        [class.icon-active]="giftsPanel && !hasvalue"
                     >
 
@@ -87,7 +87,7 @@
             </li>
             <li>
                 <a (click)="showHelp()" [class.link-active]="helps && !hasvalue">
-                    <i class="fas fa-hands-helping" [tooltip]="help" placement="right" 
+                    <i class="fas fa-hands-helping" [title]="help"
                        [class.icon-active]="helps && !hasvalue"
                     ></i>
                     <span class="links_name">Help</span>
@@ -95,7 +95,7 @@
             </li>
             <li>
                 <a (click)="showFeedback()" [class.link-active]="feedbacks && !hasvalue">
-                    <i class="fas fa-comments fa-lg" [tooltip]="feedback" placement="right"
+                    <i class="fas fa-comments fa-lg" [title]="feedback"
                        [class.icon-active]="feedbacks && !hasvalue"
                     >   
                     </i>
@@ -113,14 +113,13 @@
                     </div>
                 </div>
                 <i class="fa fa-sign-out-alt" id="log_out" (click)="logout()"
-                   tooltip="Logout" [placement]="position">
+                   tooltip="Logout" placement="top">
                 </i>
             </div>
         </div>
     </div>
     <div class="home_content">
-        <!-- <h2>{{user | json}}</h2> -->
-        <app-dashboard *ngIf="dashboardPanel"> </app-dashboard>
+        <app-dashboard *ngIf="dashboardPanel" [sidebarstatus]="hasvalue"> </app-dashboard>
         <app-user-management *ngIf="userPanel"></app-user-management>
         <div *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'">
             <app-orders *ngIf="ordersPanel"></app-orders>

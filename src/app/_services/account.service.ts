@@ -4,7 +4,6 @@ import { ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../_models/user';
 import { map } from 'rxjs/operators';
-import { UpdateDetails } from '../_models/updateDetails';
 
 @Injectable({
   providedIn: 'root'

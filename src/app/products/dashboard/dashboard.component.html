@@ -1,37 +1,78 @@
-<div class="container">
-     <div class="row">
-         <div class="col-md-4 box" *ngFor="let product of products;index as i;"
-             (click)="gotoProducts(product)" 
-         >
-             <img src= "./assets/dress.png" alt="profile" class="product_img"
-                  *ngIf="i==0"     
-             >
-             <img src= "./assets/shoe.png" alt="profile" class="product_img"
-                  *ngIf="i==1"     
-             >
-             <img src= "./assets/watch.png" alt="profile" class="product_img"
-                  *ngIf="i==2"     
-             >
-             <img src= "./assets/mobile.png" alt="profile" class="product_img"
-                  *ngIf="i==3"     
-             >
-             <img src= "./assets/mbaccs.png" alt="profile" class="product_img"
-                  *ngIf="i==4"     
-             >
-             <img src= "./assets/cheppal.png" alt="profile" class="product_img"
-                  *ngIf="i==5"     
-             >
-             <img src= "./assets/fridge.png" alt="profile" class="product_img"
-                  *ngIf="i==6"     
-             >
-             <img src= "./assets/tv.png" alt="profile" class="product_img"
-                  *ngIf="i==7"     
-             >
-             <img src= "./assets/wmachine.png" alt="profile" class="product_img"
-                  *ngIf="i==8"     
-             >
-             <br>
-             {{product}} 
-         </div>
+<ng-container *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'">
+     <div class="categories">
+          <div class="heading">
+               <h3>Categories To Bag</h3>
+          </div>
+          <div class="product" [style.margin-left]="sidebarstatus ? '10px' : '100px'">
+               <div class="product-row">
+                    <div class="image">
+                         <img src="./assets/watches.png" alt="watch">
+                    </div>
+                    <div class="image" (click)="gotoProducts('Shoes')">
+                         <img src="./assets/shoes1.png" alt="watch">
+                    </div>
+                    <div class="image">
+                         <img src="./assets/kurties.png" alt="watch">
+                    </div>
+               </div> 
+               <br>
+               <div class="product-row">
+                    <div class="image">
+                         <img src="./assets/tshirts.png" alt="watch">
+                    </div>
+                    <div class="image">
+                         <img src="./assets/jewels.png" alt="watch">
+                    </div>
+                    <div class="image">
+                         <img src="./assets/furnitures.png" alt="watch">
+                    </div>
+               </div> 
+               <br>
+               <div class="product-row">
+                    <div class="image">
+                         <img src="./assets/cosmetics.jpg" alt="watch">
+                    </div>
+                    <div class="image">
+                         <img src="./assets/cheppals.png" alt="watch">
+                    </div>
+                    <div class="image">
+                         <img src="./assets/shoes.jpg" alt="watch">
+                    </div>
+               </div> 
+          </div>
      </div>
- </div>
+</ng-container>
+
+
+<ng-container *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'">
+     <div class="categories" >
+          <div class="heading">
+               <h3>Categories</h3>
+          </div>
+          <div class="product" [style.margin-left]="sidebarstatus ? '10px' : '100px'">
+               <div class="product-row">
+                    <div class="image">
+                         <img src="./assets/watches.jpg" alt="watch">
+                    </div>
+                    <div class="image" (click)="gotoProducts('Shoes')">
+                         <img src="./assets/shoes1.jpg" alt="watch">
+                    </div>
+                    <div class="image">
+                         <img src="./assets/dress.jpg" alt="watch">
+                    </div>
+               </div> 
+               <br>
+               <div class="product-row">
+                    <div class="image">
+                         <img src="./assets/cosmetics.jpg" alt="watch">
+                    </div>
+                    <div class="image">
+                         <img src="./assets/jewels.png" alt="watch">
+                    </div>
+                    <div class="image">
+                         <img src="./assets/cheppals.png" alt="watch">
+                    </div>
+               </div> 
+          </div>
+     </div>
+</ng-container>

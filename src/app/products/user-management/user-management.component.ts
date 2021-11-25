@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
-import { UpdateDetails } from 'src/app/_models/updateDetails';
+import { UpdatedDetails } from 'src/app/_models/updatedDetails';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { UserService } from 'src/app/_services/user.service';
@@ -12,12 +12,11 @@ import { UserService } from 'src/app/_services/user.service';
   templateUrl: './user-management.component.html',
   styleUrls: ['./user-management.component.css']
 })
-export class UserManagementComponent implements OnInit {
+export class UserManagementComponent implements OnInit{
 
   @ViewChild('userdetailsForm') userdetailsForm: NgForm;
   user: any;
-  userRole: string;
-  userDetails: UpdateDetails = new UpdateDetails();
+  userDetails: UpdatedDetails = new UpdatedDetails();
   userRoles: any;
   fileName: string = null;
   fileSize: number = 0;
@@ -33,16 +32,15 @@ export class UserManagementComponent implements OnInit {
               private toastr: ToastrService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(response => {
       this.user = response;
-      this.userRole = response.userRole;
     })
    }
 
   ngOnInit(): void {
-    if(this.userRole == 'Buyer' || this.userRole == 'GoldBuyer')
+    if(this.user.userRole == 'Buyer' || this.user.userRole == 'GoldBuyer')
     {
       this.userRoles = this.buyerRoles;
     }
-    if(this.userRole == 'Supplier' || this.userRole == 'GoldSupplier')
+    if(this.user.userRole == 'Supplier' || this.user.userRole == 'GoldSupplier')
     {
       this.userRoles = this.supplierRoles;
     }

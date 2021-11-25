@@ -1,4 +1,13 @@
 .userprofile .profile{
+    transition-duration: 2s;
+}
+
+.userprofile .formcontainer{
+    transition-duration: 2s;
+}
+
+
+.userprofile .profile{
     display: flex;
 }
 

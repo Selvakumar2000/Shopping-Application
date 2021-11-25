@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { PaginatedResult } from '../_models/pagination';
 import { Products } from '../_models/products';
+import { ProductUpload } from '../_models/productUpload';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,6 @@ import { Products } from '../_models/products';
 export class ProductsService {
 
   baseURL = environment.apiUrl;
-  paginatedResult: PaginatedResult<Products[]> = new PaginatedResult<Products[]>();
   
   constructor(private http: HttpClient) { }
 
@@ -29,20 +29,11 @@ export class ProductsService {
     params = params.append('pageNumber', page.toString());
     params = params.append('pageSize', itemsPerPage.toString());
 
-    return this.http.get<Products[]>(
-                     this.baseURL + 'products', {observe:'response',params}
-                                    ).pipe(map(response => {
-        this.paginatedResult.result = response.body;
-        if(response.headers.get('Pagination') !== null)
-        {
-          this.paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
-        }
-        return this.paginatedResult;
-      }));
+    return this.http.get(this.baseURL + 'products', {observe: 'response', params});
   }
 
   //upload product
-  uploadDetails(productDetails: any, image: File)
+  uploadDetails(productDetails: ProductUpload, image: File)
   {
     const formData = new FormData();
 
@@ -56,7 +47,7 @@ export class ProductsService {
   //Get Uploaded ProductDetails
   getUploadedProducts()
   {
-    return this.http.get<Products[]>(this.baseURL + 'products/uploadedproducts');
+    return this.http.get(this.baseURL + 'products/uploadedproducts');
   }
 
 }

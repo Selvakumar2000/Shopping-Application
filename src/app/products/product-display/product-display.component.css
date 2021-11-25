@@ -234,3 +234,13 @@
     background-clip:padding-box; 
   } 
  
+  .not-found{
+    margin-left: 660px;
+    margin-top: 230px;
+  }
+
+  .not-found h3{
+    color: #fff;
+    font-size: 35px;
+    font-weight: 700;
+  }

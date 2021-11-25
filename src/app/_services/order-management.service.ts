@@ -21,6 +21,6 @@ export class OrderManagementService {
   //Get Cart Products
   getCartProducts()
   {
-    return this.http.get<Products[]>(this.baseURL + 'ordermanagement/cartproducts');
+    return this.http.get(this.baseURL + 'ordermanagement/cartproducts');
   }
 }

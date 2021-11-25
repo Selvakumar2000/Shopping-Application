@@ -2,7 +2,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3" *ngFor="let product of products">
-                <div class="product-card">
+                <div class="product-card" 
+                [style.border]="userRole != 'Buyer' || userRole == 'GoldBuyer' ? 
+                '5px solid gray' : '0px solid #fff'">
                     <div class="logo-cart">
                         <img src="./assets/addidaslogo.jpg" alt="prod-logo"
                              *ngIf="product.productBrand == 'Addidas'">
@@ -43,7 +45,7 @@
                             </span>
                         </div> 
                     </div>
-                    <div class="button">
+                    <div class="button" *ngIf="userRole == 'Buyer' || userRole == 'GoldBuyer'">
                         <div class="button-layer">
                         </div>
                         <button>

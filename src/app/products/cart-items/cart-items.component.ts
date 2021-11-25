@@ -9,7 +9,7 @@ import { OrderManagementService } from 'src/app/_services/order-management.servi
 })
 export class CartItemsComponent implements OnInit {
 
-  products: Products[] = [];
+  products: any;
 
   constructor(private orderManagement: OrderManagementService) { }
 

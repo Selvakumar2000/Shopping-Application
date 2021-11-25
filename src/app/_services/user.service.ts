@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { UpdateDetails } from '../_models/updateDetails';
+import { UpdatedDetails } from '../_models/updatedDetails';
 import { User } from '../_models/user';
 import { AccountService } from './account.service';
 
@@ -18,7 +17,7 @@ export class UserService {
 
   getUserDetails()
   {
-    return this.http.get<UpdateDetails>(this.baseURL + 'users/userdetails');
+    return this.http.get<UpdatedDetails>(this.baseURL + 'users/userdetails');
   }
 
   updateUserdetails(model: any, image: File)
@@ -28,7 +27,7 @@ export class UserService {
     formData.append('userDetails', JSON.stringify(model));
     formData.append('file', image);
 
-    return this.http.put<UpdateDetails>(this.baseURL + 'users/updatedetails', formData);
+    return this.http.put<UpdatedDetails>(this.baseURL + 'users/updatedetails', formData);
   }
 
   photoUrl: any;

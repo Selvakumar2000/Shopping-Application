@@ -120,15 +120,15 @@
     </div>
     <div class="home_content">
         <app-dashboard *ngIf="dashboardPanel" [sidebarstatus]="hasvalue"> </app-dashboard>
-        <app-user-management *ngIf="userPanel"></app-user-management>
+        <app-user-management *ngIf="userPanel" [sidebarstatus]="hasvalue"></app-user-management>
         <div *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'">
             <app-orders *ngIf="ordersPanel"></app-orders>
         </div>
         <div *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'">
-            <app-products-uploaded *ngIf="uploads"></app-products-uploaded>
+            <app-products-uploaded *ngIf="uploads" [sidebarstatus]="hasvalue"></app-products-uploaded>
         </div>
         <div *ngIf="user.userRole == 'Buyer' || user.userRole == 'GoldBuyer'">
-            <app-cart-items *ngIf="carts"></app-cart-items>
+            <app-cart-items *ngIf="carts" [sidebarstatus]="hasvalue"></app-cart-items>
         </div>
         <div *ngIf="user.userRole == 'Supplier' || user.userRole == 'GoldSupplier'">
             <app-transactions *ngIf="transaction"></app-transactions>

@@ -14,6 +14,7 @@ import { UserService } from 'src/app/_services/user.service';
 })
 export class UserManagementComponent implements OnInit{
 
+  @Input() sidebarstatus: boolean;
   @ViewChild('userdetailsForm') userdetailsForm: NgForm;
   user: any;
   userDetails: UpdatedDetails = new UpdatedDetails();

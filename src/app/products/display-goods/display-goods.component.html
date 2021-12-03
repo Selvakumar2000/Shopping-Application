@@ -1,59 +1,57 @@
-<div class="cart-page">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3" *ngFor="let product of products">
-                <div class="product-card" 
-                [style.border]="userRole != 'Buyer' || userRole == 'GoldBuyer' ? 
-                '5px solid gray' : '0px solid #fff'">
-                    <div class="logo-cart">
-                        <img src="./assets/addidaslogo.jpg" alt="prod-logo"
-                             *ngIf="product.productBrand == 'Addidas'">
-                        <img src="./assets/walkarologo.png" alt="prod-logo"
-                             *ngIf="product.productBrand == 'Walkaro'">
-                        <img src="./assets/pumalogo.png" alt="prod-logo" 
-                             *ngIf="product.productBrand == 'Puma'">
-                        <img src="./assets/batalogo.png" alt="prod-logo" 
-                             *ngIf="product.productBrand == 'Bata'">
+<div class="container-fluid">
+    <div class="row mt-1">
+        <div *ngFor="let product of products" class="product-col"
+         [class]="sidebarstatus ? 'col-md-4' : 'col-md-3'">
+            <div class="product-card" >
+                <div class="logo-cart">
+                    <img src="./assets/addidaslogo.jpg" alt="prod-logo" 
+                         *ngIf="product.productBrand == 'Addidas'">
+                    <img src="./assets/walkarologo.png" alt="prod-logo" 
+                         *ngIf="product.productBrand == 'Walkaro'">
+                    <img src="./assets/pumalogo.png" alt="prod-logo" 
+                         *ngIf="product.productBrand == 'Puma'">
+                    <img src="./assets/batalogo.png" alt="prod-logo" 
+                         *ngIf="product.productBrand == 'Bata'">
+
+                    <i class="fas fa-shopping-cart" tooltip="Buy" 
+                       placement="left" (click)="buyProduct(product)"></i>
+                </div>
+                <div class="main-images">
+                    <img src="{{product.photoUrl}}" alt="{{product.productName}}">
+                </div>
+                <div class="product-details">
+                    <div class="product_name">{{product.productName}}</div>
+                    <P>
+                        {{product.productDescription}}
+                    </P>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
                     </div>
-                    <div class="main-images">
-                        <img src="{{product.photoUrl}}" alt="{{product.productName}}">
+                </div>
+                <div class="discount-price">
+                    <div class="price">
+                        <span class="price_num">Rs. {{product.amountRs}}</span>
+                        <span class="price_letter">
+                            <h5><s style="color: rgb(226, 55, 55);">Rs. {{product.originalPrice}}</s></h5>
+                        </span>
                     </div>
-                    <div class="product-details">
-                        <div class="product_name">{{product.productName}}</div>
-                        <P>
-                            {{product.productDescription}}
-                        </P>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="discount-price">
-                        <div class="price">
-                            <span class="price_num">Rs. {{product.amountRs}}</span>
-                            <span class="price_letter">
-                                <h5><s style="color: rgb(226, 55, 55);">Rs. {{product.originalPrice}}</s></h5>
-                            </span>
-                        </div>
-                        <div class="discount-option">
-                            <span class="discount"><strong>Discount:</strong></span>
-                            <span class="discount-rate">                                    
-                                {{product.discount}}%
-                            </span>
-                        </div> 
-                    </div>
-                    <div class="button" *ngIf="userRole == 'Buyer' || userRole == 'GoldBuyer'">
-                        <div class="button-layer">
-                        </div>
-                        <button>
-                            Buy
-                        </button>
-                    </div>
-                </div>            
-            </div>
+                    <div class="discount-option">
+                        <span class="discount"><strong>Discount:</strong></span>
+                        <span class="discount-rate">                                    
+                            {{product.discount}}%
+                        </span>
+                    </div> 
+                </div>
+                <div class="button" *ngIf="userRole == 'Buyer' || userRole == 'GoldBuyer'">
+                    <button>
+                        Buy
+                    </button>
+                </div>
+            </div>            
         </div>
     </div>
 </div>

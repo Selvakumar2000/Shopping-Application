@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -24,7 +24,7 @@ export class ProductUploadComponent implements OnInit {
   canUpload: boolean = true;
   imageFile: any;
   @ViewChild('detailsForm') detailsForm: NgForm;
-
+  
   constructor(private accountService: AccountService, private router: Router,
               private route: ActivatedRoute, private productService: ProductsService,
               private toastr: ToastrService) {

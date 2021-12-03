@@ -1,7 +1,6 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
-import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { AccountService } from 'src/app/_services/account.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit, OnChanges {
+export class DashboardComponent implements OnInit{
 
   @Input() sidebarstatus: boolean;
   user: any;
@@ -18,9 +17,6 @@ export class DashboardComponent implements OnInit, OnChanges {
     this.accountService.currentUser$.pipe(take(1)).subscribe(response => {
       this.user = response;
     })
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.sidebarstatus);
   }
 
   ngOnInit(): void {

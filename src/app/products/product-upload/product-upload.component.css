@@ -1,7 +1,7 @@
 .product-upload .topbar{
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 5px;
     background-image: linear-gradient(135deg,  #4939f1, #3226bd, #4840a7, #372abe,  #4939f1);
 }
 
@@ -91,12 +91,13 @@
     font-size: 25px;
     font-weight: 500;
     position: relative;
+    margin-top: -20px;
 }
 
 .product-description form .user-details{
     display: flex;
     flex-wrap: wrap;
-    margin: 20px 0 12px 0;
+    margin-top: 10px;
     justify-content: space-between;
 }
 
@@ -125,7 +126,7 @@ form .user-details .input-box{
 
 
 .description-image .product-image{
-    margin-top: 100px;
+    margin-top: 70px;
     margin-left: 90px;
 }
 
@@ -144,14 +145,15 @@ form .user-details .input-box{
     display: flex;
 }
 
-.product-upload .details{
+.product-upload .file-details{
     width: 700px;
-    margin-left: 10px;
+    margin-left: 25px;
+    margin-top: -10px;
 }
 
 .product-upload .upload{
     margin-top: 70px;
-    margin-left: 450px;
+    margin-left: 300px;
 }
 
 input[type="file"]
@@ -185,3 +187,14 @@ input[type="file"]
 }
 
 
+ 
+
+
+
+
+
+ 
+ 
+
+  
+ 

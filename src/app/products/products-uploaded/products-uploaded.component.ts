@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Products } from 'src/app/_models/products';
 import { ProductsService } from 'src/app/_services/products.service';
 
@@ -10,6 +10,7 @@ import { ProductsService } from 'src/app/_services/products.service';
 export class ProductsUploadedComponent implements OnInit {
 
   products: any;
+  @Input() sidebarstatus: boolean;
   
   constructor(private productsService: ProductsService) { }
 

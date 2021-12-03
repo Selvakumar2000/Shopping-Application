@@ -44,7 +44,7 @@ export class AccountService {
     );
   }
 
-  loginTrouble(model: any)
+  ForgotPassword(model: any)
   {
     return this.http.post(this.baseURL + 'account/resetpasswordlink', model, {responseType: 'text'});
   }

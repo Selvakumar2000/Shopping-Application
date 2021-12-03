@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Products } from 'src/app/_models/products';
 import { OrderManagementService } from 'src/app/_services/order-management.service';
 
@@ -10,7 +10,7 @@ import { OrderManagementService } from 'src/app/_services/order-management.servi
 export class CartItemsComponent implements OnInit {
 
   products: any;
-
+  @Input() sidebarstatus: boolean;
   constructor(private orderManagement: OrderManagementService) { }
 
   ngOnInit(): void {

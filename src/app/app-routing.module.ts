@@ -12,7 +12,11 @@ const routes: Routes = [
     path: 'products',
     loadChildren: ()=> import('./products/products.module')
                        .then(module => module.ProductsModule)
-  }
+  },
+  {
+    path: '**',
+    redirectTo:''
+  },
 
 ];
 

@@ -1,9 +1,10 @@
 <div class="userprofile">
     <div class="profile">
         <div class="image">
-            <img src="{{userDetails.photoUrl || './assets/user.png'}}" alt="user-image">
+            <img src="{{userDetails.photoUrl || './assets/user.png'}}" alt="user-image"
+            [style.margin-left]="sidebarstatus ? '410px' : '560px'">
             <div class="fileUpload">
-                <label class="camera">
+                <label class="camera" [style.margin-left]="sidebarstatus ? '580px' : '731px'">
                     <input #imageInput type="file" accept="image/*"
                            (change)="processFile(imageInput)">
                     <i class="fas fa-camera"></i>
@@ -29,7 +30,8 @@
             </table>
         </div>
     </div>
-    <div class="container formcontainer">
+    <div class="container formcontainer"
+         [style.margin-left]="sidebarstatus ? '60px' : '210px'">
         <form #userdetailsForm="ngForm" (ngSubmit)="updateDetails(imageInput)" autocomplete="off">
             <div class="user-details">
                 <div class="input-box">

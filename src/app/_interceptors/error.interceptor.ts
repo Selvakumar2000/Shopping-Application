@@ -33,7 +33,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           
           case 404:
             this.toastr.error('Page Not Found');
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/products');
             break;
           
           case 500:
@@ -43,6 +43,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
           default:
             this.toastr.error('Something went wrong! Please relaunch the application!!!');
+            this.router.navigateByUrl('/');
             break;
         }
       }

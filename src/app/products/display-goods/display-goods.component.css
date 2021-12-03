@@ -1,17 +1,18 @@
-.cart-page{
-    background: rgb(200, 199, 199);
-}
-.product-card{
+  .product-card{
     position: relative;
-    border-radius: 30px;
-    width: 100%;
-    height: 100%;
-    padding: 2px 2px 2px 2px;
+    border-radius: 25px;
+    width: 250px;
+    height: 390px;
+    padding: 5px 5px 5px 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     z-index: 1;
     background:#fff;
+    margin-bottom: 10px;
   }
   
+ 
+
   .product-card .logo-cart{
     display: flex;
     align-items: center;
@@ -24,41 +25,50 @@
     object-fit: cover;
   }
   
+  .product-card .logo-cart i{
+    font-size: 27px;
+    color: #3a3838;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
   .product-card .main-images{
     position: relative;
-    margin-top: -8px;
-    margin-left: 30px;
-    height: 110px;
+    height: 180px;
   }
   
   .product-card .main-images img{
     position: absolute;
-    height: 190px;
-    width: 190px;
+    height: 200px;
+    width: 200px;
     object-fit: cover;
     transform: rotate(18deg);
-    left: 12px;
-    top: -40px;
+    left: 21px;
+    top: -50px;
     z-index: -1;
     opacity: 1;
     transition: opacity 0.5s ease;
   }
   
+  .product-card .product-details{
+    margin-top: -70px;
+  }
+  
   .product-card .product-details .product_name{
     font-size: 24px;
     font-weight: 500;
-    margin-top: 1px;
     color: #161616;
   }
   
   .product-card .product-details p{
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 400;
     color: #333;
     text-align: justify;
   }
   
   .product-card .product-details .stars i{
+    margin: 0 -1px;
     color: #333;
   }
   
@@ -80,7 +90,7 @@
     color: #333;
     margin-right: 8px;
   }
-
+  
   .discount-price .discount-option .discount .discount-rate{
     font-size: 20px;
     font-weight: 600;
@@ -106,41 +116,26 @@
   }
   
   .product-card .button{
-    position: relative;
-    height: 50px;
-    width: 100%;
-    overflow: hidden;
-    border-radius: 25px;
-    margin-top: 1px;
-  }
-  
-  .product-card .button .button-layer{
-    position: absolute;
-    height: 100%;
-    width: 300%;
-    left: -100%;
-    background-image: linear-gradient(135deg,  #9708CC, #43CBFF, #9708CC, #43CBFF);
-    transition: all 0.4s ease;
-    border-radius: 25px;
-  }
-  
-  .product-card .button:hover .button-layer{
-    left: 0;
+    margin-top: 10px;
   }
   
   .product-card .button button{
-    position: relative;
-    height: 100%;
-    width: 100%;
-    background: none;
-    outline: none;
-    border: none;
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: 1px;
+    margin-left: 20px;
+    padding: 5px;
+    border-radius: 50px;
+    width: 200px;
+    height: 35px;
+    box-sizing: border-box;
+    background-color: #563ea3;
+    transition: all 0.4s ease;
     color: #fff;
+    border: none;
   }
-
+  
+  .product-card .button button:hover{
+    background-color: rgb(22, 22, 88);
+  }
+  
   .col-md-3{
     box-sizing: border-box;
     border: 15px solid transparent;

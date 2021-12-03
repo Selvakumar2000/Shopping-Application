@@ -39,6 +39,14 @@ export class ProductDisplayComponent implements OnInit {
       
   }
 
+  heros: any = [
+    {id: 1, name:'Superman'},
+    {id: 2, name:'Batman'},
+    {id: 5, name:'BatGirl'},
+    {id: 3, name:'Robin'},
+    {id: 4, name:'Flash'}
+];
+
   ngOnInit(): void {
 
     this.route.params.subscribe((data:Params) => {

@@ -11,6 +11,7 @@ import { AccountService } from 'src/app/_services/account.service';
 export class DisplayGoodsComponent implements OnInit {
 
   @Input() products: Products[] = [];
+  @Input() sidebarstatus: boolean; 
   userRole: string;
 
   constructor(private accountService: AccountService) { 

@@ -1,7 +1,14 @@
 <div class="product-display" *ngIf="products">
     <div class="topbar">
-        <div tooltip="Filter" placement="left">
-            <button class="btn filter" (click)="openFilterOptions(staticModal)">
+        <div class="appname">
+            <h2>
+                ShopMe
+                <i class="fas fa-shopping-cart"></i>
+            </h2>   
+        </div>
+        <div>
+            <button class="btn filter" (click)="openFilterOptions(staticModal)"
+                    tooltip="Filter" placement="right">
                 <i class="fas fa-filter"></i>
             </button>
         </div>
@@ -24,7 +31,6 @@
             </div>
         </div>
     </div>
-    <br>
     <div class="container-fluid">
         <div class="row mt-1">
             <div *ngFor="let product of products" class="col-md-3">
@@ -73,8 +79,6 @@
                         </div> 
                     </div>
                     <div class="button">
-                        <div class="button-layer">
-                        </div>
                         <button (click)="addtoCart(product)">
                             Add To Cart
                         </button>

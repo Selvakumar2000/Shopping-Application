@@ -104,9 +104,9 @@ export class HomeComponent implements OnInit {
     });
   }  
 
-  loginTrouble()
+  ForgotPassword()
   {
-    this.accountService.loginTrouble(this.resetModel).subscribe(response => {
+    this.accountService.ForgotPassword(this.resetModel).subscribe(response => {
       this.toastr.warning(response);
       this.resetPasswordForm.reset();
       this.modalRef.hide();

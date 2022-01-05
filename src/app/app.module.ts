@@ -9,6 +9,7 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
     HttpClientModule,
     NgxSpinnerModule,
     ToastrModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:ErrorInterceptor,multi:true},

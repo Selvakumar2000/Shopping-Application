@@ -1,1 +1,125 @@
-<app-display-goods [products]="products" [sidebarstatus]="sidebarstatus"></app-display-goods>
+<div *ngIf="display">
+    <app-display-goods [products]="products" [sidebarstatus]="sidebarstatus"
+                       (productDetails)="editProduct($event)">
+    </app-display-goods>
+</div>
+
+<div *ngIf="productRemove">
+    <div class="edit-product">
+        <div *ngIf="productForm" class
+             [style.margin-left]="sidebarstatus ? '150px' : '290px'">
+            <div class="product-card">
+                <div class="logo-cart">
+                    <img src="./assets/addidaslogo.jpg" alt="prod-logo" 
+                        *ngIf="brand == 'Addidas'">
+                    <img src="./assets/walkarologo.png" alt="prod-logo" 
+                        *ngIf="brand == 'Walkaro'">
+                    <img src="./assets/pumalogo.png" alt="prod-logo" 
+                        *ngIf="brand == 'Puma'">
+                    <img src="./assets/batalogo.png" alt="prod-logo" 
+                         *ngIf="brand == 'Bata'">
+                </div>
+                <div class="main-images">
+                    <img src="{{photo}}" alt="{{name}}">
+                </div>
+                <div class="product-details">
+                    <div class="product_name">{{name}}</div>
+                    <p>
+                        {{description}}
+                    </p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+                <div class="discount-price">
+                    <div class="price">
+                        <span class="price_num">Rs. {{amount}}</span>
+                    </div>
+                    <div class="discount-option">
+                        <span class="discount"><strong>Discount:</strong></span>
+                        <span class="discount-rate">                                    
+                            {{discount}}%
+                        </span>
+                    </div> 
+                </div>
+                <div class="button">
+                    <button>
+                        Quantity  -  {{quantity}}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="proddetails" *ngIf="productForm">
+            <form #productdetailsForm="ngForm" autocomplete="off"
+            [style.margin-left]="sidebarstatus ? '50px' : '90px'">
+                <div class="user-details"> 
+                    <div class="input-box">
+                        <span class="details">Product Name</span>
+                        <input
+                            type="text"
+                            placeholder="Update your product name"
+                            class="form-control"
+                            name="productName"
+                            [(ngModel)]="productForm.productName"                    
+                        >
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Product Description</span>
+                        <input 
+                            type="text" 
+                            placeholder="Update your product description" 
+                            class="form-control"
+                            name="productDescription"
+                            [(ngModel)]="productForm.productDescription"                    
+                        >
+                    </div> 
+                    <div class="input-box">
+                        <span class="details">Amount</span>
+                        <input 
+                            type="text" 
+                            placeholder="Update your product price" 
+                            class="form-control"
+                            name="amount"
+                            [(ngModel)]="productForm.amountRs"                    
+                        >
+                    </div> 
+                    <div class="input-box">
+                        <span class="details">Discount</span>
+                        <input 
+                            type="text" 
+                            placeholder="Update your product discount"
+                            class="form-control"
+                            name="discount"
+                            [(ngModel)]="productForm.discount"
+                        >
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Quantity</span>
+                        <input 
+                            type="text" 
+                            placeholder="Update your product quantity"
+                            class="form-control"
+                            name="quantity"
+                            [(ngModel)]="productForm.quantity"
+                        >
+                    </div>  
+                </div><br>
+                <div class="action">
+                    <button class="btn btn-primary" type="submit"
+                    [disabled]="productdetailsForm.form.pristine"
+                    (click)="updateProductDetails()">
+                        Update
+                    </button>
+                    <button class="btn btn-danger" (click)="deleteProduct()">
+                        Delete
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

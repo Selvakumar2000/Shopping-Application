@@ -1,11 +1,11 @@
 <!--Photo Upload-->
 <div class="product-upload">
     <div class="topbar">
-        <div class="appname">
-            <h1>
+        <div class="appname" routerLink="/products">
+            <h2>
                 ShopMe
                 <i class="fas fa-shopping-cart"></i>
-            </h1>   
+            </h2>   
         </div>
         <div class="heading">
             <h3>Supplier Portal For Uploading Goods</h3>
@@ -14,7 +14,7 @@
             <img id="img" src="{{user.photoUrl || './assets/user.png'}}" alt="user">
             <div class="dropdown-content">
                 <a routerLink='/products'>Dashboard</a>
-                <a (click)="logout()">LogOut</a>
+                <a (click)="logout(user.username)">LogOut</a>
             </div>
         </div>
     </div>

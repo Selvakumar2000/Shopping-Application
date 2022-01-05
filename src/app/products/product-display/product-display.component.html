@@ -1,36 +1,38 @@
 <div class="product-display" *ngIf="products">
-    <div class="topbar">
-        <div class="appname">
-            <h2>
-                ShopMe
-                <i class="fas fa-shopping-cart"></i>
-            </h2>   
-        </div>
-        <div>
-            <button class="btn filter" (click)="openFilterOptions(staticModal)"
-                    tooltip="Filter" placement="right">
-                <i class="fas fa-filter"></i>
-            </button>
-        </div>
-        <div class="search">
-            <div class="input-group">
-                <input type="text" class="form-control" 
-                       placeholder="Search Your Favourite Product Brand ....">
-                <div class="input-group-append">
-                    <button class="btn btn-secondary">
-                        <i class="fas fa-search"></i>
-                    </button>
+    <nav>
+        <div class="topbar">
+            <div class="appname" routerLink="/products">
+                <h2>
+                    ShopMe
+                    <i class="fas fa-shopping-cart"></i>
+                </h2>   
+            </div>
+            <div>
+                <button class="btn filter" (click)="openFilterOptions(staticModal)"
+                        tooltip="Filter" placement="right">
+                    <i class="fas fa-filter"></i>
+                </button>
+            </div>
+            <div class="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" 
+                           placeholder="Search Your Favourite Product Brand ....">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <img id="img" src="{{user.photoUrl || './assets/user.png'}}" alt="user">
+                <div class="dropdown-content">
+                    <a routerLink='/products'>Dashboard</a>
+                    <a (click)="logout(user.username)">LogOut</a>
                 </div>
             </div>
         </div>
-        <div class="dropdown">
-            <img id="img" src="{{user.photoUrl || './assets/user.png'}}" alt="user">
-            <div class="dropdown-content">
-                <a routerLink='/products'>Dashboard</a>
-                <a (click)="logout()">LogOut</a>
-            </div>
-        </div>
-    </div>
+    </nav>  
     <div class="container-fluid">
         <div class="row mt-1">
             <div *ngFor="let product of products" class="col-md-3">
@@ -104,7 +106,7 @@
         </div>
     </div> 
     <div  *ngIf="!products || products.length == 0" class="not-found">
-        <h3>Items Not Found</h3>
+        <img src="./assets/emptycart.png" alt="cart is empty">
     </div>
 </div>
 

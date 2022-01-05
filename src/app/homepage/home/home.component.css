@@ -20,7 +20,7 @@
 
 .auth-form{
     margin-left: 50px;
-    margin-top: 160px;
+    margin-top: 150px;
 }
 
 .btn_login{
@@ -47,18 +47,17 @@
     font-weight: 700;
 }
 
-.form-group{
-    margin-left: 70px;
-    width: 450px;
-}
-.password-input{
+.form-input{
     position: relative;
+    width: 75%;
+    margin-left: 100px;
+    
 }
 
 .eye-icon{
     position: absolute;
     margin-top: -25px; 
-    margin-left: 420px;
+    margin-left: 470px;
     cursor: pointer;
 }
 
@@ -95,6 +94,12 @@ h2{
 h3{
     color: rgb(11, 11, 56);
     font-weight: 700;
+    margin-left: 40px;
+}
+
+.err-msg{
+    color: rgb(6, 248, 6);
+    margin-left: 100px; 
 }
 
 .buttonGrp{
@@ -121,6 +126,10 @@ h3{
 
 .radiobtn{
     cursor: pointer;
+}
+
+form .role-details label{
+    margin-left: 50px;
 }
 
 form .role-details .role-title{

@@ -13,8 +13,12 @@
                     <img src="./assets/batalogo.png" alt="prod-logo" 
                          *ngIf="product.productBrand == 'Bata'">
 
-                    <i class="fas fa-shopping-cart" tooltip="Buy" 
-                       placement="left" (click)="buyProduct(product)"></i>
+                    <i class="fas fa-times" title="Remove" 
+                       *ngIf="userRole == 'Buyer' || userRole == 'GoldBuyer'"
+                       (click)="removeCartProduct(product)"></i>
+                    <i class="far fa-edit" title="Edit"
+                       *ngIf="userRole == 'Supplier' || userRole == 'GoldSupplier'"
+                       (click)="editProduct(product)"></i>
                 </div>
                 <div class="main-images">
                     <img src="{{product.photoUrl}}" alt="{{product.productName}}">
@@ -46,9 +50,14 @@
                         </span>
                     </div> 
                 </div>
-                <div class="button" *ngIf="userRole == 'Buyer' || userRole == 'GoldBuyer'">
+                <div class="button" *ngIf="userRole == 'Buyer'">
                     <button>
                         Buy
+                    </button>
+                </div>
+                <div class="button" *ngIf="userRole == 'Supplier'">
+                    <button>
+                        Quantity  -  {{product.quantity}}
                     </button>
                 </div>
             </div>            

@@ -8,8 +8,13 @@
   /*Appname*/
   .appname{
     margin-left: 25px;
-    margin-top: 10px;
+    margin-top: 15px;
     color: #fff;
+    cursor: pointer;
+  }
+
+  .appname h2{
+    font-weight: 600;
   }
 
   .fa-shopping-cart{
@@ -18,23 +23,21 @@
   
   /*Heading*/
   .heading {
-    width: 50%;
-    margin-left: 150px;
-    font-size: 20px;
-    font-weight: 800;
+    margin-left: 160px;
     margin-top: 25px;
     color: #fff;
   }
-  
+
   /*dropdown*/
-  .dropdown {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
+.dropdown {
+  margin-left: 250px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
   }
   
   .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
   }
   
   .dropdown-content {
@@ -42,18 +45,18 @@
     position: absolute;
     background-color: #f9f9f9;
     width: 120px;
-    height: 70px;
+    height: 65px;
     right: 0;
     bottom: 0;
     top: 0;
     left: -120px;
     z-index: 3;
-    border-radius: 10px;
+    border-radius: 5px;
   }
   
   .dropdown-content a {
     color: rgb(10, 10, 10);
-    padding: 5px 10px 10px 10px;
+    padding: 5px;
     text-decoration: none;
     display: block;
     font-weight: 600;
@@ -62,17 +65,18 @@
   .dropdown-content a:hover {
     cursor: pointer;
     color: rgb(253, 253, 253);
-    background-color: rgb(105, 99, 99);
+    background-color: rgb(133, 129, 129);
+    border: 1px solid rgb(61, 68, 126);
   }
-  
+
   #img
   {
-      height: 65px;
-      width: 65px;
-      border: 2px solid #fff;
-      border-radius: 55px;
-      object-fit: cover;
-      margin-right: 25px;
+    height: 65px;
+    width: 65px;
+    border: 2px solid #fff;
+    border-radius: 55px;
+    object-fit: cover;
+    margin-right: 25px;
   } 
 
   /*Product Details*/

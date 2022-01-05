@@ -1,9 +1,8 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { UpdatedDetails } from 'src/app/_models/updatedDetails';
-import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { UserService } from 'src/app/_services/user.service';
 
@@ -22,12 +21,6 @@ export class UserManagementComponent implements OnInit{
   fileName: string = null;
   fileSize: number = 0;
   file: boolean = false;
-  buyerRoles = [{ value: 'Buyer', display: 'Buyer' },
-           { value: 'GoldBuyer', display: 'GoldBuyer' }];
-
-  supplierRoles = [{ value: 'Supplier', display: 'Supplier' },
-                   { value: 'GoldSupplier', display: 'GoldSupplier' }];
-
 
   constructor(private accountService: AccountService, private usersService: UserService,
               private toastr: ToastrService) {
@@ -37,15 +30,6 @@ export class UserManagementComponent implements OnInit{
    }
 
   ngOnInit(): void {
-    if(this.user.userRole == 'Buyer' || this.user.userRole == 'GoldBuyer')
-    {
-      this.userRoles = this.buyerRoles;
-    }
-    if(this.user.userRole == 'Supplier' || this.user.userRole == 'GoldSupplier')
-    {
-      this.userRoles = this.supplierRoles;
-    }
-
     this.getUserDetails();
   }
 
@@ -79,3 +63,7 @@ export class UserManagementComponent implements OnInit{
   }
 
 }
+
+
+
+

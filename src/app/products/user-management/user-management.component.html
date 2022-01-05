@@ -33,7 +33,7 @@
     <div class="container formcontainer"
          [style.margin-left]="sidebarstatus ? '60px' : '210px'">
         <form #userdetailsForm="ngForm" (ngSubmit)="updateDetails(imageInput)" autocomplete="off">
-            <div class="user-details">
+            <div class="user-details"> 
                 <div class="input-box">
                     <span class="details">Full Name</span>
                     <input
@@ -44,16 +44,6 @@
                         [(ngModel)]="userDetails.fullname"                    
                     >
                 </div>
-                <div class="input-box">
-                    <span class="details">Username</span>
-                    <input 
-                        type="text" 
-                        placeholder="Enter your username" 
-                        class="form-control"
-                        name="username"
-                        [(ngModel)]="userDetails.userName"                    
-                    >
-                </div> 
                 <div class="input-box">
                     <span class="details">Email</span>
                     <input 
@@ -104,16 +94,7 @@
                         [(ngModel)]="userDetails.country"
                     >
                 </div>  
-                <div class="input-box">
-                    <span class="details">Role</span>
-                    <select name="role" [(ngModel)]="userDetails.userRole">
-                        <option disabled>Update Your Role</option>
-                        <option *ngFor="let role of userRoles" [value]="role.value">
-                            {{role.display}}
-                        </option>
-                    </select>
-                </div>  
-            </div>
+            </div><br>
             <div class="button">
                 <button [class.btndisable]="userdetailsForm.form.pristine && !file"
                         [class.btnok]="!userdetailsForm.form.pristine || file"

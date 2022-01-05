@@ -7,11 +7,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import{BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     ResetPasswordComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     CommonModule,

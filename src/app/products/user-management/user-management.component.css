@@ -13,7 +13,7 @@
     width: 200px;
     border: 5px solid rgb(56, 45, 104);
     border-radius: 25px;
-    margin-top: 10px;
+    margin-top: 30px;
     position: absolute;
     transition-duration: 1s ;
 }
@@ -25,7 +25,7 @@ input[type="file"]
 
 .camera{
     position: relative;
-    margin-top: 180px;
+    margin-top: 200px;
     cursor: pointer;
     transition-duration: 1s ;
 }
@@ -44,7 +44,7 @@ input[type="file"]
 
 .formcontainer{
     width: max-content;
-    margin-top: -10px;
+    margin-top: 20px;
     transition-duration: 1s ;
 } 
 .formcontainer form .user-details{
@@ -73,59 +73,43 @@ form .user-details .input-box{
     border: 1px solid rgb(114, 111, 111);
     padding-left: 15px;
     font-size: 18px;
-    border-bottom-width: 5px;
+    border-bottom-width: 4px;
     transition: all 0.3s ease;
     color: rgb(112, 110, 110);
 }
-
-.user-details .input-box select{
-    height: 50px;
-    width: 350px;
-    outline: none;
-    border-radius: 5px;
-    border: 1px solid rgb(114, 111, 111);
-    padding-left: 15px;
-    font-size: 18px;
-    border-bottom-width: 5px;
-    transition: all 0.3s ease;
-    color: rgb(112, 110, 110);
-    cursor: pointer;
-}
-
-.user-details .input-box select option{
-    color: black;
-} 
 
 form .button .btnok{
-    margin-left: 340px;
-    width: 220px;
-    height: 40px;
+    margin-left: 360px;
+    width: 180px;
+    height: 50px;
     font-size: 19px;
     font-weight: 700;
-    border-radius: 20px; 
+    border-radius: 30px; 
     letter-spacing: 1px;
     color: #fff;
     border: none;
     background-color: rgb(28, 28, 109);
+    border: 1px solid black;
 }
 
 form .button .btnok:hover{
-    background-color: rgb(22, 22, 158);
+    background-color: rgb(22, 22, 88);
     cursor: pointer;
 }
 
 form .button .btndisable{
-    margin-left: 340px;
-    width: 220px;
-    height: 40px;
+    margin-left: 360px;
+    width: 180px;
+    height: 50px;
     font-size: 19px;
     font-weight: 700;
-    border-radius: 20px; 
+    border-radius: 30px; 
     letter-spacing: 1px;
     color: #fff;
     border: none;
     outline-color: none;
-    background-color: rgb(63, 63, 104);
+    background-color: rgb(130, 130, 146);
+    border: 1px solid black;
 }
 
 form .button .btndisable:hover{

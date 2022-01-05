@@ -3,9 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
-import { Pagination } from 'src/app/_models/pagination';
 import { Products } from 'src/app/_models/products';
-import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { OrderManagementService } from 'src/app/_services/order-management.service';
 import { ProductsService } from 'src/app/_services/products.service';
@@ -77,9 +75,9 @@ export class ProductDisplayComponent implements OnInit {
     this.getProducts();
   }
 
-  logout()
+  logout(username: string)
   {
-    this.accountService.logout();
+    this.accountService.logout(username);
     this.router.navigateByUrl('/');
   }
 
@@ -128,7 +126,7 @@ export class ProductDisplayComponent implements OnInit {
         }
         if(result == '"This')
         {
-          this.toastr.warning(response);
+          this.toastr.info(response);
         }
       } 
     });

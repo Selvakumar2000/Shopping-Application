@@ -23,4 +23,10 @@ export class OrderManagementService {
   {
     return this.http.get(this.baseURL + 'ordermanagement/cartproducts');
   }
+
+  removeCartProduct(productID: number)
+  {
+    console.log(productID);
+    return this.http.get(this.baseURL + 'ordermanagement/cart-remove/' + productID, {responseType: 'text'});
+  }
 }

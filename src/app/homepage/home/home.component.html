@@ -13,27 +13,27 @@
                 <div>
                     <form #loginForm="ngForm"  
                        autocomplete="off" (ngSubmit)="login()">
-                       <h3 class="text-center">Get Started</h3>
-                       <div class="form-group">
+                        <h3 class="text-center">Get Started</h3>
+                        <span class="form-group">
                             <input required
                                 type="text" 
-                                class="form-control"
+                                class="form-control form-input"
                                 name="username"
                                 #username="ngModel" 
                                 [(ngModel)]="model.username" 
                                 placeholder="UserName"      
                             >
                             <i class="fas fa-user fa-lg eye-icon"></i>
-                            <small  [class.d-none] = "username.valid || username.untouched"
-                            style="font-weight: 900; color: rgb(101, 245, 4);">
+                            <span [class.d-none] = "username.valid || username.untouched"
+                                  class="err-msg">
                                 *Username is required
-                            </small>
-                       </div>
-                       
-                       <div class="form-group">
+                            </span>
+                        </span>
+                        <br>
+                        <span class="form-group">
                             <input required
                                 [type]="hide ? 'password' : 'text'" 
-                                class="form-control password-input"
+                                class="form-control form-input"
                                 name="password"
                                 #password="ngModel"
                                 [(ngModel)]="model.password"
@@ -46,11 +46,12 @@
                             <i *ngIf="hide" class="fas fa-eye-slash fa-lg eye-icon"
                                             (click)="myFunction()"></i>
                            
-                            <small [class.d-none] = "password.valid || password.untouched"
-                            style="font-weight: 900; color: rgb(101, 245, 4);">
+                            <span [class.d-none] = "password.valid || password.untouched"
+                                  class="err-msg">
                                 *Password is required
-                            </small>
-                        </div>
+                            </span>
+                        </span>
+                        <br>
                         <div class="text-center">
                             <button class="btn_login" 
                                     [class.logindisable]="loginForm.form.invalid"
@@ -166,14 +167,14 @@
                             style="margin-left: 130px; margin-top: 5px;">&nbsp;
                         Buyer
                     </label>
-                    <label class="radio-inline">
+                    <!-- <label class="radio-inline">
                         <input 
                             type="radio" 
                             value="GoldBuyer" 
                             formControlName="userRole" 
                             class="ml-5 radiobtn">&nbsp;
                         GoldBuyer
-                    </label>
+                    </label> -->
                     <label class="radio-inline">
                         <input 
                             type="radio" 
@@ -182,16 +183,16 @@
                             class="ml-5 radiobtn">&nbsp;
                         Supplier
                     </label>
-                    <label class="radio-inline">
+                    <!-- <label class="radio-inline">
                         <input 
                             type="radio" 
                             value="GoldSupplier" 
                             formControlName="userRole"
                             class="ml-5 radiobtn">&nbsp;
                         GoldSupplier
-                    </label>
+                    </label> -->
                 </div>
-                <div class="user-details">
+                <div class="user-details mt-3">
                     <div class="input-box">
                         <span class="details required">Full Name</span>
                         <input

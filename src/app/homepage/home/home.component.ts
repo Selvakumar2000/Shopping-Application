@@ -22,6 +22,9 @@ export class HomeComponent implements OnInit {
   registerForm: FormGroup;
   bsConfig: Partial<BsDatepickerConfig>;
   @ViewChild('resetPasswordForm') resetPasswordForm: NgForm;
+  @ViewChild('loginForm') loginForm: NgForm;
+  bsModalRef: BsModalRef;
+  result: any;
 
   constructor(public modalService: BsModalService, public fb: FormBuilder,
               private accountService: AccountService, private toastr: ToastrService,
@@ -90,6 +93,7 @@ export class HomeComponent implements OnInit {
   register()
   {
     this.accountService.register(this.registerForm.value).subscribe(response => {
+      this.accountService.setCurrentUser(response);
       this.modalRef.hide();
       this.toastr.success('Registeration Successful');
       this.router.navigateByUrl('/products');
@@ -98,16 +102,38 @@ export class HomeComponent implements OnInit {
 
   login()
   {
-    this.accountService.login(this.model).subscribe(response => {
-      this.toastr.success('Logged in Successfully');
-      this.router.navigateByUrl('/products');
+    this.accountService.login(this.model).subscribe((response: any) => {
+      if(response.username == null && response.token == null)
+      {      
+        this.accountService.confirm(1).subscribe(result => {
+          if(result)
+          {
+            this.accountService.proceedlogin(this.model).subscribe(response => {
+              this.accountService.setCurrentUser(response);
+              this.toastr.success('Logged in Successfully');
+              this.router.navigateByUrl('/products');
+            });
+          }
+          else
+          {
+            this.loginForm.reset();
+            this.router.navigateByUrl('/');
+          }
+        })
+      }
+      if(response.username != null && response.token != null)
+      {
+        this.accountService.setCurrentUser(response);
+        this.toastr.success('Logged in Successfully');
+        this.router.navigateByUrl('/products');
+      }     
     });
   }  
 
   ForgotPassword()
   {
     this.accountService.ForgotPassword(this.resetModel).subscribe(response => {
-      this.toastr.warning(response);
+      this.toastr.info(response);
       this.resetPasswordForm.reset();
       this.modalRef.hide();
     });

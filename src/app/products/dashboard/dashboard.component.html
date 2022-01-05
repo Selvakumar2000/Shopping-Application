@@ -3,40 +3,28 @@
           <div class="heading">
                <h3>Categories To Bag</h3>
           </div>
-          <div class="product" [style.margin-left]="sidebarstatus ? '10px' : '100px'">
+          <div class="product" [style.margin-left]="sidebarstatus ? '20px' : '100px'">
                <div class="product-row">
-                    <div class="image">
-                         <img src="./assets/watches.png" alt="watch">
+                    <div class="image" (click)="gotoProducts('Shoes')" title="explore">
+                         <img src="./assets/watches.jpg" alt="watch">
                     </div>
-                    <div class="image" (click)="gotoProducts('Shoes')">
-                         <img src="./assets/shoes1.png" alt="watch">
+                    <div class="image" (click)="gotoProducts('Shoes')" title="explore">
+                         <img src="./assets/shoes1.jpg" alt="watch">
                     </div>
-                    <div class="image">
-                         <img src="./assets/kurties.png" alt="watch">
+                    <div class="image" (click)="gotoProducts('Shoes')" title="explore">
+                         <img src="./assets/dress.jpg" alt="watch">
                     </div>
                </div> 
                <br>
                <div class="product-row">
-                    <div class="image">
-                         <img src="./assets/tshirts.png" alt="watch">
-                    </div>
-                    <div class="image">
-                         <img src="./assets/jewels.png" alt="watch">
-                    </div>
-                    <div class="image">
-                         <img src="./assets/furnitures.png" alt="watch">
-                    </div>
-               </div> 
-               <br>
-               <div class="product-row">
-                    <div class="image">
+                    <div class="image" (click)="gotoProducts('Shoes')" title="explore">
                          <img src="./assets/cosmetics.jpg" alt="watch">
                     </div>
-                    <div class="image">
-                         <img src="./assets/cheppals.png" alt="watch">
+                    <div class="image" (click)="gotoProducts('Shoes')" title="explore">
+                         <img src="./assets/jewels.png" alt="watch">
                     </div>
-                    <div class="image">
-                         <img src="./assets/shoes.jpg" alt="watch">
+                    <div class="image" (click)="gotoProducts('Shoes')" title="explore">
+                         <img src="./assets/cheppals.png" alt="watch">
                     </div>
                </div> 
           </div>
@@ -49,27 +37,27 @@
           <div class="heading">
                <h3>Categories</h3>
           </div>
-          <div class="product" [style.margin-left]="sidebarstatus ? '10px' : '100px'">
+          <div class="product" [style.margin-left]="sidebarstatus ? '20px' : '100px'">
                <div class="product-row">
-                    <div class="image">
+                    <div class="image" (click)="gotoProducts('Shoes')" title="explore">
                          <img src="./assets/watches.jpg" alt="watch">
                     </div>
-                    <div class="image" (click)="gotoProducts('Shoes')">
+                    <div class="image" (click)="gotoProducts('Shoes')" title="explore">
                          <img src="./assets/shoes1.jpg" alt="watch">
                     </div>
-                    <div class="image">
+                    <div class="image" (click)="gotoProducts('Shoes')" title="explore">
                          <img src="./assets/dress.jpg" alt="watch">
                     </div>
                </div> 
                <br>
-               <div class="product-row">
+               <div class="product-row" (click)="gotoProducts('Shoes')" title="explore">
                     <div class="image">
-                         <img src="./assets/cosmetics.jpg" alt="watch">
+                         <img src="./assets/cosmetics.jpg" alt="watch" title="explore">
                     </div>
-                    <div class="image">
+                    <div class="image" (click)="gotoProducts('Shoes')" title="explore">
                          <img src="./assets/jewels.png" alt="watch">
                     </div>
-                    <div class="image">
+                    <div class="image" (click)="gotoProducts('Shoes')" title="explore">
                          <img src="./assets/cheppals.png" alt="watch">
                     </div>
                </div> 

@@ -1,10 +1,9 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { map, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { ProductUpload } from 'src/app/_models/productUpload';
-import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { ProductsService } from 'src/app/_services/products.service';
 
@@ -65,9 +64,9 @@ export class ProductUploadComponent implements OnInit {
     });
   }
 
-  logout()
+  logout(username: string)
   {
-    this.accountService.logout();
+    this.accountService.logout(username);
     this.router.navigateByUrl('/');
   }
 

@@ -25,12 +25,12 @@ export class DashboardComponent implements OnInit{
 
   gotoProducts(product: string)
   {
-    if(this.user.userRole == 'Buyer' || this.user.userRole == 'GoldBuyer')
+    if(this.user.userRole == 'Buyer')
     {
       this.router.navigate(['/products/display', product]);
     }
 
-    if(this.user.userRole == 'Supplier' || this.user.userRole == 'GoldSupplier')
+    if(this.user.userRole == 'Supplier')
     {
       this.router.navigate(['/products/upload', product]);
     }

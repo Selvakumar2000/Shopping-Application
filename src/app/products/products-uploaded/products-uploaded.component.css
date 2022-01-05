@@ -1,0 +1,179 @@
+.edit-product{
+  display: flex;
+  margin-top: 30px;
+}
+
+.product-card{
+    margin-top: 80px;
+    transition-duration: 1s ;
+    position: relative;
+    border-radius: 25px;
+    width: 250px;
+    height: 370px;
+    padding: 5px 5px 5px 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 1;
+    background:#fff;
+    margin-bottom: 10px;
+    
+  }
+  
+  .product-card .logo-cart{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .product-card .logo-cart img{
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+  }
+  
+  .product-card .main-images{
+    position: relative;
+    height: 180px;
+  }
+  
+  .product-card .main-images img{
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    transform: rotate(18deg);
+    left: 21px;
+    top: -50px;
+    z-index: -1;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
+  
+  .product-card .product-details{
+    margin-top: -70px;
+  }
+  
+  .product-card .product-details .product_name{
+    font-size: 24px;
+    font-weight: 500;
+    color: #161616;
+  }
+  
+  .product-card .product-details p{
+    font-size: 12px;
+    font-weight: 400;
+    color: #333;
+    text-align: justify;
+  }
+  
+  .product-card .product-details .stars i{
+    margin: 0 -1px;
+    color: #333;
+  }
+  
+  .product-card .discount-price .discount-option{
+    display: flex;
+    align-items: center;
+  }
+  
+  .discount-price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .discount-price .discount-option .discount{
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    margin-right: 8px;
+  }
+  
+  .discount-price .discount-option .discount .discount-rate{
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  
+  .discount-price .price{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .discount-price .price .price_num{
+    font-size: 25px;
+    font-weight: 600;
+    color: #707070;
+  }
+  
+  .discount-price .price .price_letter{
+    font-size: 10px;
+    font-weight: 600;
+    margin-top: -4px;
+    color: #707070;
+  }
+  
+  .product-card .button{
+    margin-top: 10px;
+  }
+  
+  .product-card .button button{
+    margin-left: 20px;
+    padding: 5px;
+    border-radius: 50px;
+    width: 200px;
+    height: 35px;
+    box-sizing: border-box;
+    background-color: rgb(22, 22, 88);
+    transition: all 0.4s ease;
+    color: #fff;
+    border: none;
+  }
+  
+  .col-md-3{
+    box-sizing: border-box;
+    border: 15px solid transparent;
+    background-clip:padding-box; 
+  } 
+
+  .proddetails form{
+    transition-duration: 1s ;
+  }
+
+form .user-details .input-box{
+  width: 70%;
+  margin-bottom: 15px;
+}
+
+.user-details .input-box .details{
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.user-details .input-box input{
+  height: 50px;
+  width: 350px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid rgb(114, 111, 111);
+  padding-left: 15px;
+  font-size: 18px;
+  border-bottom-width: 3px;
+  transition: all 0.3s ease;
+  color: rgb(112, 110, 110);
+}
+
+.btn{
+  width: 50%;
+}
+
+.action{
+  display: flex;
+}
+
+.action button{
+  margin-right: 20px;
+}

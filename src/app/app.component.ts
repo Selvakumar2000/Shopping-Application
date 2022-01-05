@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
 
 @Component({
@@ -10,13 +9,13 @@ import { AccountService } from './_services/account.service';
 export class AppComponent{
   title = 'ShoppingApp';
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService) {}
 
   ngOnInit()
   {
-    this.setCurrentUser();
+    this.setCurrentUser();    
   }
-  
+
   setCurrentUser() {
     const user: any = JSON.parse(localStorage.getItem('user'));
     if(user)

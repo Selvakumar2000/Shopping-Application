@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { PaginatedResult } from '../_models/pagination';
+import { productDetails } from '../_models/productDetails';
 import { Products } from '../_models/products';
 import { ProductUpload } from '../_models/productUpload';
 
@@ -50,4 +51,14 @@ export class ProductsService {
     return this.http.get(this.baseURL + 'products/uploadedproducts');
   }
 
+  updateProductDetails(product: productDetails)
+  {
+    return this.http.put(this.baseURL + 'products/updateproduct', product, {responseType: 'text'});
+  }
+
+  deleteProduct(id: any)
+  {
+    return this.http.delete(this.baseURL + 'products/deleteProduct/' + id, {responseType: 'text'});
+  }
+  
 }

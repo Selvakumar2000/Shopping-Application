@@ -54,6 +54,13 @@
     
 }
 
+/* .fa-calendar{
+    position: absolute;
+    margin-left: 270px;
+    margin-top: -30px;
+    cursor: pointer;
+} */
+
 .eye-icon{
     position: absolute;
     margin-top: -25px; 
@@ -98,7 +105,7 @@ h3{
 }
 
 .err-msg{
-    color: rgb(6, 248, 6);
+    color: rgb(255, 255, 255);
     margin-left: 100px; 
 }
 
@@ -214,6 +221,11 @@ form .button .btndisable:hover{
 }
 
 .required:after {
+    content:" *";
+    color: red;
+}
+
+.required1:before {
     content:" *";
     color: red;
 }

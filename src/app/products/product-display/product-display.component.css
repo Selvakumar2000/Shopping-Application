@@ -246,13 +246,13 @@ select{
 } 
 
 .not-found{
-  margin-left: 300px;
-  margin-top: -30px;
+  margin-left: 560px;
+  margin-top: 130px;
 }
 
 .not-found img{
-  width: 680px;
-  height: 580px;
+  width: 220px;
+  height: 240px;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }

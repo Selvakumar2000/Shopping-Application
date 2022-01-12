@@ -75,7 +75,7 @@ export class AccountService {
         class: 'modal-dialog-centered',
         initialState: {
           title: 'Warning',
-          message: 'There is another active session with the same credentials. ShopMe does not allow more than one active session per user. If you continue to login, the other session will be  automatically logged out. Do you wish to continue to login?',
+          message: 'There is another active session with the same credentials. ShopMe does not allow more than one active session per user. If you continue to login, the other session will be automatically logged out. Do you wish to continue to login?',
           btnOkText: 'YES',
           btnCancelText: 'NO'
         }

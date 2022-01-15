@@ -20,7 +20,6 @@ export class ProductUploadComponent implements OnInit {
   file: File;
   fileName: string;
   fileSize: number = 0;
-  canUpload: boolean = true;
   imageFile: any;
   @ViewChild('detailsForm') detailsForm: NgForm;
   
@@ -38,11 +37,6 @@ export class ProductUploadComponent implements OnInit {
 
    }
 
-   cursorClass = {
-    "cursor-allowed" : this.canUpload,
-    "cursor-notallowed" : !this.canUpload
-   }
-
   ngOnInit(): void {
     this.productDetails.category = this.category;
     this.productDetails.discount = 0;
@@ -52,7 +46,6 @@ export class ProductUploadComponent implements OnInit {
   {
     this.fileName = imageInput.files[0].name;
     this.fileSize = imageInput.files[0].size;
-    this.canUpload = !this.canUpload;
   }
 
   processDetails(imageInput: any) 
@@ -73,7 +66,6 @@ export class ProductUploadComponent implements OnInit {
   resetForm()
   {
     this.detailsForm.reset();
-    this.canUpload = !this.canUpload;
     this.fileSize = 0;
     this.fileName = "";
   }

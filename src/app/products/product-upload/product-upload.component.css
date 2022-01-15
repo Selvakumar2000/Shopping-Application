@@ -175,15 +175,6 @@ input[type="file"]
   color: #fff;
 }
 
-.cursor-notallowed{
-  border: 1px solid rgb(24, 21, 21);
-  border-radius: 5px;
-  padding: 4px;
-  background: rgb(174, 174, 182);
-  margin: 0;
-  cursor: not-allowed;
-
-}
 
 .required:after {
   content:" *";

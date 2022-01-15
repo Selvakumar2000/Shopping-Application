@@ -159,11 +159,9 @@
                 <div class="fromdevice">
                     <h6>File From Device</h6> 
                     <div class="fileUpload">
-                        <label [class.cursor-allowed]="canUpload"
-                               [class.cursor-notallowed]="!canUpload">
+                        <label class="cursor-allowed">
                             <input #imageInput type="file" accept="image/*"
-                                   (change)="getImgDetails(imageInput)"
-                                   [disabled]="!canUpload"                                 
+                                   (change)="getImgDetails(imageInput)"                              
                             >
                                 Choose File
                         </label>
@@ -195,7 +193,7 @@
             </div>
             <div class="upload">
                 <button type="submit" class="btn btn-success" form="detailsForm"
-                        [disabled]="detailsForm.form.invalid || canUpload"
+                        [disabled]="detailsForm.form.invalid"
                 >
                     <span class="fa fa-upload"></span> Upload Details
                 </button>

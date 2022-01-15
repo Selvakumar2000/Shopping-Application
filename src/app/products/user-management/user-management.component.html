@@ -96,10 +96,7 @@
                 </div>  
             </div><br>
             <div class="button">
-                <button [class.btndisable]="userdetailsForm.form.pristine && !file"
-                        [class.btnok]="!userdetailsForm.form.pristine || file"
-                        [disabled]="userdetailsForm.form.pristine && !file"
-                        type="submit">
+                <button class="btn btn-primary" type="submit">
                     Update
                 </button>
             </div>

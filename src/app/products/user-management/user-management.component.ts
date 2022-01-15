@@ -20,7 +20,6 @@ export class UserManagementComponent implements OnInit{
   userRoles: any;
   fileName: string = null;
   fileSize: number = 0;
-  file: boolean = false;
 
   constructor(private accountService: AccountService, private usersService: UserService,
               private toastr: ToastrService) {
@@ -59,7 +58,6 @@ export class UserManagementComponent implements OnInit{
   {
     this.fileName = imageInput.files[0].name;
     this.fileSize = imageInput.files[0].size;
-    this.file = !this.file;
   }
 
 }

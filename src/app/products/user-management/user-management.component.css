@@ -78,40 +78,8 @@ form .user-details .input-box{
     color: rgb(112, 110, 110);
 }
 
-form .button .btnok{
+.btn{
+    width: 15%;
+    padding: 7px;
     margin-left: 360px;
-    width: 180px;
-    height: 50px;
-    font-size: 19px;
-    font-weight: 700;
-    border-radius: 30px; 
-    letter-spacing: 1px;
-    color: #fff;
-    border: none;
-    background-color: rgb(28, 28, 109);
-    border: 1px solid black;
-}
-
-form .button .btnok:hover{
-    background-color: rgb(22, 22, 88);
-    cursor: pointer;
-}
-
-form .button .btndisable{
-    margin-left: 360px;
-    width: 180px;
-    height: 50px;
-    font-size: 19px;
-    font-weight: 700;
-    border-radius: 30px; 
-    letter-spacing: 1px;
-    color: #fff;
-    border: none;
-    outline-color: none;
-    background-color: rgb(130, 130, 146);
-    border: 1px solid black;
-}
-
-form .button .btndisable:hover{
-   cursor: not-allowed;
 }
